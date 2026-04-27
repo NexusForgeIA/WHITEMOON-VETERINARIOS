@@ -9,209 +9,115 @@
   :root {
     --dark: #0D3B2E;
     --accent: #2E9E6B;
-    --accent-light: #A8E6C8;
     --mid: #3D6B58;
-    --border: rgba(46,158,107,0.15);
+    --border: rgba(46,158,107,0.18);
     --cream: #F2FAF6;
     --sans: 'DM Sans', system-ui, sans-serif;
   }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: var(--sans);
-    background: #f0f0f0;
-    min-height: 100vh;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .demo-info {
-    position: fixed; top: 0; left: 0; right: 0;
-    background: white; border-bottom: 1px solid var(--border);
-    padding: 0.6rem 1.5rem;
-    font-size: 0.75rem; color: #888;
-    display: flex; align-items: center; justify-content: space-between;
-    z-index: 100;
-  }
-  .demo-info strong { color: var(--accent); }
-  .demo-info a { color: var(--accent); text-decoration: none; font-weight: 500; }
-
-  /* WIDGET */
-  #chatWidget {
-    position: fixed; bottom: 24px; right: 24px;
-    z-index: 9999;
-    display: flex; flex-direction: column; align-items: flex-end; gap: 12px;
-  }
-  #chatBox {
-    width: 360px; background: white;
-    border-radius: 16px;
-    box-shadow: 0 8px 40px rgba(13,59,46,0.15);
-    overflow: hidden;
-    border: 1px solid var(--border);
-    display: none; flex-direction: column;
-    max-height: 540px;
-  }
-  #chatBox.open { display: flex; }
-
-  .wchat-header {
-    background: var(--dark); color: white;
-    padding: 0.875rem 1rem;
-    display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0;
-  }
-  .wchat-avatar {
-    width: 36px; height: 36px; border-radius: 50%;
-    background: var(--accent);
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  .wchat-avatar svg { width: 18px; height: 18px; fill: white; }
-  .wchat-name { font-size: 0.84rem; font-weight: 500; }
-  .wchat-status { font-size: 0.68rem; color: rgba(255,255,255,0.5); display: flex; align-items: center; gap: 4px; }
-  .status-dot { width: 6px; height: 6px; background: #4CAF50; border-radius: 50%; }
-  .wchat-close {
-    margin-left: auto; background: none; border: none;
-    color: rgba(255,255,255,0.5); cursor: pointer;
-    transition: color 0.2s; padding: 0; display: flex;
-  }
-  .wchat-close:hover { color: white; }
-
-  .wchat-messages {
-    flex: 1; overflow-y: auto;
-    padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem;
-    background: #F8FEFA;
-  }
-  .wm { display: flex; gap: 6px; align-items: flex-end; max-width: 90%; }
-  .wm.user { align-self: flex-end; flex-direction: row-reverse; }
-  .wm-av {
-    width: 26px; height: 26px; border-radius: 50%;
-    background: var(--accent); flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.6rem; color: white; font-weight: 500;
-  }
-  .wm.user .wm-av { background: var(--dark); }
-  .wm-bubble {
-    background: white; border: 1px solid var(--border);
-    border-radius: 12px 12px 12px 2px;
-    padding: 0.55rem 0.8rem; font-size: 0.81rem; line-height: 1.55; color: #1a1a1a;
-  }
-  .wm.user .wm-bubble {
-    background: var(--dark); color: white;
-    border-color: var(--dark); border-radius: 12px 12px 2px 12px;
-  }
-
-  .wqr-wrap {
-    padding: 0.6rem 0.75rem; display: flex; flex-wrap: wrap; gap: 6px;
-    border-top: 1px solid var(--border); background: white; flex-shrink: 0;
-  }
-  .wqr {
-    font-size: 0.72rem; border: 1px solid var(--border);
-    background: white; padding: 0.3rem 0.75rem; border-radius: 20px;
-    cursor: pointer; color: var(--mid); transition: all 0.2s; font-family: var(--sans);
-  }
-  .wqr:hover { border-color: var(--accent); color: var(--accent); background: var(--cream); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:var(--sans); background:#f0f0f0; min-height:100vh; display:flex; align-items:center; justify-content:center; }
+  .demo-info { position:fixed; top:0; left:0; right:0; background:white; border-bottom:1px solid var(--border); padding:0.6rem 1.5rem; font-size:0.75rem; color:#888; display:flex; align-items:center; justify-content:space-between; z-index:100; }
+  .demo-info strong { color:var(--accent); }
+  .demo-info a { color:var(--accent); text-decoration:none; font-weight:500; }
+  #chatWidget { position:fixed; bottom:24px; right:24px; z-index:9999; display:flex; flex-direction:column; align-items:flex-end; gap:12px; }
+  #chatBox { width:360px; background:white; border-radius:16px; box-shadow:0 8px 40px rgba(13,59,46,0.15); overflow:hidden; border:1px solid var(--border); display:none; flex-direction:column; max-height:580px; }
+  #chatBox.open { display:flex; }
+  .wchat-header { background:var(--dark); color:white; padding:0.875rem 1rem; display:flex; align-items:center; gap:0.75rem; flex-shrink:0; }
+  .wchat-avatar { width:36px; height:36px; border-radius:50%; background:var(--accent); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .wchat-avatar svg { width:18px; height:18px; fill:white; }
+  .wchat-name { font-size:0.84rem; font-weight:500; }
+  .wchat-status { font-size:0.68rem; color:rgba(255,255,255,0.5); display:flex; align-items:center; gap:4px; }
+  .status-dot { width:6px; height:6px; background:#4CAF50; border-radius:50%; }
+  .wchat-close { margin-left:auto; background:none; border:none; color:rgba(255,255,255,0.5); cursor:pointer; transition:color 0.2s; padding:0; display:flex; }
+  .wchat-close:hover { color:white; }
+  .wchat-messages { flex:1; overflow-y:auto; padding:1rem; display:flex; flex-direction:column; gap:0.75rem; background:#F8FEFA; }
+  .wm { display:flex; gap:6px; align-items:flex-end; max-width:90%; }
+  .wm.user { align-self:flex-end; flex-direction:row-reverse; }
+  .wm-av { width:26px; height:26px; border-radius:50%; background:var(--accent); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:0.6rem; color:white; font-weight:500; }
+  .wm.user .wm-av { background:var(--dark); }
+  .wm-bubble { background:white; border:1px solid var(--border); border-radius:12px 12px 12px 2px; padding:0.55rem 0.8rem; font-size:0.81rem; line-height:1.55; color:#1a1a1a; }
+  .wm.user .wm-bubble { background:var(--dark); color:white; border-color:var(--dark); border-radius:12px 12px 2px 12px; }
+  .wqr-wrap { padding:0.6rem 0.75rem; display:flex; flex-wrap:wrap; gap:6px; border-top:1px solid var(--border); background:white; flex-shrink:0; }
+  .wqr { font-size:0.72rem; border:1px solid var(--border); background:white; padding:0.3rem 0.75rem; border-radius:20px; cursor:pointer; color:var(--mid); transition:all 0.2s; font-family:var(--sans); }
+  .wqr:hover { border-color:var(--accent); color:var(--accent); background:var(--cream); }
 
   /* FORMULARIO LEAD */
-  .wlead-form {
-    display: none; flex-direction: column; gap: 8px;
-    padding: 12px; background: var(--cream);
-    border-top: 1px solid var(--border); flex-shrink: 0;
-  }
-  .wlead-form.visible { display: flex; }
-  .wlead-title { font-size: 0.78rem; font-weight: 500; color: var(--dark); margin-bottom: 2px; }
-  .wlead-title span { color: var(--accent); }
-  .wlead-row { display: flex; gap: 6px; }
-  .wlead-input {
-    flex: 1; border: 1px solid rgba(46,158,107,0.25);
-    background: white; padding: 7px 10px;
-    font-size: 0.78rem; font-family: var(--sans);
-    color: #1a1a1a; border-radius: 6px; outline: none;
-    transition: border-color 0.2s;
-  }
-  .wlead-input:focus { border-color: var(--accent); }
-  .wlead-input::placeholder { color: #bbb; }
-  .wlead-submit {
-    width: 100%; background: var(--accent); color: white;
-    border: none; padding: 9px; border-radius: 6px;
-    font-size: 0.8rem; font-weight: 500; font-family: var(--sans);
-    cursor: pointer; transition: background 0.2s; margin-top: 2px;
-    display: flex; align-items: center; justify-content: center; gap: 6px;
-  }
-  .wlead-submit:hover { background: #227A52; }
-  .wlead-submit svg { width: 14px; height: 14px; fill: white; }
-  .wlead-skip {
-    text-align: center; font-size: 0.7rem; color: #bbb;
-    cursor: pointer; background: none; border: none;
-    font-family: var(--sans); padding: 0; transition: color 0.2s;
-  }
-  .wlead-skip:hover { color: var(--mid); }
+  .wlead-form { display:none; flex-direction:column; gap:8px; padding:12px; background:var(--cream); border-top:1px solid var(--border); flex-shrink:0; overflow-y:auto; max-height:340px; }
+  .wlead-form.visible { display:flex; }
+  .wlead-title { font-size:0.78rem; font-weight:500; color:var(--dark); }
+  .wlead-title span { color:var(--accent); }
+  .wlead-row { display:flex; gap:6px; }
+  .wlead-input { flex:1; border:1px solid rgba(46,158,107,0.3); background:white; padding:7px 10px; font-size:0.78rem; font-family:var(--sans); color:#1a1a1a; border-radius:6px; outline:none; transition:border-color 0.2s; width:100%; }
+  .wlead-input:focus { border-color:var(--accent); }
+  .wlead-input::placeholder { color:#bbb; }
+  .wlead-input.error { border-color:#E53935; }
 
-  .wchat-input-row {
-    display: flex; border-top: 1px solid var(--border); background: white; flex-shrink: 0;
-  }
-  .wchat-input {
-    flex: 1; border: none; outline: none;
-    padding: 0.75rem 1rem; font-size: 0.8rem; font-family: var(--sans);
-    color: #1a1a1a; background: transparent;
-  }
-  .wchat-input::placeholder { color: #ccc; }
-  .wchat-send {
-    background: var(--dark); border: none; cursor: pointer;
-    padding: 0 1rem; color: white; font-size: 0.8rem;
-    transition: background 0.2s; font-family: var(--sans);
-  }
-  .wchat-send:hover { background: var(--accent); }
+  /* CALENDARIO */
+  .wcal-wrap { background:white; border:1px solid rgba(46,158,107,0.2); border-radius:8px; padding:8px; }
+  .wcal-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; }
+  .wcal-header span { font-size:0.78rem; font-weight:500; color:var(--dark); }
+  .wcal-nav { background:none; border:none; cursor:pointer; font-size:1.3rem; color:var(--accent); padding:0 6px; line-height:1; }
+  .wcal-nav:hover { opacity:0.7; }
+  .wcal-days-hdr { display:grid; grid-template-columns:repeat(7,1fr); text-align:center; margin-bottom:3px; }
+  .wcal-days-hdr span { font-size:0.62rem; color:#aaa; font-weight:500; padding:2px 0; }
+  .wcal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:2px; }
+  .wcd { aspect-ratio:1; display:flex; align-items:center; justify-content:center; font-size:0.72rem; border-radius:50%; cursor:pointer; border:none; background:none; font-family:var(--sans); color:var(--dark); transition:all 0.15s; }
+  .wcd:hover:not([disabled]) { background:var(--accent); color:white; }
+  .wcd.sel { background:var(--dark); color:white; font-weight:500; }
+  .wcd.hoy { border:1.5px solid var(--accent); color:var(--accent); font-weight:500; }
+  .wcd[disabled] { color:#ddd; cursor:default; }
 
-  .wchat-powered {
-    text-align: center; padding: 0.35rem;
-    font-size: 0.62rem; color: #bbb; background: white;
-    border-top: 1px solid var(--border); flex-shrink: 0;
-  }
-  .wchat-powered a { color: var(--accent); text-decoration: none; }
+  /* HORAS */
+  .whoras-wrap { display:none; margin-top:4px; }
+  .whoras-wrap.visible { display:block; }
+  .whoras-title { font-size:0.75rem; color:var(--mid); margin-bottom:5px; }
+  .whoras-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:4px; }
+  .whr { padding:5px 2px; font-size:0.7rem; border:1px solid rgba(46,158,107,0.25); border-radius:6px; background:white; cursor:pointer; font-family:var(--sans); color:var(--mid); transition:all 0.15s; text-align:center; }
+  .whr:hover { border-color:var(--accent); color:var(--accent); }
+  .whr.sel { background:var(--accent); color:white; border-color:var(--accent); font-weight:500; }
 
-  .wtyping { display: flex; align-items: center; gap: 4px; padding: 0.45rem 0.75rem; background: white; border: 1px solid var(--border); border-radius: 12px 12px 12px 2px; width: fit-content; }
-  .wtyping span { width: 5px; height: 5px; background: #ccc; border-radius: 50%; animation: bounce 1.2s ease-in-out infinite; }
-  .wtyping span:nth-child(2) { animation-delay: 0.2s; }
-  .wtyping span:nth-child(3) { animation-delay: 0.4s; }
-  @keyframes bounce {
-    0%, 60%, 100% { transform: translateY(0); }
-    30% { transform: translateY(-5px); background: var(--accent); }
-  }
+  .wlead-hint { font-size:0.72rem; color:#E53935; display:none; }
+  .wlead-hint.visible { display:block; }
+  .wlead-submit { width:100%; background:var(--accent); color:white; border:none; padding:10px; border-radius:6px; font-size:0.82rem; font-weight:500; font-family:var(--sans); cursor:pointer; transition:background 0.2s; display:flex; align-items:center; justify-content:center; gap:6px; margin-top:2px; }
+  .wlead-submit:hover { background:#227A52; }
+  .wlead-submit svg { width:14px; height:14px; fill:white; flex-shrink:0; }
+  .wlead-skip { text-align:center; font-size:0.7rem; color:#bbb; cursor:pointer; background:none; border:none; font-family:var(--sans); padding:0; transition:color 0.2s; width:100%; }
+  .wlead-skip:hover { color:var(--mid); }
 
-  #chatToggleBtn {
-    width: 58px; height: 58px; border-radius: 50%;
-    background: var(--dark); border: none; cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 4px 20px rgba(13,59,46,0.3);
-    transition: background 0.2s, transform 0.2s; flex-shrink: 0;
-    position: relative;
-  }
-  #chatToggleBtn:hover { background: var(--accent); transform: scale(1.05); }
-  #chatToggleBtn svg { width: 26px; height: 26px; fill: none; stroke: white; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-  .chat-notif {
-    display: none; position: absolute; top: -2px; right: -2px;
-    width: 14px; height: 14px; background: #E53935;
-    border-radius: 50%; border: 2px solid white;
-  }
-
-  /* RESPONSIVE MOVIL */
-  @media (max-width: 600px) {
-    #chatWidget { bottom: 16px; right: 16px; }
-    #chatBox { width: calc(100vw - 32px); max-height: 70vh; border-radius: 12px; }
-    .wlead-row { flex-direction: column; }
-    #chatToggleBtn { width: 52px; height: 52px; }
+  .wchat-input-row { display:flex; border-top:1px solid var(--border); background:white; flex-shrink:0; }
+  .wchat-input { flex:1; border:none; outline:none; padding:0.75rem 1rem; font-size:0.8rem; font-family:var(--sans); color:#1a1a1a; background:transparent; }
+  .wchat-input::placeholder { color:#ccc; }
+  .wchat-send { background:var(--dark); border:none; cursor:pointer; padding:0 1rem; color:white; font-size:0.8rem; transition:background 0.2s; font-family:var(--sans); }
+  .wchat-send:hover { background:var(--accent); }
+  .wchat-powered { text-align:center; padding:0.35rem; font-size:0.62rem; color:#bbb; background:white; border-top:1px solid var(--border); flex-shrink:0; }
+  .wchat-powered a { color:var(--accent); text-decoration:none; }
+  .wtyping { display:flex; align-items:center; gap:4px; padding:0.45rem 0.75rem; background:white; border:1px solid var(--border); border-radius:12px 12px 12px 2px; width:fit-content; }
+  .wtyping span { width:5px; height:5px; background:#ccc; border-radius:50%; animation:bounce 1.2s ease-in-out infinite; }
+  .wtyping span:nth-child(2) { animation-delay:0.2s; }
+  .wtyping span:nth-child(3) { animation-delay:0.4s; }
+  @keyframes bounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-5px);background:var(--accent)} }
+  #chatToggleBtn { width:58px; height:58px; border-radius:50%; background:var(--dark); border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 20px rgba(13,59,46,0.3); transition:background 0.2s,transform 0.2s; flex-shrink:0; position:relative; }
+  #chatToggleBtn:hover { background:var(--accent); transform:scale(1.05); }
+  #chatToggleBtn svg { width:26px; height:26px; fill:none; stroke:white; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+  .chat-notif { display:none; position:absolute; top:-2px; right:-2px; width:14px; height:14px; background:#E53935; border-radius:50%; border:2px solid white; }
+  @media(max-width:600px){
+    #chatWidget{bottom:16px;right:16px;}
+    #chatBox{width:calc(100vw - 32px);max-height:75vh;border-radius:12px;}
+    .wlead-row{flex-direction:column;}
+    #chatToggleBtn{width:52px;height:52px;}
   }
 </style>
 </head>
 <body>
-
 <div class="demo-info">
   <span>Demo chatbot veterinaria · <strong>WhiteMoon Agencia IA</strong></span>
   <a href="https://whitemoon.es">whitemoon.es · 643 199 580</a>
 </div>
-
 <div style="text-align:center;padding:2rem;color:#aaa;font-size:0.85rem;">
   <p style="font-size:1.1rem;color:#555;margin-bottom:0.5rem;">Widget chatbot veterinaria</p>
   <p>El chatbot aparece en la esquina inferior derecha</p>
 </div>
 
-<!-- WIDGET -->
 <div id="chatWidget">
   <div id="chatBox">
     <div class="wchat-header">
@@ -230,7 +136,7 @@
     <div class="wchat-messages" id="wMsgs">
       <div class="wm bot">
         <div class="wm-av">V</div>
-        <div class="wm-bubble">Hola, soy el asistente de tu clínica veterinaria. Puedo ayudarte con citas, precios, vacunas y urgencias. ¿En qué puedo ayudarte?</div>
+        <div class="wm-bubble">Hola, soy el asistente de tu clínica veterinaria. Puedo ayudarte con <strong>citas, precios, vacunas y urgencias</strong>. ¿En qué puedo ayudarte?</div>
       </div>
     </div>
 
@@ -242,15 +148,31 @@
     </div>
 
     <div class="wlead-form" id="wLeadForm">
-      <div class="wlead-title">Te llamamos para confirmar la cita <span>— solo 10 segundos</span></div>
+      <div class="wlead-title">Solicitar cita <span>— la clínica confirmará en 2h</span></div>
       <div class="wlead-row">
         <input class="wlead-input" id="wNombre" placeholder="Tu nombre" type="text">
         <input class="wlead-input" id="wTelefono" placeholder="Teléfono" type="tel">
       </div>
-      <input class="wlead-input" id="wCiudad" placeholder="Nombre de tu mascota y especie" type="text">
+      <input class="wlead-input" id="wMascota" placeholder="Mascota (ej: Luna, gata)" type="text">
+      <div class="wcal-wrap">
+        <div class="wcal-header">
+          <button class="wcal-nav" onclick="wCalPrev()">&#8249;</button>
+          <span id="wCalTitle"></span>
+          <button class="wcal-nav" onclick="wCalNext()">&#8250;</button>
+        </div>
+        <div class="wcal-days-hdr">
+          <span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span>
+        </div>
+        <div class="wcal-grid" id="wCalGrid"></div>
+      </div>
+      <div class="whoras-wrap" id="wHorasWrap">
+        <div class="whoras-title" id="wHorasTitle">Elige una hora</div>
+        <div class="whoras-grid" id="wHorasGrid"></div>
+      </div>
+      <div class="wlead-hint" id="wHint"></div>
       <button class="wlead-submit" onclick="wEnviarLead()">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill-rule="evenodd"/></svg>
-        Enviar por WhatsApp
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+        Enviar solicitud de cita
       </button>
       <button class="wlead-skip" onclick="wSkipForm()">Prefiero seguir consultando</button>
     </div>
@@ -274,14 +196,19 @@
 var wBusy = false;
 var formShown = false;
 var leadDone = false;
+var wCalYear = 0;
+var wCalMonth = 0;
+var wSelectedDate = '';
+var wSelectedHora = '';
+var MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+var HORAS = ['09:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30','16:00','16:30','17:00','17:30','18:00','18:30','19:00','19:30'];
 
 function toggleChat() {
   var box = document.getElementById('chatBox');
-  var notif = document.getElementById('chatNotif');
   box.classList.toggle('open');
   if (box.classList.contains('open')) {
-    notif.style.display = 'none';
-    setTimeout(function() { document.getElementById('wInput').focus(); }, 100);
+    document.getElementById('chatNotif').style.display = 'none';
+    setTimeout(function(){ document.getElementById('wInput').focus(); }, 100);
   }
 }
 
@@ -289,7 +216,8 @@ function wAddMsg(text, isUser) {
   var c = document.getElementById('wMsgs');
   var d = document.createElement('div');
   d.className = 'wm ' + (isUser ? 'user' : 'bot');
-  d.innerHTML = '<div class="wm-av">' + (isUser ? 'Tu' : 'V') + '</div><div class="wm-bubble">' + text.replace(/\n/g, '<br>').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>') + '</div>';
+  var txt = text.replace(/\n/g,'<br>').replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+  d.innerHTML = '<div class="wm-av">' + (isUser ? 'Tu' : 'V') + '</div><div class="wm-bubble">' + txt + '</div>';
   c.appendChild(d);
   c.scrollTop = c.scrollHeight;
 }
@@ -314,7 +242,8 @@ function wMostrarForm() {
   document.getElementById('wLeadForm').classList.add('visible');
   document.getElementById('wInput').disabled = true;
   document.querySelector('.wchat-send').disabled = true;
-  document.getElementById('wNombre').focus();
+  wCalInit();
+  setTimeout(function(){ document.getElementById('wLeadForm').scrollIntoView({behavior:'smooth',block:'nearest'}); }, 100);
 }
 
 function wSkipForm() {
@@ -325,90 +254,194 @@ function wSkipForm() {
   document.getElementById('wInput').focus();
 }
 
+// CALENDARIO
+function wCalInit() {
+  var hoy = new Date();
+  wCalYear = hoy.getFullYear();
+  wCalMonth = hoy.getMonth();
+  wSelectedDate = '';
+  wSelectedHora = '';
+  document.getElementById('wHorasWrap').classList.remove('visible');
+  wCalRender();
+}
+
+function wCalRender() {
+  var titulo = document.getElementById('wCalTitle');
+  var grid = document.getElementById('wCalGrid');
+  titulo.textContent = MESES[wCalMonth] + ' ' + wCalYear;
+  var hoy = new Date(); hoy.setHours(0,0,0,0);
+  var primerDia = new Date(wCalYear, wCalMonth, 1);
+  var totalDias = new Date(wCalYear, wCalMonth + 1, 0).getDate();
+  var inicioSemana = (primerDia.getDay() + 6) % 7;
+  var h = '';
+  for (var i = 0; i < inicioSemana; i++) {
+    h += '<button class="wcd" disabled></button>';
+  }
+  for (var d = 1; d <= totalDias; d++) {
+    var fecha = new Date(wCalYear, wCalMonth, d);
+    var ds = fecha.getDay();
+    var esDomingo = ds === 0;
+    var esPasado = fecha < hoy;
+    var fechaStr = wCalYear + '-' + pad(wCalMonth + 1) + '-' + pad(d);
+    var esHoy = fecha.getTime() === hoy.getTime();
+    var esSel = fechaStr === wSelectedDate;
+    var cls = 'wcd';
+    if (esSel) cls += ' sel';
+    else if (esHoy) cls += ' hoy';
+    var dis = (esDomingo || esPasado) ? 'disabled' : '';
+    var click = (!esDomingo && !esPasado) ? 'onclick="wElegirDia(\'' + fechaStr + '\',' + d + ')"' : '';
+    h += '<button class="' + cls + '" ' + dis + ' ' + click + '>' + d + '</button>';
+  }
+  grid.innerHTML = h;
+}
+
+function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+function wElegirDia(fechaStr, dia) {
+  wSelectedDate = fechaStr;
+  wSelectedHora = '';
+  wCalRender();
+  var partes = fechaStr.split('-');
+  var nombreDia = new Date(parseInt(partes[0]), parseInt(partes[1]) - 1, parseInt(partes[2])).toLocaleDateString('es-ES', {weekday:'long'});
+  document.getElementById('wHorasTitle').textContent = nombreDia + ' ' + dia + ' de ' + MESES[parseInt(partes[1]) - 1];
+  var horasWrap = document.getElementById('wHorasWrap');
+  horasWrap.classList.add('visible');
+  var horasGrid = document.getElementById('wHorasGrid');
+  var h = '';
+  for (var i = 0; i < HORAS.length; i++) {
+    h += '<button class="whr" onclick="wElegirHora(\'' + HORAS[i] + '\')">' + HORAS[i] + '</button>';
+  }
+  horasGrid.innerHTML = h;
+}
+
+function wElegirHora(hora) {
+  wSelectedHora = hora;
+  var btns = document.querySelectorAll('.whr');
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].classList.remove('sel');
+    if (btns[i].textContent === hora) btns[i].classList.add('sel');
+  }
+  document.getElementById('wHint').classList.remove('visible');
+}
+
+function wCalPrev() {
+  wCalMonth--;
+  if (wCalMonth < 0) { wCalMonth = 11; wCalYear--; }
+  wCalRender();
+}
+
+function wCalNext() {
+  wCalMonth++;
+  if (wCalMonth > 11) { wCalMonth = 0; wCalYear++; }
+  wCalRender();
+}
+
+// ENVIAR LEAD
 function wEnviarLead() {
   var nombre = document.getElementById('wNombre').value.trim();
   var tel = document.getElementById('wTelefono').value.trim();
-  var mascota = document.getElementById('wCiudad').value.trim();
-  if (!nombre) { document.getElementById('wNombre').style.borderColor = '#E53935'; document.getElementById('wNombre').focus(); return; }
-  if (!tel) { document.getElementById('wTelefono').style.borderColor = '#E53935'; document.getElementById('wTelefono').focus(); return; }
-  var lineas = ['Nuevo lead veterinaria', '', 'Nombre: ' + nombre, 'Telefono: ' + tel, 'Mascota: ' + (mascota || 'No indicada'), '', 'Clinica Veterinaria - web'];
-  var msg = encodeURIComponent(lineas.join('\n'));
+  var mascota = document.getElementById('wMascota').value.trim();
+  var hint = document.getElementById('wHint');
+
+  document.getElementById('wNombre').classList.remove('error');
+  document.getElementById('wTelefono').classList.remove('error');
+  hint.classList.remove('visible');
+
+  if (!nombre) {
+    document.getElementById('wNombre').classList.add('error');
+    document.getElementById('wNombre').focus();
+    return;
+  }
+  if (!tel) {
+    document.getElementById('wTelefono').classList.add('error');
+    document.getElementById('wTelefono').focus();
+    return;
+  }
+  if (!wSelectedDate) {
+    hint.textContent = 'Por favor selecciona un día en el calendario';
+    hint.classList.add('visible');
+    return;
+  }
+  if (!wSelectedHora) {
+    hint.textContent = 'Por favor elige una hora';
+    hint.classList.add('visible');
+    return;
+  }
+
+  var partes = wSelectedDate.split('-');
+  var fechaTexto = parseInt(partes[2]) + ' de ' + MESES[parseInt(partes[1]) - 1] + ' de ' + partes[0];
+  var msgParts = [
+    'SOLICITUD DE CITA',
+    '',
+    'Nombre: ' + nombre,
+    'Telefono: ' + tel,
+    'Mascota: ' + (mascota || 'No indicada'),
+    'Fecha: ' + fechaTexto,
+    'Hora: ' + wSelectedHora,
+    '',
+    'Pendiente de confirmar - Clinica Veterinaria web'
+  ];
+  var msg = encodeURIComponent(msgParts.join('\n'));
   window.open('https://wa.me/34643199580?text=' + msg, '_blank');
+
   leadDone = true;
+  formShown = false;
   document.getElementById('wLeadForm').classList.remove('visible');
   document.getElementById('wInput').disabled = false;
   document.querySelector('.wchat-send').disabled = false;
-  wAddMsg('Perfecto ' + nombre + ', hemos enviado tus datos. Te llamamos en breve para confirmar la cita.', false);
+  wAddMsg('Solicitud enviada, ' + nombre + '. La clinica confirmara tu cita del ' + fechaTexto + ' a las ' + wSelectedHora + ' en menos de 2 horas.', false);
 }
 
+// RESPUESTAS
 function wRespuesta(text) {
   var t = text.toLowerCase();
 
-  // CONFIRMACIONES — el usuario dice sí, quiero, ok, pedir... ABRE FORM
-  if (/^(si|sí|claro|vale|ok|quiero|s[íi]|por favor|perfecto|adelante|pide|pedir|reserva|reservar|agenda|agendar)/.test(t.trim()) ||
-      /quiero (cita|reservar|pedir|que me llamen|que llaméis|llamada|una cita|pedir cita)/.test(t) ||
-      /pedir cita|solicitar cita|me llam|llamadme|llamarme|dejame datos|deja mis datos/.test(t)) {
-    return 'Perfecto, déjame tus datos y te confirmamos la cita en menos de 2 horas.|FORM';
+  if (/^(si|s[ií]|claro|vale|ok|quiero|por favor|perfecto|adelante|reservar|agendar|pedir cita|solicitar)/.test(t.trim()) || /quiero (cita|reservar|pedir|llamada)|pedir cita|me llam|llamadme/.test(t)) {
+    return 'Perfecto, elige dia y hora y te confirmamos la cita en menos de 2 horas.|FORM';
   }
-
-  // CITA directa
-  if (/cita|reserva|appointment|cuando puedo|agendar/.test(t)) {
-    return 'Nuestro horario es **lunes a viernes de 9:00 a 20:00** y **sábados de 9:00 a 14:00**.\n\n¿Quieres que te llamemos para confirmar la cita?';
+  if (/cita|reserva|cuando puedo|agendar/.test(t)) {
+    return 'Nuestro horario es lunes a viernes de 9:00 a 20:00 y sabados de 9:00 a 14:00. Quieres que reserves cita ahora?';
   }
-  // URGENCIA — nunca abre form, da teléfono directo
   if (/urgencia|emergencia|accidente|no respira|convuls|sangra|envenen|atropell/.test(t)) {
-    return 'Si tu mascota tiene una **urgencia**, llámanos ahora mismo al **643 199 580** — atendemos urgencias **24 horas**.\n\nSi puedes desplazarte, ven directamente a la clínica.';
+    return 'Si tu mascota tiene una urgencia llamanos ahora al 643 199 580, atendemos 24 horas. Si puedes desplazarte ven directamente a la clinica.';
   }
-  // VACUNAS
-  if (/vacuna|vacunaci|antirr|rabia|parvovirus|moquillo/.test(t)) {
-    return '**Vacunas para perros:**\n- Cachorro (6-8 sem): polivalente inicial\n- Refuerzo (10-12 sem): polivalente + rabia\n- Anual: refuerzo completo\n\n**Vacunas para gatos:**\n- Trivalente felina (herpesvirus, calicivirus, panleucopenia)\n- Rabia (obligatoria según comunidad)\n- Leucemia felina (recomendada)\n\nConsulta de vacunación desde **25€**. ¿Quieres pedir cita?';
+  if (/vacuna|vacunaci|rabia|parvovirus|moquillo/.test(t)) {
+    return 'Vacunas para perros: cachorro (6-8 sem) polivalente inicial, refuerzo (10-12 sem) polivalente + rabia, anual refuerzo completo.\n\nVacunas para gatos: trivalente felina, rabia y leucemia felina recomendada.\n\nConsulta de vacunacion desde 25 euros. Quieres pedir cita?';
   }
-  // CASTRACIÓN
-  if (/castrar|castraci|esteriliz|operar|operaci/.test(t)) {
-    return 'Precios orientativos de **castración/esterilización**:\n\n- Perro macho: desde **180€**\n- Perra hembra: desde **280€**\n- Gato macho: desde **100€**\n- Gata hembra: desde **160€**\n\nIncluye anestesia, cirugía y revisión. ¿Quieres que te llamemos para más información?';
+  if (/castrar|castraci|esteriliz|operar/.test(t)) {
+    return 'Precios de castracion: perro macho desde 180 euros, perra hembra desde 280 euros, gato macho desde 100 euros, gata hembra desde 160 euros. Incluye anestesia y revision. Quieres mas informacion?';
   }
-  // PELUQUERÍA
-  if (/peluquer|corte de pelo|groomin/.test(t)) {
-    return 'Servicio de **peluquería canina**:\n\n- Baño y secado: desde **20€**\n- Corte completo: desde **35€**\n- Baño + corte + uñas: desde **45€**\n\n¿Quieres reservar cita para tu mascota?';
+  if (/peluquer|corte|groomin/.test(t)) {
+    return 'Peluqueria canina: bano y secado desde 20 euros, corte completo desde 35 euros, bano mas corte mas unas desde 45 euros. Quieres reservar cita?';
   }
-  // HOTEL
-  if (/hotel|residencia|guarder|vacaciones|viaje|dejarlo/.test(t)) {
-    return '**Hotel para mascotas**:\n\n- Perros: desde **18€/noche** (paseos + atención veterinaria incluida)\n- Gatos: desde **12€/noche**\n- Plazas limitadas\n\n¿Quieres reservar para unas fechas concretas?';
+  if (/hotel|residencia|guarder|vacaciones|dejarlo/.test(t)) {
+    return 'Hotel para mascotas: perros desde 18 euros por noche con paseos y atencion veterinaria incluida, gatos desde 12 euros por noche. Quieres reservar plaza?';
   }
-  // PRECIOS / CONSULTA
   if (/precio|coste|cuanto|tarifa|consulta|visita/.test(t)) {
-    return 'Nuestros **precios de consulta**:\n\n- Consulta general: **25€**\n- Consulta especialista: **40€**\n- Urgencia fuera de horario: **55€**\n- Primera visita cachorro: **30€** (incluye cartilla sanitaria)\n\n¿Quieres pedir cita?';
+    return 'Precios de consulta: general 25 euros, especialista 40 euros, urgencia fuera de horario 55 euros, primera visita cachorro 30 euros con cartilla sanitaria. Quieres pedir cita?';
   }
-  // MICROCHIP
-  if (/chip|microchip|identific/.test(t)) {
-    return '**Implantación de microchip**: **15€** — incluye registro en base de datos nacional. Obligatorio para perros.\n\n¿Quieres que lo hagamos en tu próxima visita?';
+  if (/chip|microchip/.test(t)) {
+    return 'Implantacion de microchip 15 euros, incluye registro en base de datos nacional. Obligatorio para perros. Lo puedes combinar con la vacunacion. Quieres pedir cita?';
   }
-  // DESPARASITACIÓN
-  if (/desparasit|pulgas|garrapatas|lombric|gusanos/.test(t)) {
-    return '**Desparasitación** (recomendada cada 3 meses):\n\n- Interna: desde **8€**\n- Externa: desde **12€**\n- Pack completo: desde **18€**\n\n¿Quieres que te recomendemos la pauta para tu mascota?';
+  if (/desparasit|pulgas|garrapatas|lombric/.test(t)) {
+    return 'Desparasitacion recomendada cada 3 meses: interna desde 8 euros, externa desde 12 euros, pack completo desde 18 euros. Quieres que te recomendemos la pauta?';
   }
-  // PLANES
-  if (/plan|seguro|mensual|cuota|suscripci/.test(t)) {
-    return '**Planes de salud anuales**:\n\n- **Básico** 45€/año: vacunas + desparasitación\n- **Completo** 89€/año: vacunas + desparasitación + 2 consultas\n- **Premium** 149€/año: todo incluido + descuentos\n\n¿Quieres que te expliquemos cuál encaja mejor?';
+  if (/plan|seguro|mensual|suscripci/.test(t)) {
+    return 'Planes de salud: basico 45 euros al año (vacunas + desparasitacion), completo 89 euros (mas 2 consultas), premium 149 euros (todo incluido con descuentos). Quieres saber mas?';
   }
-  // SALUDOS
-  if (/hola|buenos|buenas|saludos|hey/.test(t)) {
-    return 'Hola, bienvenido al asistente de tu clínica veterinaria. Puedo ayudarte con **citas, precios, vacunas, urgencias** y más. ¿Qué necesitas?';
+  if (/hola|buenos|buenas|hey/.test(t)) {
+    return 'Hola, soy el asistente de tu clinica veterinaria. Puedo ayudarte con citas, precios, vacunas y urgencias. Que necesitas?';
   }
-  // GRACIAS
-  if (/gracias|genial|perfecto|entendido/.test(t)) {
-    return 'De nada, estamos para ayudarte a ti y a tu mascota. Llámanos cuando quieras al **643 199 580**.';
+  if (/gracias|genial|entendido/.test(t)) {
+    return 'De nada, estamos para ayudarte. Llamanos cuando quieras al 643 199 580.';
   }
-  // CONTACTO
-  if (/llam|telefono|contacto|hablar/.test(t)) {
-    return 'Puedes llamarnos al **643 199 580** (Lun-Vie 9:00-20:00, Sáb 9:00-14:00). ¿Prefieres que te llamemos nosotros?';
+  if (/llam|telefono|contacto/.test(t)) {
+    return 'Puedes llamarnos al 643 199 580, lunes a viernes de 9 a 20h y sabados de 9 a 14h. Prefieres que te llamemos nosotros?';
   }
-  // TIPO MASCOTA
   if (/perro|gato|conejo|hamster|pajaro|ave|reptil|exotico/.test(t)) {
-    return 'Atendemos **perros, gatos, conejos, aves, reptiles y animales exóticos**. Contamos con especialistas en cada especie. ¿Qué necesitas para tu mascota?';
+    return 'Atendemos perros, gatos, conejos, aves, reptiles y animales exoticos con especialistas en cada especie. Que necesitas para tu mascota?';
   }
-
-  return 'Para orientarte mejor, ¿me dices si es sobre **cita, vacunas, precios, urgencia** u otro tema?';
+  return 'Para orientarte mejor, dime si es sobre cita, vacunas, precios, urgencia u otro tema.';
 }
 
 function wSend() {
@@ -422,11 +455,11 @@ function wSend() {
   wShowTyping();
   setTimeout(function() {
     wRemoveTyping();
-    var respuesta = wRespuesta(text);
-    var mostrarForm = respuesta.endsWith('|FORM');
-    var textoVisible = mostrarForm ? respuesta.replace('|FORM', '') : respuesta;
-    wAddMsg(textoVisible, false);
-    if (mostrarForm && !formShown && !leadDone) setTimeout(wMostrarForm, 400);
+    var resp = wRespuesta(text);
+    var abrirForm = resp.indexOf('|FORM') !== -1;
+    var visible = abrirForm ? resp.replace('|FORM', '') : resp;
+    wAddMsg(visible, false);
+    if (abrirForm && !formShown && !leadDone) setTimeout(wMostrarForm, 400);
     wBusy = false;
   }, 700);
 }
@@ -437,8 +470,7 @@ function wSendQuick(t) {
 }
 
 setTimeout(function() {
-  var box = document.getElementById('chatBox');
-  if (!box.classList.contains('open')) {
+  if (!document.getElementById('chatBox').classList.contains('open')) {
     document.getElementById('chatNotif').style.display = 'block';
   }
 }, 4000);
