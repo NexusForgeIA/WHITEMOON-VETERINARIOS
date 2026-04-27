@@ -344,50 +344,71 @@ function wEnviarLead() {
 function wRespuesta(text) {
   var t = text.toLowerCase();
 
-  if (/cita|reserva|appointment|hora|cuando puedo|agendar/.test(t)) {
-    return 'Puedo ayudarte a solicitar una cita. Nuestro horario es **lunes a viernes de 9:00 a 20:00** y **sábados de 9:00 a 14:00**.\n\nDéjame tus datos y te confirmamos la cita en menos de 2 horas.|FORM';
-  }
-  if (/urgencia|emergencia|accidente|no respira|convuls|sangra|envenen|atropell/.test(t)) {
-    return 'Si tu mascota tiene una **urgencia**, llámanos ahora mismo al **643 199 580** — atendemos urgencias **24 horas**.\n\nSi puedes desplazarte, ven directamente a la clínica. En camino llámanos para que el equipo esté preparado.';
-  }
-  if (/vacuna|vacunaci|antirrábica|rabia|parvovirus|moquillo/.test(t)) {
-    return 'El **calendario de vacunación** para perros incluye:\n\n- **Cachorro** (6-8 semanas): polivalente inicial\n- **Refuerzo** (10-12 semanas): polivalente + rabia\n- **Anual**: refuerzo completo\n\nPara gatos también tenemos pauta completa. El precio de la consulta de vacunación es desde **25€**.\n\n¿Quieres pedir cita para vacunar a tu mascota?|FORM';
-  }
-  if (/castrar|castración|esteriliz|operar|operación/.test(t)) {
-    return 'Los precios orientativos de **castración/esterilización** son:\n\n- Perro macho: desde **180€**\n- Perra hembra: desde **280€**\n- Gato macho: desde **100€**\n- Gata hembra: desde **160€**\n\nIncluye anestesia, cirugía y revisión postoperatoria. ¿Quieres que te llamemos para informarte mejor?|FORM';
-  }
-  if (/peluquer|baño|corte|pelo|groomin/.test(t)) {
-    return 'Nuestro servicio de **peluquería canina** incluye:\n\n- Baño y secado: desde **20€** (según tamaño)\n- Corte completo: desde **35€**\n- Baño + corte + arreglo de uñas: desde **45€**\n\nTrabajamos con cita previa. ¿Reservamos para tu peludito?|FORM';
-  }
-  if (/hotel|residencia|guarder|vacaciones|viaje|dejarlo/.test(t)) {
-    return 'Nuestro **hotel para mascotas** incluye:\n\n- Perros: desde **18€/noche** (incluye paseos y atención veterinaria)\n- Gatos: desde **12€/noche**\n- Plazas limitadas — recomendamos reservar con antelación\n\n¿Quieres reservar plaza para las fechas que necesitas?|FORM';
-  }
-  if (/precio|coste|cuanto|tarifa|consulta|visita/.test(t)) {
-    return 'Nuestros **precios de consulta** son:\n\n- Consulta general: **25€**\n- Consulta especialista: **40€**\n- Urgencia fuera de horario: **55€**\n- Primera visita cachorro: **30€** (incluye cartilla sanitaria)\n\n¿Quieres pedir cita?|FORM';
-  }
-  if (/chip|microchip|identific/.test(t)) {
-    return 'La **implantación de microchip** cuesta **15€** e incluye el registro en la base de datos nacional. Es obligatorio para perros y recomendable para gatos.\n\nPuedes hacerlo en cualquier consulta o combinarlo con la vacunación. ¿Te ayudo a pedir cita?|FORM';
-  }
-  if (/desparasit|pulgas|garrapatas|lombric|gusanos/.test(t)) {
-    return 'La **desparasitación** es fundamental cada 3 meses:\n\n- Interna (pipeta/pastilla): desde **8€**\n- Externa (antiparasitario): desde **12€**\n- Pack completo interno + externo: desde **18€**\n\nTe recomendamos una pauta personalizada según el peso y estilo de vida de tu mascota. ¿Quieres que te asesoremos?|FORM';
-  }
-  if (/plan|seguro|mensual|cuota|suscripci/.test(t)) {
-    return 'Tenemos **planes de salud anuales** muy ventajosos:\n\n- **Plan Básico** (45€/año): vacunas + desparasitación\n- **Plan Completo** (89€/año): vacunas + desparasitación + 2 consultas\n- **Plan Premium** (149€/año): todo incluido + descuentos en servicios\n\n¿Quieres que te expliquemos cuál se adapta mejor a tu mascota?|FORM';
-  }
-  if (/hola|buenos|buenas|saludos|hey/.test(t)) {
-    return 'Hola, bienvenido al asistente de tu clínica veterinaria. Estoy aquí para ayudarte con **citas, precios, vacunas, urgencias** y mucho más. ¿Qué necesitas?';
-  }
-  if (/gracias|perfecto|genial|ok|vale|entendido/.test(t)) {
-    return 'De nada, estamos para ayudar a ti y a tu mascota. Si tienes cualquier otra duda, aquí estaré. También puedes llamarnos al **643 199 580**.';
-  }
-  if (/llam|telefono|contacto|hablar/.test(t)) {
-    return 'Puedes llamarnos al **643 199 580** (Lun-Vie 9:00-20:00, Sáb 9:00-14:00) o dejarnos tus datos y te llamamos nosotros.|FORM';
-  }
-  if (/perro|gato|conejo|hamster|pajaro|ave|reptil|exotico/.test(t)) {
-    return 'Atendemos todo tipo de mascotas: **perros, gatos, conejos, aves, reptiles y animales exóticos**. Contamos con veterinarios especializados en cada especie. ¿Qué necesitas para tu mascota?';
+  // CONFIRMACIONES — el usuario dice sí, quiero, ok, pedir... ABRE FORM
+  if (/^(si|sí|claro|vale|ok|quiero|s[íi]|por favor|perfecto|adelante|pide|pedir|reserva|reservar|agenda|agendar)/.test(t.trim()) ||
+      /quiero (cita|reservar|pedir|que me llamen|que llaméis|llamada|una cita|pedir cita)/.test(t) ||
+      /pedir cita|solicitar cita|me llam|llamadme|llamarme|dejame datos|deja mis datos/.test(t)) {
+    return 'Perfecto, déjame tus datos y te confirmamos la cita en menos de 2 horas.|FORM';
   }
 
-  return 'Entiendo tu consulta. Para orientarte mejor, ¿puedes decirme si es sobre una **cita, vacunas, precios, urgencia** u otro tema? Estoy aquí para ayudarte.';
+  // CITA directa
+  if (/cita|reserva|appointment|cuando puedo|agendar/.test(t)) {
+    return 'Nuestro horario es **lunes a viernes de 9:00 a 20:00** y **sábados de 9:00 a 14:00**.\n\n¿Quieres que te llamemos para confirmar la cita?';
+  }
+  // URGENCIA — nunca abre form, da teléfono directo
+  if (/urgencia|emergencia|accidente|no respira|convuls|sangra|envenen|atropell/.test(t)) {
+    return 'Si tu mascota tiene una **urgencia**, llámanos ahora mismo al **643 199 580** — atendemos urgencias **24 horas**.\n\nSi puedes desplazarte, ven directamente a la clínica.';
+  }
+  // VACUNAS
+  if (/vacuna|vacunaci|antirr|rabia|parvovirus|moquillo/.test(t)) {
+    return '**Vacunas para perros:**\n- Cachorro (6-8 sem): polivalente inicial\n- Refuerzo (10-12 sem): polivalente + rabia\n- Anual: refuerzo completo\n\n**Vacunas para gatos:**\n- Trivalente felina (herpesvirus, calicivirus, panleucopenia)\n- Rabia (obligatoria según comunidad)\n- Leucemia felina (recomendada)\n\nConsulta de vacunación desde **25€**. ¿Quieres pedir cita?';
+  }
+  // CASTRACIÓN
+  if (/castrar|castraci|esteriliz|operar|operaci/.test(t)) {
+    return 'Precios orientativos de **castración/esterilización**:\n\n- Perro macho: desde **180€**\n- Perra hembra: desde **280€**\n- Gato macho: desde **100€**\n- Gata hembra: desde **160€**\n\nIncluye anestesia, cirugía y revisión. ¿Quieres que te llamemos para más información?';
+  }
+  // PELUQUERÍA
+  if (/peluquer|corte de pelo|groomin/.test(t)) {
+    return 'Servicio de **peluquería canina**:\n\n- Baño y secado: desde **20€**\n- Corte completo: desde **35€**\n- Baño + corte + uñas: desde **45€**\n\n¿Quieres reservar cita para tu mascota?';
+  }
+  // HOTEL
+  if (/hotel|residencia|guarder|vacaciones|viaje|dejarlo/.test(t)) {
+    return '**Hotel para mascotas**:\n\n- Perros: desde **18€/noche** (paseos + atención veterinaria incluida)\n- Gatos: desde **12€/noche**\n- Plazas limitadas\n\n¿Quieres reservar para unas fechas concretas?';
+  }
+  // PRECIOS / CONSULTA
+  if (/precio|coste|cuanto|tarifa|consulta|visita/.test(t)) {
+    return 'Nuestros **precios de consulta**:\n\n- Consulta general: **25€**\n- Consulta especialista: **40€**\n- Urgencia fuera de horario: **55€**\n- Primera visita cachorro: **30€** (incluye cartilla sanitaria)\n\n¿Quieres pedir cita?';
+  }
+  // MICROCHIP
+  if (/chip|microchip|identific/.test(t)) {
+    return '**Implantación de microchip**: **15€** — incluye registro en base de datos nacional. Obligatorio para perros.\n\n¿Quieres que lo hagamos en tu próxima visita?';
+  }
+  // DESPARASITACIÓN
+  if (/desparasit|pulgas|garrapatas|lombric|gusanos/.test(t)) {
+    return '**Desparasitación** (recomendada cada 3 meses):\n\n- Interna: desde **8€**\n- Externa: desde **12€**\n- Pack completo: desde **18€**\n\n¿Quieres que te recomendemos la pauta para tu mascota?';
+  }
+  // PLANES
+  if (/plan|seguro|mensual|cuota|suscripci/.test(t)) {
+    return '**Planes de salud anuales**:\n\n- **Básico** 45€/año: vacunas + desparasitación\n- **Completo** 89€/año: vacunas + desparasitación + 2 consultas\n- **Premium** 149€/año: todo incluido + descuentos\n\n¿Quieres que te expliquemos cuál encaja mejor?';
+  }
+  // SALUDOS
+  if (/hola|buenos|buenas|saludos|hey/.test(t)) {
+    return 'Hola, bienvenido al asistente de tu clínica veterinaria. Puedo ayudarte con **citas, precios, vacunas, urgencias** y más. ¿Qué necesitas?';
+  }
+  // GRACIAS
+  if (/gracias|genial|perfecto|entendido/.test(t)) {
+    return 'De nada, estamos para ayudarte a ti y a tu mascota. Llámanos cuando quieras al **643 199 580**.';
+  }
+  // CONTACTO
+  if (/llam|telefono|contacto|hablar/.test(t)) {
+    return 'Puedes llamarnos al **643 199 580** (Lun-Vie 9:00-20:00, Sáb 9:00-14:00). ¿Prefieres que te llamemos nosotros?';
+  }
+  // TIPO MASCOTA
+  if (/perro|gato|conejo|hamster|pajaro|ave|reptil|exotico/.test(t)) {
+    return 'Atendemos **perros, gatos, conejos, aves, reptiles y animales exóticos**. Contamos con especialistas en cada especie. ¿Qué necesitas para tu mascota?';
+  }
+
+  return 'Para orientarte mejor, ¿me dices si es sobre **cita, vacunas, precios, urgencia** u otro tema?';
 }
 
 function wSend() {
