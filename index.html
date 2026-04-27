@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chatbot Veterinaria — WhiteMoon Agencia IA</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark: #0D3B2E;
+    --accent: #2E9E6B;
+    --accent-light: #A8E6C8;
+    --mid: #3D6B58;
+    --border: rgba(46,158,107,0.15);
+    --cream: #F2FAF6;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--sans);
+    background: #f0f0f0;
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .demo-info {
+    position: fixed; top: 0; left: 0; right: 0;
+    background: white; border-bottom: 1px solid var(--border);
+    padding: 0.6rem 1.5rem;
+    font-size: 0.75rem; color: #888;
+    display: flex; align-items: center; justify-content: space-between;
+    z-index: 100;
+  }
+  .demo-info strong { color: var(--accent); }
+  .demo-info a { color: var(--accent); text-decoration: none; font-weight: 500; }
+
+  /* WIDGET */
+  #chatWidget {
+    position: fixed; bottom: 24px; right: 24px;
+    z-index: 9999;
+    display: flex; flex-direction: column; align-items: flex-end; gap: 12px;
+  }
+  #chatBox {
+    width: 360px; background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 40px rgba(13,59,46,0.15);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    display: none; flex-direction: column;
+    max-height: 540px;
+  }
+  #chatBox.open { display: flex; }
+
+  .wchat-header {
+    background: var(--dark); color: white;
+    padding: 0.875rem 1rem;
+    display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0;
+  }
+  .wchat-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .wchat-avatar svg { width: 18px; height: 18px; fill: white; }
+  .wchat-name { font-size: 0.84rem; font-weight: 500; }
+  .wchat-status { font-size: 0.68rem; color: rgba(255,255,255,0.5); display: flex; align-items: center; gap: 4px; }
+  .status-dot { width: 6px; height: 6px; background: #4CAF50; border-radius: 50%; }
+  .wchat-close {
+    margin-left: auto; background: none; border: none;
+    color: rgba(255,255,255,0.5); cursor: pointer;
+    transition: color 0.2s; padding: 0; display: flex;
+  }
+  .wchat-close:hover { color: white; }
+
+  .wchat-messages {
+    flex: 1; overflow-y: auto;
+    padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem;
+    background: #F8FEFA;
+  }
+  .wm { display: flex; gap: 6px; align-items: flex-end; max-width: 90%; }
+  .wm.user { align-self: flex-end; flex-direction: row-reverse; }
+  .wm-av {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--accent); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.6rem; color: white; font-weight: 500;
+  }
+  .wm.user .wm-av { background: var(--dark); }
+  .wm-bubble {
+    background: white; border: 1px solid var(--border);
+    border-radius: 12px 12px 12px 2px;
+    padding: 0.55rem 0.8rem; font-size: 0.81rem; line-height: 1.55; color: #1a1a1a;
+  }
+  .wm.user .wm-bubble {
+    background: var(--dark); color: white;
+    border-color: var(--dark); border-radius: 12px 12px 2px 12px;
+  }
+
+  .wqr-wrap {
+    padding: 0.6rem 0.75rem; display: flex; flex-wrap: wrap; gap: 6px;
+    border-top: 1px solid var(--border); background: white; flex-shrink: 0;
+  }
+  .wqr {
+    font-size: 0.72rem; border: 1px solid var(--border);
+    background: white; padding: 0.3rem 0.75rem; border-radius: 20px;
+    cursor: pointer; color: var(--mid); transition: all 0.2s; font-family: var(--sans);
+  }
+  .wqr:hover { border-color: var(--accent); color: var(--accent); background: var(--cream); }
+
+  /* FORMULARIO LEAD */
+  .wlead-form {
+    display: none; flex-direction: column; gap: 8px;
+    padding: 12px; background: var(--cream);
+    border-top: 1px solid var(--border); flex-shrink: 0;
+  }
+  .wlead-form.visible { display: flex; }
+  .wlead-title { font-size: 0.78rem; font-weight: 500; color: var(--dark); margin-bottom: 2px; }
+  .wlead-title span { color: var(--accent); }
+  .wlead-row { display: flex; gap: 6px; }
+  .wlead-input {
+    flex: 1; border: 1px solid rgba(46,158,107,0.25);
+    background: white; padding: 7px 10px;
+    font-size: 0.78rem; font-family: var(--sans);
+    color: #1a1a1a; border-radius: 6px; outline: none;
+    transition: border-color 0.2s;
+  }
+  .wlead-input:focus { border-color: var(--accent); }
+  .wlead-input::placeholder { color: #bbb; }
+  .wlead-submit {
+    width: 100%; background: var(--accent); color: white;
+    border: none; padding: 9px; border-radius: 6px;
+    font-size: 0.8rem; font-weight: 500; font-family: var(--sans);
+    cursor: pointer; transition: background 0.2s; margin-top: 2px;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+  }
+  .wlead-submit:hover { background: #227A52; }
+  .wlead-submit svg { width: 14px; height: 14px; fill: white; }
+  .wlead-skip {
+    text-align: center; font-size: 0.7rem; color: #bbb;
+    cursor: pointer; background: none; border: none;
+    font-family: var(--sans); padding: 0; transition: color 0.2s;
+  }
+  .wlead-skip:hover { color: var(--mid); }
+
+  .wchat-input-row {
+    display: flex; border-top: 1px solid var(--border); background: white; flex-shrink: 0;
+  }
+  .wchat-input {
+    flex: 1; border: none; outline: none;
+    padding: 0.75rem 1rem; font-size: 0.8rem; font-family: var(--sans);
+    color: #1a1a1a; background: transparent;
+  }
+  .wchat-input::placeholder { color: #ccc; }
+  .wchat-send {
+    background: var(--dark); border: none; cursor: pointer;
+    padding: 0 1rem; color: white; font-size: 0.8rem;
+    transition: background 0.2s; font-family: var(--sans);
+  }
+  .wchat-send:hover { background: var(--accent); }
+
+  .wchat-powered {
+    text-align: center; padding: 0.35rem;
+    font-size: 0.62rem; color: #bbb; background: white;
+    border-top: 1px solid var(--border); flex-shrink: 0;
+  }
+  .wchat-powered a { color: var(--accent); text-decoration: none; }
+
+  .wtyping { display: flex; align-items: center; gap: 4px; padding: 0.45rem 0.75rem; background: white; border: 1px solid var(--border); border-radius: 12px 12px 12px 2px; width: fit-content; }
+  .wtyping span { width: 5px; height: 5px; background: #ccc; border-radius: 50%; animation: bounce 1.2s ease-in-out infinite; }
+  .wtyping span:nth-child(2) { animation-delay: 0.2s; }
+  .wtyping span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes bounce {
+    0%, 60%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-5px); background: var(--accent); }
+  }
+
+  #chatToggleBtn {
+    width: 58px; height: 58px; border-radius: 50%;
+    background: var(--dark); border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(13,59,46,0.3);
+    transition: background 0.2s, transform 0.2s; flex-shrink: 0;
+    position: relative;
+  }
+  #chatToggleBtn:hover { background: var(--accent); transform: scale(1.05); }
+  #chatToggleBtn svg { width: 26px; height: 26px; fill: none; stroke: white; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .chat-notif {
+    display: none; position: absolute; top: -2px; right: -2px;
+    width: 14px; height: 14px; background: #E53935;
+    border-radius: 50%; border: 2px solid white;
+  }
+
+  /* RESPONSIVE MOVIL */
+  @media (max-width: 600px) {
+    #chatWidget { bottom: 16px; right: 16px; }
+    #chatBox { width: calc(100vw - 32px); max-height: 70vh; border-radius: 12px; }
+    .wlead-row { flex-direction: column; }
+    #chatToggleBtn { width: 52px; height: 52px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-info">
+  <span>Demo chatbot veterinaria · <strong>WhiteMoon Agencia IA</strong></span>
+  <a href="https://whitemoon.es">whitemoon.es · 643 199 580</a>
+</div>
+
+<div style="text-align:center;padding:2rem;color:#aaa;font-size:0.85rem;">
+  <p style="font-size:1.1rem;color:#555;margin-bottom:0.5rem;">Widget chatbot veterinaria</p>
+  <p>El chatbot aparece en la esquina inferior derecha</p>
+</div>
+
+<!-- WIDGET -->
+<div id="chatWidget">
+  <div id="chatBox">
+    <div class="wchat-header">
+      <div class="wchat-avatar">
+        <svg viewBox="0 0 24 24"><path d="M4.5 9a3.5 3.5 0 1 0 7 0 3.5 3.5 0 0 0-7 0zm12.5 0a3.5 3.5 0 1 0-7 0 3.5 3.5 0 0 0 7 0zM12 14c-3.5 0-7 2-7 4v1h14v-1c0-2-3.5-4-7-4z"/></svg>
+      </div>
+      <div>
+        <div class="wchat-name">Asistente Clínica Veterinaria</div>
+        <div class="wchat-status"><span class="status-dot"></span> Disponible ahora</div>
+      </div>
+      <button class="wchat-close" onclick="toggleChat()">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="wchat-messages" id="wMsgs">
+      <div class="wm bot">
+        <div class="wm-av">V</div>
+        <div class="wm-bubble">Hola, soy el asistente de tu clínica veterinaria. Puedo ayudarte con citas, precios, vacunas y urgencias. ¿En qué puedo ayudarte?</div>
+      </div>
+    </div>
+
+    <div class="wqr-wrap" id="wQR">
+      <button class="wqr" onclick="wSendQuick('Quiero pedir cita')">Pedir cita</button>
+      <button class="wqr" onclick="wSendQuick('Precio consulta')">Precio consulta</button>
+      <button class="wqr" onclick="wSendQuick('Vacunas para mi perro')">Vacunas</button>
+      <button class="wqr" onclick="wSendQuick('Tengo una urgencia')">Urgencia</button>
+    </div>
+
+    <div class="wlead-form" id="wLeadForm">
+      <div class="wlead-title">Te llamamos para confirmar la cita <span>— solo 10 segundos</span></div>
+      <div class="wlead-row">
+        <input class="wlead-input" id="wNombre" placeholder="Tu nombre" type="text">
+        <input class="wlead-input" id="wTelefono" placeholder="Teléfono" type="tel">
+      </div>
+      <input class="wlead-input" id="wCiudad" placeholder="Nombre de tu mascota y especie" type="text">
+      <button class="wlead-submit" onclick="wEnviarLead()">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill-rule="evenodd"/></svg>
+        Enviar por WhatsApp
+      </button>
+      <button class="wlead-skip" onclick="wSkipForm()">Prefiero seguir consultando</button>
+    </div>
+
+    <div class="wchat-input-row">
+      <input type="text" class="wchat-input" id="wInput" placeholder="Escribe tu consulta..." onkeydown="if(event.key==='Enter')wSend()">
+      <button class="wchat-send" onclick="wSend()">Enviar</button>
+    </div>
+    <div class="wchat-powered">Powered by IA · <a href="https://whitemoon.es" target="_blank">WhiteMoon Agencia IA</a></div>
+  </div>
+
+  <div style="position:relative;">
+    <button id="chatToggleBtn" onclick="toggleChat()">
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    </button>
+    <div class="chat-notif" id="chatNotif"></div>
+  </div>
+</div>
+
+<script>
+var wBusy = false;
+var formShown = false;
+var leadDone = false;
+
+function toggleChat() {
+  var box = document.getElementById('chatBox');
+  var notif = document.getElementById('chatNotif');
+  box.classList.toggle('open');
+  if (box.classList.contains('open')) {
+    notif.style.display = 'none';
+    setTimeout(function() { document.getElementById('wInput').focus(); }, 100);
+  }
+}
+
+function wAddMsg(text, isUser) {
+  var c = document.getElementById('wMsgs');
+  var d = document.createElement('div');
+  d.className = 'wm ' + (isUser ? 'user' : 'bot');
+  d.innerHTML = '<div class="wm-av">' + (isUser ? 'Tu' : 'V') + '</div><div class="wm-bubble">' + text.replace(/\n/g, '<br>').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>') + '</div>';
+  c.appendChild(d);
+  c.scrollTop = c.scrollHeight;
+}
+
+function wShowTyping() {
+  var c = document.getElementById('wMsgs');
+  var d = document.createElement('div');
+  d.className = 'wm bot'; d.id = 'wTyping';
+  d.innerHTML = '<div class="wm-av">V</div><div class="wtyping"><span></span><span></span><span></span></div>';
+  c.appendChild(d);
+  c.scrollTop = c.scrollHeight;
+}
+
+function wRemoveTyping() {
+  var el = document.getElementById('wTyping');
+  if (el) el.remove();
+}
+
+function wMostrarForm() {
+  if (formShown) return;
+  formShown = true;
+  document.getElementById('wLeadForm').classList.add('visible');
+  document.getElementById('wInput').disabled = true;
+  document.querySelector('.wchat-send').disabled = true;
+  document.getElementById('wNombre').focus();
+}
+
+function wSkipForm() {
+  document.getElementById('wLeadForm').classList.remove('visible');
+  document.getElementById('wInput').disabled = false;
+  document.querySelector('.wchat-send').disabled = false;
+  formShown = false;
+  document.getElementById('wInput').focus();
+}
+
+function wEnviarLead() {
+  var nombre = document.getElementById('wNombre').value.trim();
+  var tel = document.getElementById('wTelefono').value.trim();
+  var mascota = document.getElementById('wCiudad').value.trim();
+  if (!nombre) { document.getElementById('wNombre').style.borderColor = '#E53935'; document.getElementById('wNombre').focus(); return; }
+  if (!tel) { document.getElementById('wTelefono').style.borderColor = '#E53935'; document.getElementById('wTelefono').focus(); return; }
+  var lineas = ['Nuevo lead veterinaria', '', 'Nombre: ' + nombre, 'Telefono: ' + tel, 'Mascota: ' + (mascota || 'No indicada'), '', 'Clinica Veterinaria - web'];
+  var msg = encodeURIComponent(lineas.join('\n'));
+  window.open('https://wa.me/34643199580?text=' + msg, '_blank');
+  leadDone = true;
+  document.getElementById('wLeadForm').classList.remove('visible');
+  document.getElementById('wInput').disabled = false;
+  document.querySelector('.wchat-send').disabled = false;
+  wAddMsg('Perfecto ' + nombre + ', hemos enviado tus datos. Te llamamos en breve para confirmar la cita.', false);
+}
+
+function wRespuesta(text) {
+  var t = text.toLowerCase();
+
+  if (/cita|reserva|appointment|hora|cuando puedo|agendar/.test(t)) {
+    return 'Puedo ayudarte a solicitar una cita. Nuestro horario es **lunes a viernes de 9:00 a 20:00** y **sábados de 9:00 a 14:00**.\n\nDéjame tus datos y te confirmamos la cita en menos de 2 horas.|FORM';
+  }
+  if (/urgencia|emergencia|accidente|no respira|convuls|sangra|envenen|atropell/.test(t)) {
+    return 'Si tu mascota tiene una **urgencia**, llámanos ahora mismo al **643 199 580** — atendemos urgencias **24 horas**.\n\nSi puedes desplazarte, ven directamente a la clínica. En camino llámanos para que el equipo esté preparado.';
+  }
+  if (/vacuna|vacunaci|antirrábica|rabia|parvovirus|moquillo/.test(t)) {
+    return 'El **calendario de vacunación** para perros incluye:\n\n- **Cachorro** (6-8 semanas): polivalente inicial\n- **Refuerzo** (10-12 semanas): polivalente + rabia\n- **Anual**: refuerzo completo\n\nPara gatos también tenemos pauta completa. El precio de la consulta de vacunación es desde **25€**.\n\n¿Quieres pedir cita para vacunar a tu mascota?|FORM';
+  }
+  if (/castrar|castración|esteriliz|operar|operación/.test(t)) {
+    return 'Los precios orientativos de **castración/esterilización** son:\n\n- Perro macho: desde **180€**\n- Perra hembra: desde **280€**\n- Gato macho: desde **100€**\n- Gata hembra: desde **160€**\n\nIncluye anestesia, cirugía y revisión postoperatoria. ¿Quieres que te llamemos para informarte mejor?|FORM';
+  }
+  if (/peluquer|baño|corte|pelo|groomin/.test(t)) {
+    return 'Nuestro servicio de **peluquería canina** incluye:\n\n- Baño y secado: desde **20€** (según tamaño)\n- Corte completo: desde **35€**\n- Baño + corte + arreglo de uñas: desde **45€**\n\nTrabajamos con cita previa. ¿Reservamos para tu peludito?|FORM';
+  }
+  if (/hotel|residencia|guarder|vacaciones|viaje|dejarlo/.test(t)) {
+    return 'Nuestro **hotel para mascotas** incluye:\n\n- Perros: desde **18€/noche** (incluye paseos y atención veterinaria)\n- Gatos: desde **12€/noche**\n- Plazas limitadas — recomendamos reservar con antelación\n\n¿Quieres reservar plaza para las fechas que necesitas?|FORM';
+  }
+  if (/precio|coste|cuanto|tarifa|consulta|visita/.test(t)) {
+    return 'Nuestros **precios de consulta** son:\n\n- Consulta general: **25€**\n- Consulta especialista: **40€**\n- Urgencia fuera de horario: **55€**\n- Primera visita cachorro: **30€** (incluye cartilla sanitaria)\n\n¿Quieres pedir cita?|FORM';
+  }
+  if (/chip|microchip|identific/.test(t)) {
+    return 'La **implantación de microchip** cuesta **15€** e incluye el registro en la base de datos nacional. Es obligatorio para perros y recomendable para gatos.\n\nPuedes hacerlo en cualquier consulta o combinarlo con la vacunación. ¿Te ayudo a pedir cita?|FORM';
+  }
+  if (/desparasit|pulgas|garrapatas|lombric|gusanos/.test(t)) {
+    return 'La **desparasitación** es fundamental cada 3 meses:\n\n- Interna (pipeta/pastilla): desde **8€**\n- Externa (antiparasitario): desde **12€**\n- Pack completo interno + externo: desde **18€**\n\nTe recomendamos una pauta personalizada según el peso y estilo de vida de tu mascota. ¿Quieres que te asesoremos?|FORM';
+  }
+  if (/plan|seguro|mensual|cuota|suscripci/.test(t)) {
+    return 'Tenemos **planes de salud anuales** muy ventajosos:\n\n- **Plan Básico** (45€/año): vacunas + desparasitación\n- **Plan Completo** (89€/año): vacunas + desparasitación + 2 consultas\n- **Plan Premium** (149€/año): todo incluido + descuentos en servicios\n\n¿Quieres que te expliquemos cuál se adapta mejor a tu mascota?|FORM';
+  }
+  if (/hola|buenos|buenas|saludos|hey/.test(t)) {
+    return 'Hola, bienvenido al asistente de tu clínica veterinaria. Estoy aquí para ayudarte con **citas, precios, vacunas, urgencias** y mucho más. ¿Qué necesitas?';
+  }
+  if (/gracias|perfecto|genial|ok|vale|entendido/.test(t)) {
+    return 'De nada, estamos para ayudar a ti y a tu mascota. Si tienes cualquier otra duda, aquí estaré. También puedes llamarnos al **643 199 580**.';
+  }
+  if (/llam|telefono|contacto|hablar/.test(t)) {
+    return 'Puedes llamarnos al **643 199 580** (Lun-Vie 9:00-20:00, Sáb 9:00-14:00) o dejarnos tus datos y te llamamos nosotros.|FORM';
+  }
+  if (/perro|gato|conejo|hamster|pajaro|ave|reptil|exotico/.test(t)) {
+    return 'Atendemos todo tipo de mascotas: **perros, gatos, conejos, aves, reptiles y animales exóticos**. Contamos con veterinarios especializados en cada especie. ¿Qué necesitas para tu mascota?';
+  }
+
+  return 'Entiendo tu consulta. Para orientarte mejor, ¿puedes decirme si es sobre una **cita, vacunas, precios, urgencia** u otro tema? Estoy aquí para ayudarte.';
+}
+
+function wSend() {
+  var inp = document.getElementById('wInput');
+  var text = inp.value.trim();
+  if (!text || wBusy) return;
+  inp.value = '';
+  document.getElementById('wQR').style.display = 'none';
+  wAddMsg(text, true);
+  wBusy = true;
+  wShowTyping();
+  setTimeout(function() {
+    wRemoveTyping();
+    var respuesta = wRespuesta(text);
+    var mostrarForm = respuesta.endsWith('|FORM');
+    var textoVisible = mostrarForm ? respuesta.replace('|FORM', '') : respuesta;
+    wAddMsg(textoVisible, false);
+    if (mostrarForm && !formShown && !leadDone) setTimeout(wMostrarForm, 400);
+    wBusy = false;
+  }, 700);
+}
+
+function wSendQuick(t) {
+  document.getElementById('wInput').value = t;
+  wSend();
+}
+
+setTimeout(function() {
+  var box = document.getElementById('chatBox');
+  if (!box.classList.contains('open')) {
+    document.getElementById('chatNotif').style.display = 'block';
+  }
+}, 4000);
+</script>
+</body>
+</html>
