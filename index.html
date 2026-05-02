@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chatbot Veterinaria — WhiteMoon Agencia IA</title>
+<title>Clínica Veterinaria Ejemplo — Cuidamos a tu mascota</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -15,10 +15,80 @@
     --sans: 'DM Sans', system-ui, sans-serif;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:var(--sans); background:#f0f0f0; min-height:100vh; display:flex; align-items:center; justify-content:center; }
-  .demo-info { position:fixed; top:0; left:0; right:0; background:white; border-bottom:1px solid var(--border); padding:0.6rem 1.5rem; font-size:0.75rem; color:#888; display:flex; align-items:center; justify-content:space-between; z-index:100; }
-  .demo-info strong { color:var(--accent); }
-  .demo-info a { color:var(--accent); text-decoration:none; font-weight:500; }
+  body { font-family:var(--sans); background:#fafdfb; color:#0f172a; min-height:100vh; }
+  a { color:inherit; text-decoration:none; }
+
+  /* ===== WEB SIMULADA (FONDO) ===== */
+  :root {
+    --vet-bg: #fafdfb;
+    --vet-surface: #ffffff;
+    --vet-ink: #0f172a;
+    --vet-mute: #475569;
+    --vet-accent: #10b981;
+    --vet-accent-dark: #059669;
+    --vet-line: #e2e8f0;
+    --vet-alert: #dc2626;
+    --vet-alert-bg: #fef2f2;
+  }
+  .vet-header { position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--vet-line); padding:0.9rem 2rem; display:flex; align-items:center; justify-content:space-between; }
+  .vet-logo { display:flex; align-items:center; gap:0.55rem; font-size:1.05rem; font-weight:500; color:var(--vet-ink); }
+  .vet-logo-mark { width:34px; height:34px; border-radius:10px; background:linear-gradient(135deg,#10b981,#059669); display:flex; align-items:center; justify-content:center; font-size:1.05rem; }
+  .vet-nav { display:flex; align-items:center; gap:1.6rem; }
+  .vet-nav a { font-size:0.85rem; color:var(--vet-mute); transition:color 0.15s; }
+  .vet-nav a:hover { color:var(--vet-accent); }
+  .vet-nav-cta { background:var(--vet-accent); color:white !important; padding:0.5rem 1rem; border-radius:8px; font-weight:500; transition:background 0.2s; }
+  .vet-nav-cta:hover { background:var(--vet-accent-dark); }
+
+  .vet-hero { padding:5rem 2rem 4rem; max-width:1100px; margin:0 auto; text-align:center; }
+  .vet-badge { display:inline-block; background:#ecfdf5; color:var(--vet-accent-dark); padding:0.35rem 0.9rem; border-radius:999px; font-size:0.78rem; font-weight:500; margin-bottom:1.5rem; border:1px solid #d1fae5; }
+  .vet-hero h1 { font-size:clamp(2rem,5vw,3.4rem); font-weight:500; line-height:1.1; letter-spacing:-0.02em; color:var(--vet-ink); margin-bottom:1.2rem; }
+  .vet-hero h1 em { color:var(--vet-accent); font-style:normal; }
+  .vet-hero p { font-size:1.05rem; color:var(--vet-mute); max-width:640px; margin:0 auto 2rem; line-height:1.6; }
+  .vet-cta { display:inline-block; background:var(--vet-ink); color:white !important; padding:0.85rem 1.8rem; border-radius:10px; font-size:0.95rem; font-weight:500; transition:transform 0.15s, background 0.2s; }
+  .vet-cta:hover { background:var(--vet-accent-dark); transform:translateY(-1px); }
+
+  .vet-stats { max-width:1000px; margin:0 auto 5rem; padding:0 2rem; display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+  .vet-stat { background:var(--vet-surface); border:1px solid var(--vet-line); border-radius:14px; padding:1.5rem 1.2rem; text-align:center; }
+  .vet-stat-num { font-size:1.8rem; font-weight:500; color:var(--vet-accent); margin-bottom:0.25rem; letter-spacing:-0.02em; }
+  .vet-stat-lbl { font-size:0.82rem; color:var(--vet-mute); }
+
+  .vet-section { max-width:1100px; margin:0 auto; padding:4rem 2rem; }
+  .vet-section h2 { font-size:clamp(1.6rem,3.5vw,2.2rem); font-weight:500; text-align:center; margin-bottom:0.6rem; letter-spacing:-0.02em; color:var(--vet-ink); }
+  .vet-section-sub { text-align:center; color:var(--vet-mute); font-size:0.95rem; margin-bottom:3rem; }
+
+  .vet-services-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1.2rem; }
+  .vet-card { background:var(--vet-surface); border:1px solid var(--vet-line); border-radius:14px; padding:1.6rem 1.4rem; transition:border-color 0.2s, transform 0.2s; }
+  .vet-card:hover { border-color:var(--vet-accent); transform:translateY(-3px); }
+  .vet-card-icon { width:46px; height:46px; border-radius:12px; background:#ecfdf5; display:flex; align-items:center; justify-content:center; font-size:1.4rem; margin-bottom:1rem; }
+  .vet-card h3 { font-size:1.02rem; font-weight:500; margin-bottom:0.5rem; color:var(--vet-ink); }
+  .vet-card p { font-size:0.85rem; color:var(--vet-mute); line-height:1.55; }
+
+  .vet-team-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; }
+  .vet-vet { background:var(--vet-surface); border:1px solid var(--vet-line); border-radius:14px; padding:1.8rem 1.4rem; text-align:center; }
+  .vet-avatar { width:80px; height:80px; border-radius:50%; background:linear-gradient(135deg,#d1fae5,#10b981); margin:0 auto 1.1rem; display:flex; align-items:center; justify-content:center; font-size:1.8rem; font-weight:500; color:white; }
+  .vet-vet h4 { font-size:1rem; font-weight:500; margin-bottom:0.35rem; color:var(--vet-ink); }
+  .vet-vet p { font-size:0.83rem; color:var(--vet-mute); line-height:1.5; }
+
+  .vet-footer { background:var(--vet-ink); color:#cbd5e1; padding:0; margin-top:2rem; }
+  .vet-urgencias { background:var(--vet-alert); color:white; padding:1.6rem 2rem; text-align:center; }
+  .vet-urgencias-title { font-size:0.78rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:500; margin-bottom:0.5rem; opacity:0.9; }
+  .vet-urgencias-num { font-size:1.5rem; font-weight:500; letter-spacing:-0.01em; }
+  .vet-urgencias-num a { color:white; }
+  .vet-footer-inner { max-width:1100px; margin:0 auto; padding:3rem 2rem 2rem; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:2rem; }
+  .vet-footer-col h5 { font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; color:white; margin-bottom:0.9rem; font-weight:500; }
+  .vet-footer-col p, .vet-footer-col a { font-size:0.85rem; color:#cbd5e1; line-height:1.7; display:block; }
+  .vet-footer-col a:hover { color:var(--vet-accent); }
+  .vet-footer-bottom { border-top:1px solid #1e293b; max-width:1100px; margin:0 auto; padding:1.2rem 2rem; font-size:0.75rem; color:#64748b; text-align:center; }
+
+  @media(max-width:720px){
+    .vet-header { padding:0.75rem 1.2rem; }
+    .vet-nav { gap:1rem; }
+    .vet-nav a:not(.vet-nav-cta) { display:none; }
+    .vet-hero { padding:3rem 1.2rem 2.5rem; }
+    .vet-stats { grid-template-columns:1fr; gap:0.9rem; margin-bottom:3rem; }
+    .vet-section { padding:3rem 1.2rem; }
+    .vet-footer-inner { padding:2rem 1.2rem 1.5rem; }
+  }
   #chatWidget { position:fixed; bottom:24px; right:24px; z-index:9999; display:flex; flex-direction:column; align-items:flex-end; gap:12px; }
   #chatBox { width:360px; background:white; border-radius:16px; box-shadow:0 8px 40px rgba(13,59,46,0.15); overflow:hidden; border:1px solid var(--border); display:none; flex-direction:column; max-height:580px; }
   #chatBox.open { display:flex; }
@@ -109,14 +179,113 @@
 </style>
 </head>
 <body>
-<div class="demo-info">
-  <span>Demo chatbot veterinaria · <strong>WhiteMoon Agencia IA</strong></span>
-  <a href="https://whitemoon.es">whitemoon.es · 643 199 580</a>
+
+<header class="vet-header">
+  <a href="#" class="vet-logo">
+    <span class="vet-logo-mark">🐾</span>
+    <span>Clínica Veterinaria Ejemplo</span>
+  </a>
+  <nav class="vet-nav">
+    <a href="#servicios">Servicios</a>
+    <a href="#equipo">Equipo</a>
+    <a href="#urgencias">Urgencias</a>
+    <a href="#urgencias" class="vet-nav-cta">Pide cita</a>
+  </nav>
+</header>
+
+<section class="vet-hero">
+  <div class="vet-badge">🐾 +3.000 mascotas atendidas</div>
+  <h1>El cuidado que <em>tu mascota</em> merece</h1>
+  <p>Más de 20 años cuidando perros, gatos y animales exóticos. Equipo veterinario especializado y urgencias 24h.</p>
+  <a href="#urgencias" class="vet-cta">Reserva cita ahora</a>
+</section>
+
+<div class="vet-stats">
+  <div class="vet-stat">
+    <div class="vet-stat-num">20+</div>
+    <div class="vet-stat-lbl">años de experiencia</div>
+  </div>
+  <div class="vet-stat">
+    <div class="vet-stat-num">3.000+</div>
+    <div class="vet-stat-lbl">mascotas atendidas</div>
+  </div>
+  <div class="vet-stat">
+    <div class="vet-stat-num">24h</div>
+    <div class="vet-stat-lbl">urgencias disponibles</div>
+  </div>
 </div>
-<div style="text-align:center;padding:2rem;color:#aaa;font-size:0.85rem;">
-  <p style="font-size:1.1rem;color:#555;margin-bottom:0.5rem;">Widget chatbot veterinaria</p>
-  <p>El chatbot aparece en la esquina inferior derecha</p>
-</div>
+
+<section class="vet-section" id="servicios">
+  <h2>Nuestros servicios</h2>
+  <p class="vet-section-sub">Cuidado veterinario integral para todas las etapas de tu mascota</p>
+  <div class="vet-services-grid">
+    <div class="vet-card">
+      <div class="vet-card-icon">🐕</div>
+      <h3>Medicina general</h3>
+      <p>Consultas, revisiones, vacunación y desparasitación para perros, gatos y exóticos.</p>
+    </div>
+    <div class="vet-card">
+      <div class="vet-card-icon">🏥</div>
+      <h3>Cirugía y hospitalización</h3>
+      <p>Castraciones, cirugía blanda y urgencias con quirófano propio y monitorización 24h.</p>
+    </div>
+    <div class="vet-card">
+      <div class="vet-card-icon">🦷</div>
+      <h3>Limpieza dental veterinaria</h3>
+      <p>Profilaxis dental con escala manual y ultrasonidos bajo anestesia controlada.</p>
+    </div>
+    <div class="vet-card">
+      <div class="vet-card-icon">✂️</div>
+      <h3>Peluquería canina</h3>
+      <p>Baño, corte específico de raza y arreglo de uñas en un entorno tranquilo.</p>
+    </div>
+  </div>
+</section>
+
+<section class="vet-section" id="equipo">
+  <h2>Nuestro equipo</h2>
+  <p class="vet-section-sub">Veterinarios colegiados con formación continua y vocación animal</p>
+  <div class="vet-team-grid">
+    <div class="vet-vet">
+      <div class="vet-avatar">EC</div>
+      <h4>Dra. Elena Castro</h4>
+      <p>Medicina general · 15 años de experiencia</p>
+    </div>
+    <div class="vet-vet">
+      <div class="vet-avatar">PH</div>
+      <h4>Dr. Pablo Herrera</h4>
+      <p>Cirugía y hospitalización · Especialista en operaciones complejas</p>
+    </div>
+    <div class="vet-vet">
+      <div class="vet-avatar">LR</div>
+      <h4>Dra. Laura Ramírez</h4>
+      <p>Felinos y exóticos · Conejos, aves, reptiles</p>
+    </div>
+  </div>
+</section>
+
+<footer class="vet-footer" id="urgencias">
+  <div class="vet-urgencias">
+    <div class="vet-urgencias-title">🚨 Urgencias 24h</div>
+    <div class="vet-urgencias-num">Llámanos al <a href="tel:911234567">911 234 567</a> las 24 horas</div>
+  </div>
+  <div class="vet-footer-inner">
+    <div class="vet-footer-col">
+      <h5>Clínica</h5>
+      <p>Calle Animales 33<br>28010 Madrid</p>
+    </div>
+    <div class="vet-footer-col">
+      <h5>Contacto</h5>
+      <a href="tel:911234567">911 234 567</a>
+      <a href="mailto:contacto@clinicaejemplo.com">contacto@clinicaejemplo.com</a>
+    </div>
+    <div class="vet-footer-col">
+      <h5>Horario</h5>
+      <p>Lunes a viernes 9:00 — 20:00<br>Sábados 9:00 — 14:00<br><strong style="color:#fca5a5;">Urgencias 24h</strong></p>
+    </div>
+  </div>
+  <div class="vet-footer-bottom">© Clínica Veterinaria Ejemplo · Todos los derechos reservados</div>
+</footer>
 
 <div id="chatWidget">
   <div id="chatBox">
