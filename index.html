@@ -39,13 +39,15 @@
   .vet-nav-cta { background:var(--vet-accent); color:white !important; padding:0.5rem 1rem; border-radius:8px; font-weight:500; transition:background 0.2s; }
   .vet-nav-cta:hover { background:var(--vet-accent-dark); }
 
-  .vet-hero { padding:5rem 2rem 4rem; max-width:1100px; margin:0 auto; text-align:center; }
+  .vet-hero { padding:5rem 2rem 3rem; max-width:1100px; margin:0 auto; text-align:center; }
   .vet-badge { display:inline-block; background:#ecfdf5; color:var(--vet-accent-dark); padding:0.35rem 0.9rem; border-radius:999px; font-size:0.78rem; font-weight:500; margin-bottom:1.5rem; border:1px solid #d1fae5; }
   .vet-hero h1 { font-size:clamp(2rem,5vw,3.4rem); font-weight:500; line-height:1.1; letter-spacing:-0.02em; color:var(--vet-ink); margin-bottom:1.2rem; }
   .vet-hero h1 em { color:var(--vet-accent); font-style:normal; }
   .vet-hero p { font-size:1.05rem; color:var(--vet-mute); max-width:640px; margin:0 auto 2rem; line-height:1.6; }
   .vet-cta { display:inline-block; background:var(--vet-ink); color:white !important; padding:0.85rem 1.8rem; border-radius:10px; font-size:0.95rem; font-weight:500; transition:transform 0.15s, background 0.2s; }
   .vet-cta:hover { background:var(--vet-accent-dark); transform:translateY(-1px); }
+  .vet-hero-img-wrap { max-width:1200px; margin:0 auto 3rem; padding:0 2rem; }
+  .vet-hero-img { width:100%; height:clamp(260px,42vw,460px); object-fit:cover; border-radius:18px; display:block; box-shadow:0 10px 40px rgba(13,59,46,0.12); }
 
   .vet-stats { max-width:1000px; margin:0 auto 5rem; padding:0 2rem; display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
   .vet-stat { background:var(--vet-surface); border:1px solid var(--vet-line); border-radius:14px; padding:1.5rem 1.2rem; text-align:center; }
@@ -57,17 +59,28 @@
   .vet-section-sub { text-align:center; color:var(--vet-mute); font-size:0.95rem; margin-bottom:3rem; }
 
   .vet-services-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1.2rem; }
-  .vet-card { background:var(--vet-surface); border:1px solid var(--vet-line); border-radius:14px; padding:1.6rem 1.4rem; transition:border-color 0.2s, transform 0.2s; }
+  .vet-card { background:var(--vet-surface); border:1px solid var(--vet-line); border-radius:14px; overflow:hidden; transition:border-color 0.2s, transform 0.2s; display:flex; flex-direction:column; }
   .vet-card:hover { border-color:var(--vet-accent); transform:translateY(-3px); }
-  .vet-card-icon { width:46px; height:46px; border-radius:12px; background:#ecfdf5; display:flex; align-items:center; justify-content:center; font-size:1.4rem; margin-bottom:1rem; }
+  .vet-card-img { width:100%; height:170px; object-fit:cover; display:block; }
+  .vet-card-body { padding:1.4rem 1.4rem 1.6rem; }
+  .vet-card-icon { width:46px; height:46px; border-radius:12px; background:#ecfdf5; display:flex; align-items:center; justify-content:center; font-size:1.4rem; margin-bottom:0.9rem; }
   .vet-card h3 { font-size:1.02rem; font-weight:500; margin-bottom:0.5rem; color:var(--vet-ink); }
   .vet-card p { font-size:0.85rem; color:var(--vet-mute); line-height:1.55; }
 
   .vet-team-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; }
   .vet-vet { background:var(--vet-surface); border:1px solid var(--vet-line); border-radius:14px; padding:1.8rem 1.4rem; text-align:center; }
-  .vet-avatar { width:80px; height:80px; border-radius:50%; background:linear-gradient(135deg,#d1fae5,#10b981); margin:0 auto 1.1rem; display:flex; align-items:center; justify-content:center; font-size:1.8rem; font-weight:500; color:white; }
+  .vet-vet-photo { width:120px; height:120px; border-radius:50%; object-fit:cover; margin:0 auto 1.1rem; display:block; border:3px solid #d1fae5; }
   .vet-vet h4 { font-size:1rem; font-weight:500; margin-bottom:0.35rem; color:var(--vet-ink); }
   .vet-vet p { font-size:0.83rem; color:var(--vet-mute); line-height:1.5; }
+
+  .vet-about { display:grid; grid-template-columns:1fr 1fr; gap:2.5rem; align-items:center; }
+  .vet-about-img { width:100%; height:clamp(260px,38vw,400px); object-fit:cover; border-radius:16px; display:block; }
+  .vet-about-text h2 { text-align:left; margin-bottom:1.2rem; }
+  .vet-about-text p { color:var(--vet-mute); font-size:0.98rem; line-height:1.7; margin-bottom:1rem; }
+
+  .vet-gallery { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+  .vet-gallery img { width:100%; height:230px; object-fit:cover; border-radius:12px; display:block; transition:transform 0.3s; cursor:pointer; }
+  .vet-gallery img:hover { transform:scale(1.02); }
 
   .vet-footer { background:var(--vet-ink); color:#cbd5e1; padding:0; margin-top:2rem; }
   .vet-urgencias { background:var(--vet-alert); color:white; padding:1.6rem 2rem; text-align:center; }
@@ -80,14 +93,31 @@
   .vet-footer-col a:hover { color:var(--vet-accent); }
   .vet-footer-bottom { border-top:1px solid #1e293b; max-width:1100px; margin:0 auto; padding:1.2rem 2rem; font-size:0.75rem; color:#64748b; text-align:center; }
 
+  @media(max-width:900px){
+    .vet-about { grid-template-columns:1fr; gap:1.6rem; }
+    .vet-about-text h2 { text-align:center; }
+    .vet-gallery { grid-template-columns:repeat(2,1fr); }
+    .vet-gallery img { height:200px; }
+    .vet-hero-img { height:clamp(220px,40vw,360px); }
+    .vet-card-img { height:160px; }
+  }
   @media(max-width:720px){
     .vet-header { padding:0.75rem 1.2rem; }
     .vet-nav { gap:1rem; }
     .vet-nav a:not(.vet-nav-cta) { display:none; }
-    .vet-hero { padding:3rem 1.2rem 2.5rem; }
+    .vet-hero { padding:3rem 1.2rem 2rem; }
+    .vet-hero-img-wrap { padding:0 1.2rem; margin-bottom:2.5rem; }
     .vet-stats { grid-template-columns:1fr; gap:0.9rem; margin-bottom:3rem; }
     .vet-section { padding:3rem 1.2rem; }
     .vet-footer-inner { padding:2rem 1.2rem 1.5rem; }
+  }
+  @media(max-width:600px){
+    .vet-gallery { grid-template-columns:1fr; gap:0.8rem; }
+    .vet-gallery img { height:220px; }
+    .vet-hero-img { height:220px; border-radius:14px; }
+    .vet-card-img { height:180px; }
+    .vet-vet-photo { width:100px; height:100px; }
+    .vet-about-img { height:240px; }
   }
   #chatWidget { position:fixed; bottom:24px; right:24px; z-index:9999; display:flex; flex-direction:column; align-items:flex-end; gap:12px; }
   #chatBox { width:360px; background:white; border-radius:16px; box-shadow:0 8px 40px rgba(13,59,46,0.15); overflow:hidden; border:1px solid var(--border); display:none; flex-direction:column; max-height:580px; }
@@ -187,7 +217,9 @@
   </a>
   <nav class="vet-nav">
     <a href="#servicios">Servicios</a>
+    <a href="#sobre-nosotros">Nosotros</a>
     <a href="#equipo">Equipo</a>
+    <a href="#galeria">Galería</a>
     <a href="#urgencias">Urgencias</a>
     <a href="#urgencias" class="vet-nav-cta">Pide cita</a>
   </nav>
@@ -199,6 +231,10 @@
   <p>Más de 20 años cuidando perros, gatos y animales exóticos. Equipo veterinario especializado y urgencias 24h.</p>
   <a href="#urgencias" class="vet-cta">Reserva cita ahora</a>
 </section>
+
+<div class="vet-hero-img-wrap">
+  <img class="vet-hero-img" src="https://images.unsplash.com/photo-1548767797-d8c844163c4a?w=1400&q=80" alt="Veterinaria atendiendo a un perro en la clínica" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1548767797-d8c844163c4a?w=500&q=80';">
+</div>
 
 <div class="vet-stats">
   <div class="vet-stat">
@@ -220,24 +256,63 @@
   <p class="vet-section-sub">Cuidado veterinario integral para todas las etapas de tu mascota</p>
   <div class="vet-services-grid">
     <div class="vet-card">
-      <div class="vet-card-icon">🐕</div>
-      <h3>Medicina general</h3>
-      <p>Consultas, revisiones, vacunación y desparasitación para perros, gatos y exóticos.</p>
+      <img class="vet-card-img" src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=500&q=80" alt="Consulta veterinaria con un perro" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1548767797-d8c844163c4a?w=500&q=80';">
+      <div class="vet-card-body">
+        <div class="vet-card-icon">🐕</div>
+        <h3>Consulta general y revisión</h3>
+        <p>Consultas, revisiones generales y diagnóstico veterinario para perros, gatos y exóticos.</p>
+      </div>
     </div>
     <div class="vet-card">
-      <div class="vet-card-icon">🏥</div>
-      <h3>Cirugía y hospitalización</h3>
-      <p>Castraciones, cirugía blanda y urgencias con quirófano propio y monitorización 24h.</p>
+      <img class="vet-card-img" src="https://images.unsplash.com/photo-1612531386530-97286d97c2d2?w=500&q=80" alt="Veterinario vacunando a un animal" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1548767797-d8c844163c4a?w=500&q=80';">
+      <div class="vet-card-body">
+        <div class="vet-card-icon">💉</div>
+        <h3>Vacunación</h3>
+        <p>Calendario de vacunación completo para cachorros, gatitos y mascotas adultas.</p>
+      </div>
     </div>
     <div class="vet-card">
-      <div class="vet-card-icon">🦷</div>
-      <h3>Limpieza dental veterinaria</h3>
-      <p>Profilaxis dental con escala manual y ultrasonidos bajo anestesia controlada.</p>
+      <img class="vet-card-img" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&q=80" alt="Veterinarios realizando cirugía" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1548767797-d8c844163c4a?w=500&q=80';">
+      <div class="vet-card-body">
+        <div class="vet-card-icon">🏥</div>
+        <h3>Cirugía veterinaria</h3>
+        <p>Castraciones, cirugía blanda y procedimientos especializados con quirófano propio.</p>
+      </div>
     </div>
     <div class="vet-card">
-      <div class="vet-card-icon">✂️</div>
-      <h3>Peluquería canina</h3>
-      <p>Baño, corte específico de raza y arreglo de uñas en un entorno tranquilo.</p>
+      <img class="vet-card-img" src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=500&q=80" alt="Atención veterinaria de urgencia" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1548767797-d8c844163c4a?w=500&q=80';">
+      <div class="vet-card-body">
+        <div class="vet-card-icon">🚨</div>
+        <h3>Urgencias 24h</h3>
+        <p>Atención veterinaria urgente las 24 horas con monitorización y hospitalización.</p>
+      </div>
+    </div>
+    <div class="vet-card">
+      <img class="vet-card-img" src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=500&q=80" alt="Peluquería canina con un perro siendo aseado" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1548767797-d8c844163c4a?w=500&q=80';">
+      <div class="vet-card-body">
+        <div class="vet-card-icon">✂️</div>
+        <h3>Peluquería canina</h3>
+        <p>Baño, corte específico de raza y arreglo de uñas en un entorno tranquilo.</p>
+      </div>
+    </div>
+    <div class="vet-card">
+      <img class="vet-card-img" src="https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?w=500&q=80" alt="Tienda veterinaria con piensos para mascotas" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1548767797-d8c844163c4a?w=500&q=80';">
+      <div class="vet-card-body">
+        <div class="vet-card-icon">🛍️</div>
+        <h3>Tienda y piensos</h3>
+        <p>Piensos premium, complementos nutricionales y productos para el cuidado animal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="vet-section" id="sobre-nosotros">
+  <div class="vet-about">
+    <img class="vet-about-img" src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=800&q=80" alt="Veterinarios atendiendo a una mascota en la clínica" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1548767797-d8c844163c4a?w=500&q=80';">
+    <div class="vet-about-text">
+      <h2>Sobre nosotros</h2>
+      <p>Somos una clínica veterinaria con más de 20 años cuidando perros, gatos y animales exóticos. Combinamos tecnología puntera con un trato cercano y humano hacia tu mascota.</p>
+      <p>Nuestro equipo veterinario colegiado se forma continuamente para ofrecer la mejor medicina, cirugía y atención de urgencias 24 horas, todo bajo un mismo techo.</p>
     </div>
   </div>
 </section>
@@ -247,20 +322,33 @@
   <p class="vet-section-sub">Veterinarios colegiados con formación continua y vocación animal</p>
   <div class="vet-team-grid">
     <div class="vet-vet">
-      <div class="vet-avatar">EC</div>
+      <img class="vet-vet-photo" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=300&q=80" alt="Dra. Elena Castro, veterinaria de medicina general" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1548767797-d8c844163c4a?w=500&q=80';">
       <h4>Dra. Elena Castro</h4>
       <p>Medicina general · 15 años de experiencia</p>
     </div>
     <div class="vet-vet">
-      <div class="vet-avatar">PH</div>
+      <img class="vet-vet-photo" src="https://images.unsplash.com/photo-1612531386530-97286d97c2d2?w=300&q=80" alt="Dr. Pablo Herrera, especialista en cirugía veterinaria" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1548767797-d8c844163c4a?w=500&q=80';">
       <h4>Dr. Pablo Herrera</h4>
       <p>Cirugía y hospitalización · Especialista en operaciones complejas</p>
     </div>
     <div class="vet-vet">
-      <div class="vet-avatar">LR</div>
+      <img class="vet-vet-photo" src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=300&q=80" alt="Dra. Laura Ramírez, especialista en felinos y exóticos" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1548767797-d8c844163c4a?w=500&q=80';">
       <h4>Dra. Laura Ramírez</h4>
       <p>Felinos y exóticos · Conejos, aves, reptiles</p>
     </div>
+  </div>
+</section>
+
+<section class="vet-section" id="galeria">
+  <h2>Galería de la clínica</h2>
+  <p class="vet-section-sub">Un vistazo a nuestro día a día cuidando mascotas</p>
+  <div class="vet-gallery">
+    <img src="https://images.unsplash.com/photo-1548767797-d8c844163c4a?w=500&q=80" alt="Perro siendo atendido en la clínica veterinaria" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1548767797-d8c844163c4a?w=500&q=80';">
+    <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=500&q=80" alt="Atención veterinaria de urgencia a una mascota" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1548767797-d8c844163c4a?w=500&q=80';">
+    <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=500&q=80" alt="Veterinaria en consulta con un perro" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1548767797-d8c844163c4a?w=500&q=80';">
+    <img src="https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?w=500&q=80" alt="Estantería con piensos y productos para mascotas" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1548767797-d8c844163c4a?w=500&q=80';">
+    <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=500&q=80" alt="Perro en sesión de peluquería canina" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1548767797-d8c844163c4a?w=500&q=80';">
+    <img src="https://images.unsplash.com/photo-1612531386530-97286d97c2d2?w=500&q=80" alt="Vacunación a una mascota" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1548767797-d8c844163c4a?w=500&q=80';">
   </div>
 </section>
 
