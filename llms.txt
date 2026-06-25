@@ -1,0 +1,36 @@
+# Clínica Veterinaria San Marcos
+
+> Clínica veterinaria en el centro de Madrid (Calle Mayor 45, 28013) desde 2003. Consulta, vacunación, cirugía, peluquería y urgencias veterinarias 24 horas. Lema: "El cuidado que tu mascota merece".
+
+## Datos de contacto (NAP)
+- Nombre: Clínica Veterinaria San Marcos
+- Dirección: Calle Mayor 45, 28013 Madrid (centro, junto a Sol y Ópera)
+- Teléfono: +34 91 234 56 78
+- WhatsApp: +34 643 19 95 80
+- Email: citas@clinicasanmarcos.es
+- Horario: Lunes a Viernes 9:00–20:00 · Sábados 9:00–14:00 · Urgencias 24 h
+- En funcionamiento desde: 2003
+- Zona de servicio: Madrid capital y alrededores
+- Web: https://nexusforgeia.github.io/WHITEMOON-VETERINARIOS/
+
+## Servicios
+- Consulta general y diagnóstico (desde 35 €)
+- Vacunación y desparasitación (calendario personalizado)
+- Cirugía veterinaria con quirófano propio (esterilizaciones, tejidos blandos, traumatología, odontología)
+- Urgencias veterinarias 24 horas, todos los días del año
+- Peluquería canina y felina
+- Hospitalización y cuidados de enfermería
+- Atención a perros, gatos y animales exóticos (conejos, hurones, aves, reptiles)
+
+## Cómo pedir cita
+Llamar al +34 91 234 56 78, escribir por WhatsApp al +34 643 19 95 80, o usar la asistente virtual NORA disponible en la web.
+
+## Preguntas frecuentes
+- ¿Cuánto cuesta la consulta? La consulta general cuesta 35 € e incluye exploración completa.
+- ¿Hacéis urgencias 24 h? Sí, todos los días del año. Teléfono: +34 91 234 56 78.
+- ¿Qué vacunas necesita mi mascota? Perros: polivalente y rabia (obligatoria en Madrid). Gatos: trivalente y leucemia.
+- ¿Tenéis hospitalización? Sí, con monitorización y cuidados de enfermería.
+- ¿En qué zonas atendéis? Centro de Madrid (Calle Mayor 45, 28013) y toda la capital.
+- ¿Tenéis quirófano propio? Sí, totalmente equipado con monitorización anestésica.
+- ¿Cuándo llevar a un cachorro por primera vez? Entre las 6 y 8 semanas de vida.
+- ¿Atendéis exóticos? Sí: conejos, hurones, roedores, aves y reptiles.
