@@ -194,7 +194,7 @@ footer{background:#000;border-top:1px solid var(--border);padding:60px 52px 36px
 .cb-fab{position:fixed;bottom:28px;right:28px;z-index:500;width:60px;height:60px;background:var(--pink);border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(255,45,120,.4);font-size:1.5rem;transition:all .25s;color:#fff}
 .cb-fab:hover{transform:scale(1.1);background:var(--pink2)}
 .cb-fab .notif{position:absolute;top:-2px;right:-2px;width:14px;height:14px;background:var(--blue);border-radius:50%;border:2px solid var(--black);animation:blink 2s infinite}
-.cb-mod{position:fixed;bottom:100px;right:28px;z-index:499;width:360px;max-width:calc(100vw - 32px);background:#141414;border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.6);transform:scale(.85) translateY(20px);opacity:0;pointer-events:none;transition:all .3s;display:flex;flex-direction:column;max-height:520px}
+.cb-mod{position:fixed;bottom:100px;right:28px;z-index:499;width:360px;max-width:calc(100vw - 32px);background:#141414;border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.6);transform:scale(.85) translateY(20px);opacity:0;pointer-events:none;transition:all .3s;display:flex;flex-direction:column;max-height:600px}
 .cb-mod.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all}
 .cb-head{background:linear-gradient(135deg,var(--pink) 0%,#cc1f5e 100%);padding:16px 18px;display:flex;align-items:center;gap:12px}
 .cb-head-ava{width:38px;height:38px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
@@ -208,10 +208,10 @@ footer{background:#000;border-top:1px solid var(--border);padding:60px 52px 36px
 .cb-tab{flex:1;padding:10px 6px;background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);transition:all .2s;border-bottom:2px solid transparent}
 .cb-tab.active-pink{color:var(--pink);border-bottom-color:var(--pink)}
 .cb-tab.active-blue{color:var(--blue);border-bottom-color:var(--blue)}
-.cb-body{flex:1;overflow-y:auto;padding:14px 14px 8px;display:flex;flex-direction:column;gap:10px;min-height:180px;max-height:240px}
-.cb-body::-webkit-scrollbar{width:4px}
-.cb-body::-webkit-scrollbar-track{background:transparent}
-.cb-body::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+.cb-body{flex:1;overflow-y:auto;padding:14px 14px 8px;display:flex;flex-direction:column;gap:10px;min-height:120px;max-height:180px}
+.cb-body::-webkit-scrollbar,.cb-panel::-webkit-scrollbar{width:4px}
+.cb-body::-webkit-scrollbar-track,.cb-panel::-webkit-scrollbar-track{background:transparent}
+.cb-body::-webkit-scrollbar-thumb,.cb-panel::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
 .msg{display:flex}
 .msg.bot{justify-content:flex-start}
 .msg.usr{justify-content:flex-end}
@@ -220,7 +220,7 @@ footer{background:#000;border-top:1px solid var(--border);padding:60px 52px 36px
 .msg.usr .bub{background:var(--pink);color:#fff;border-radius:14px 14px 4px 14px}
 
 /* Panel citas */
-.cb-panel{display:none;padding:12px 14px;gap:8px;flex-direction:column}
+.cb-panel{display:none;padding:12px 14px;gap:8px;flex-direction:column;overflow-y:auto;max-height:300px}
 .cb-panel.show{display:flex}
 .cita-btn{background:#1a1a1a;border:1px solid var(--border);border-radius:12px;padding:12px 16px;cursor:pointer;font-family:'Inter',sans-serif;font-size:.82rem;color:var(--white);text-align:left;display:flex;align-items:center;gap:10px;transition:all .2s}
 .cita-btn:hover{border-color:var(--pink);background:#1f1a1a;color:var(--pink)}
@@ -461,7 +461,7 @@ footer{background:#000;border-top:1px solid var(--border);padding:60px 52px 36px
  </div>
  </div>
  <div class="vet-card">
- <img class="vet-img" src="https://images.unsplash.com/photo-1559839914-17aae19cec71?w=600&q=70&auto=format&fit=crop" alt="Dra. Laura Ramírez" loading="lazy" width="400" height="280">
+ <img class="vet-img" src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=600&q=70&auto=format&fit=crop" alt="Dra. Laura Ramírez" loading="lazy" width="400" height="280">
  <div class="vet-body">
  <div class="vet-role">Felinos y animales exóticos</div>
  <div class="vet-name">Dra. Laura Ramírez</div>
