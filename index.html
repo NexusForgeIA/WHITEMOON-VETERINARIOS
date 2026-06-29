@@ -637,7 +637,16 @@ footer{background:#000;border-top:1px solid var(--border);padding:60px 52px 36px
 
 <!-- CHATBOT FAB -->
 <button class="cb-fab" id="cb-fab" onclick="openChat()" aria-label="Hablar con NORA">
-
+<svg viewBox="0 0 100 100" width="26" height="26" xmlns="http://www.w3.org/2000/svg" fill="#fff" style="flex-shrink:0">
+  <ellipse cx="28" cy="72" rx="16" ry="20" transform="rotate(-15,28,72)"/>
+  <ellipse cx="72" cy="72" rx="16" ry="20" transform="rotate(15,72,72)"/>
+  <circle cx="10" cy="42" r="9"/>
+  <circle cx="28" cy="34" r="9"/>
+  <circle cx="46" cy="38" r="9"/>
+  <circle cx="54" cy="38" r="9"/>
+  <circle cx="72" cy="34" r="9"/>
+  <circle cx="90" cy="42" r="9"/>
+</svg>
  <span class="notif"></span>
 </button>
 
@@ -650,7 +659,7 @@ footer{background:#000;border-top:1px solid var(--border);padding:60px 52px 36px
  <div class="cb-head-sub">Clínica Veterinaria San Marcos</div>
  </div>
  <span class="cb-head-dot"></span>
- <button class="cb-close" onclick="closeChat()"></button>
+ <button class="cb-close" onclick="closeChat()" aria-label="Cerrar"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="1" y1="1" x2="13" y2="13"/><line x1="13" y1="1" x2="1" y2="13"/></svg></button>
  </div>
  <div class="cb-tabs">
  <button class="cb-tab active-pink" id="tab-cita" onclick="showTab('cita')"> Cita</button>
