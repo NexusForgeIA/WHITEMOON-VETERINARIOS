@@ -1,0 +1,137 @@
+import "jsr:@supabase/functions-js/edge-runtime.d.ts";
+
+// vet-notify — captura de lead + aviso por Telegram de una nueva SOLICITUD DE
+// CITA de la demo WhiteMoon · Clínica Veterinaria San Marcos (chatbot "NORA").
+//
+// A diferencia de dental-notify / chef-notify, aquí el INSERT en leads_web se
+// hace server-side: así el cliente no necesita ninguna clave de Supabase y el
+// index.html queda sin secretos de ningún tipo.
+//
+// Recibe (POST JSON): { nombre, telefono, servicio, mensaje, test? }
+//
+// Secrets usados (nunca en cliente):
+//   - TELEGRAM_BOT_TOKEN        : token del bot de Telegram (obligatorio)
+//   - TELEGRAM_CHAT_ID          : chat destino; si falta se usa CHAT_ID_FALLBACK
+//   - SUPABASE_URL              : inyectado por la plataforma
+//   - SUPABASE_SERVICE_ROLE_KEY : inyectado por la plataforma
+//
+// IMPORTANTE: es una SOLICITUD de cita de una DEMO, no una reserva confirmada.
+//
+// Regla del proyecto: si el insert o el envío fallan → console.warn, nunca
+// interrumpe la conversación del chatbot.
+//
+// Desplegar con:
+//   supabase functions deploy vet-notify --no-verify-jwt --project-ref mlaqtniujnvfxcvcourm
+
+// El chat_id no es un secreto (solo identifica el destino); el token sí lo es.
+const CHAT_ID_FALLBACK = "861432965";
+
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers":
+    "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+};
+
+Deno.serve(async (req: Request) => {
+  if (req.method === "OPTIONS") {
+    return new Response("ok", { headers: corsHeaders });
+  }
+
+  const json = (body: unknown, status = 200) =>
+    new Response(JSON.stringify(body), {
+      status,
+      headers: {
+        ...corsHeaders,
+        "Content-Type": "application/json; charset=utf-8",
+      },
+    });
+
+  let payload: Record<string, unknown> = {};
+  try {
+    payload = await req.json();
+  } catch {
+    payload = {};
+  }
+
+  const data = (payload.args ?? payload) as Record<string, unknown>;
+  const nombre = String(data.nombre ?? "").trim();
+  const telefono = String(data.telefono ?? "").trim();
+  const servicio = String(data.servicio ?? "").trim();
+  const mensaje = String(data.mensaje ?? "").trim() || servicio;
+  const soloPrueba = data.test === true;
+
+  const digits = telefono.replace(/\D/g, "");
+
+  // 1) Lead en leads_web (service role → no requiere clave en el cliente)
+  let stored = false;
+  try {
+    const supaUrl = Deno.env.get("SUPABASE_URL");
+    const supaKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+    if (supaUrl && supaKey) {
+      const r = await fetch(`${supaUrl}/rest/v1/leads_web`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          apikey: supaKey,
+          Authorization: `Bearer ${supaKey}`,
+          Prefer: "return=minimal",
+        },
+        body: JSON.stringify({
+          nombre: nombre || null,
+          telefono: telefono || null,
+          sector: "veterinaria",
+          interes: servicio || "cita",
+          mensaje: mensaje || null,
+          origen: "veterinarios-demo",
+          fecha: new Date().toISOString(),
+        }),
+      });
+      stored = r.ok;
+      if (!r.ok) {
+        console.warn("[vet-notify] insert leads_web falló:", r.status, await r.text());
+      }
+    } else {
+      console.warn("[vet-notify] sin SUPABASE_URL/SERVICE_ROLE_KEY, lead no guardado");
+    }
+  } catch (e) {
+    console.warn("[vet-notify] error insertando lead:", e);
+  }
+
+  // 2) Aviso por Telegram
+  const message =
+    (soloPrueba
+      ? "🧪 PRUEBA — demo WhiteMoon · Clínica Veterinaria San Marcos\n\n"
+      : "🐾 NUEVA SOLICITUD DE CITA — demo WhiteMoon · Clínica Veterinaria San Marcos\n\n") +
+    `👤 ${nombre || "-"}\n` +
+    `📱 ${telefono || "-"}\n` +
+    `🩺 Servicio: ${servicio || "-"}\n\n` +
+    "⚠️ Lead de una WEB DE DEMOSTRACIÓN: es una SOLICITUD, no una cita confirmada.\n" +
+    (digits.length >= 9 ? `📲 CONTACTAR: https://wa.me/34${digits}` : "");
+
+  let notified = false;
+  try {
+    const tgToken = Deno.env.get("TELEGRAM_BOT_TOKEN");
+    const tgChat = Deno.env.get("TELEGRAM_CHAT_ID") || CHAT_ID_FALLBACK;
+    if (tgToken) {
+      const r = await fetch(
+        `https://api.telegram.org/bot${tgToken}/sendMessage`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json; charset=utf-8" },
+          body: JSON.stringify({ chat_id: tgChat, text: message }),
+        },
+      );
+      notified = r.ok;
+      if (!r.ok) {
+        console.warn("[vet-notify] Telegram falló:", r.status, await r.text());
+      }
+    } else {
+      console.warn("[vet-notify] sin TELEGRAM_BOT_TOKEN, mensaje:", message);
+    }
+  } catch (e) {
+    console.warn("[vet-notify] error enviando Telegram:", e);
+  }
+
+  return json({ ok: true, stored, notified });
+});
