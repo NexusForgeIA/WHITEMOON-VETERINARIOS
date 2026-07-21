@@ -12,45 +12,56 @@
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
  --black:#0a0a0a;
- --pink:#ff2d78;
- --pink2:#ff6fa8;
- --pink-dim:rgba(255,45,120,.08);
- --blue:#7dd3fc;
- --blue2:#38bdf8;
- --blue-dim:rgba(125,211,252,.08);
+ /* PRIMARIO — VERDE (titulares, botones, acentos) */
+ --green:#22c55e;
+ --green2:#4ade80;
+ --green-deep:#15803d;
+ --green-deeper:#0b5227;
+ --green-dim:rgba(34,197,94,.08);
+ --green-ghost:rgba(34,197,94,.07);
+ --green-glow:rgba(34,197,94,.35);
+ /* SECUNDARIO — AMARILLO CÁLIDO (acentos, destacados, CTA) */
+ --yellow:#fbbf24;
+ --yellow2:#fcd34d;
+ --yellow-dim:rgba(251,191,36,.08);
+ --yellow-ghost:rgba(251,191,36,.07);
+ /* Texto sobre superficies verde/amarillo — siempre oscuro (AA) */
+ --on-brand:#06210f;
  --white:#f8f8f8;
  --muted:#888;
  --card:#111;
- --border:rgba(255,45,120,.18);
- --border-blue:rgba(125,211,252,.18)
+ --border:rgba(34,197,94,.18);
+ --border-strong:rgba(34,197,94,.45);
+ --border-yellow:rgba(251,191,36,.2);
+ --border-yellow-strong:rgba(251,191,36,.5)
 }
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;line-height:1.5}
 a{color:inherit;text-decoration:none}
-::selection{background:var(--pink);color:#fff}
+::selection{background:var(--green);color:var(--on-brand)}
 
 /* DEMO STRIP */
-.demo-strip{background:var(--pink);text-align:center;padding:9px 20px;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;position:sticky;top:0;z-index:300}
-.demo-strip a{color:#fff;text-decoration:underline}
+.demo-strip{background:var(--green);text-align:center;padding:9px 20px;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--on-brand);position:sticky;top:0;z-index:300}
+.demo-strip a{color:var(--on-brand);text-decoration:underline}
 
 /* PRELOADER */
 .preloader{position:fixed;inset:0;background:var(--black);z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity .6s ease .2s}
 .preloader.hide{opacity:0;pointer-events:none}
-.pre-logo{font-family:'Anton',sans-serif;font-size:clamp(2.5rem,9vw,6rem);letter-spacing:-.02em;color:var(--pink);animation:pre-pulse 1s ease-in-out infinite}
-.pre-logo span{color:var(--blue)}
+.pre-logo{font-family:'Anton',sans-serif;font-size:clamp(2.5rem,9vw,6rem);letter-spacing:-.02em;color:var(--green);animation:pre-pulse 1s ease-in-out infinite}
+.pre-logo span{color:var(--yellow)}
 @keyframes pre-pulse{0%,100%{opacity:1}50%{opacity:.25}}
 
 /* NAV */
 .nav{position:fixed;top:35px;left:0;right:0;z-index:200;display:flex;align-items:center;padding:18px 52px;transition:all .4s;border-bottom:1px solid transparent}
 .nav.scrolled{background:rgba(10,10,10,.92);backdrop-filter:blur(20px);border-bottom-color:var(--border)}
 .nav-logo{font-family:'Anton',sans-serif;font-size:1.25rem;letter-spacing:-.01em;color:var(--white);display:flex;align-items:center;gap:10px;text-decoration:none}
-.nav-logo .paw{color:var(--pink);font-size:1.1rem}
-.nav-logo span{color:var(--pink)}
+.nav-logo .paw{color:var(--green);font-size:1.1rem}
+.nav-logo span{color:var(--green)}
 .nav-links{display:flex;align-items:center;gap:48px;margin-left:auto;margin-right:40px}
 .nav-links a{font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;transition:opacity .2s}
 .nav-links a:hover{opacity:.65}
-.nav-cta{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;background:var(--pink);color:#fff;border-radius:40px;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:none;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif}
-.nav-cta:hover{background:var(--pink2);transform:translateY(-1px)}
+.nav-cta{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;background:var(--green);color:var(--on-brand);border-radius:40px;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:none;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif}
+.nav-cta:hover{background:var(--green2);transform:translateY(-1px)}
 
 /* HERO */
 .hero{position:relative;height:100dvh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;padding:110px 52px 72px}
@@ -58,61 +69,61 @@ a{color:inherit;text-decoration:none}
 .hero-bg video{width:100%;height:100%;object-fit:cover;filter:brightness(.38) saturate(1.3)}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,10,10,.97) 0%,rgba(10,10,10,.45) 55%,rgba(10,10,10,.15) 100%)}
 .hero-in{position:relative;z-index:2;max-width:1200px;margin:0 auto;width:100%}
-.hero-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border:1px solid var(--pink);border-radius:40px;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--pink);margin-bottom:22px;background:var(--pink-dim)}
-.hero-tag .dot{width:7px;height:7px;border-radius:50%;background:var(--pink);animation:blink 1.5s infinite}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border:1px solid var(--green);border-radius:40px;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-bottom:22px;background:var(--green-dim)}
+.hero-tag .dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:blink 1.5s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
 .hero h1{font-family:'Anton',sans-serif;font-size:clamp(2.6rem,7.5vw,8rem);line-height:.88;letter-spacing:-.03em;text-transform:uppercase;margin-bottom:22px}
-.hero h1 .pink{color:var(--pink)}
-.hero h1 .blue{color:var(--blue)}
+.hero h1 .c-green{color:var(--green)}
+.hero h1 .c-yellow{color:var(--yellow)}
 .hero-sub{font-size:clamp(.9rem,1.5vw,1.15rem);color:rgba(255,255,255,.58);max-width:540px;margin-bottom:36px;line-height:1.65}
 .hero-cta-row{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:48px}
-.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 30px;background:var(--pink);color:#fff;border-radius:40px;font-size:.88rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border:none;cursor:pointer;transition:all .25s;font-family:'Inter',sans-serif}
-.btn-primary:hover{background:var(--pink2);transform:translateY(-2px)}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 30px;background:var(--green);color:var(--on-brand);border-radius:40px;font-size:.88rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border:none;cursor:pointer;transition:all .25s;font-family:'Inter',sans-serif}
+.btn-primary:hover{background:var(--green2);transform:translateY(-2px)}
 .btn-outline{display:inline-flex;align-items:center;gap:8px;padding:14px 30px;background:transparent;color:var(--white);border-radius:40px;font-size:.88rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border:1px solid rgba(255,255,255,.18);cursor:pointer;transition:all .25s;font-family:'Inter',sans-serif}
-.btn-outline:hover{border-color:var(--blue);color:var(--blue)}
+.btn-outline:hover{border-color:var(--yellow);color:var(--yellow)}
 .hero-stats{display:flex;gap:48px;flex-wrap:wrap}
-.h-stat strong{font-family:'Anton',sans-serif;font-size:2rem;color:var(--pink);display:block;line-height:1}
+.h-stat strong{font-family:'Anton',sans-serif;font-size:2rem;color:var(--green);display:block;line-height:1}
 .h-stat span{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
 
 /* MARQUEE 1 */
-.marquee-wrap{overflow:hidden;background:var(--pink);padding:13px 0}
+.marquee-wrap{overflow:hidden;background:var(--green);padding:13px 0}
 .marquee-track{display:flex;white-space:nowrap;animation:marquee 28s linear infinite}
-.marquee-item{display:inline-flex;align-items:center;gap:16px;padding:0 24px;font-family:'Anton',sans-serif;font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase;color:#fff}
+.marquee-item{display:inline-flex;align-items:center;gap:16px;padding:0 24px;font-family:'Anton',sans-serif;font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase;color:var(--on-brand)}
 .marquee-item .sep{opacity:.4}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* SERVICIOS */
 .servicios{padding:120px 52px;background:var(--black)}
 .section-header{max-width:1200px;margin:0 auto 60px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px}
-.section-tag{font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--pink);margin-bottom:10px}
+.section-tag{font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--green);margin-bottom:10px}
 .section-title{font-family:'Anton',sans-serif;font-size:clamp(2.2rem,4.5vw,4.8rem);line-height:.9;text-transform:uppercase;letter-spacing:-.02em}
-.section-title .blue{color:var(--blue)}
-.section-title .pink{color:var(--pink)}
+.section-title .c-yellow{color:var(--yellow)}
+.section-title .c-green{color:var(--green)}
 .section-subtitle{font-size:.88rem;color:var(--muted);line-height:1.7;max-width:360px}
 .serv-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .serv-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:30px;transition:transform .35s,border-color .35s;position:relative;overflow:hidden}
-.serv-card:hover{transform:translateY(-7px);border-color:rgba(255,45,120,.45)}
-.serv-card.blue-card{border-color:var(--border-blue)}
-.serv-card.blue-card:hover{border-color:rgba(125,211,252,.5)}
-.serv-num{font-family:'Anton',sans-serif;font-size:3.5rem;color:rgba(255,45,120,.07);line-height:1;margin-bottom:-8px}
-.serv-card.blue-card .serv-num{color:rgba(125,211,252,.07)}
+.serv-card:hover{transform:translateY(-7px);border-color:var(--border-strong)}
+.serv-card.yellow-card{border-color:var(--border-yellow)}
+.serv-card.yellow-card:hover{border-color:var(--border-yellow-strong)}
+.serv-num{font-family:'Anton',sans-serif;font-size:3.5rem;color:var(--green-ghost);line-height:1;margin-bottom:-8px}
+.serv-card.yellow-card .serv-num{color:var(--yellow-ghost)}
 .serv-icon{font-size:2rem;margin-bottom:14px;display:block}
 .serv-card h3{font-family:'Anton',sans-serif;font-size:1.35rem;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:10px;color:var(--white)}
 .serv-card p{font-size:.84rem;color:var(--muted);line-height:1.68;margin-bottom:18px}
-.serv-link{font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--pink);display:inline-flex;align-items:center;gap:6px}
-.serv-card.blue-card .serv-link{color:var(--blue)}
+.serv-link{font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green);display:inline-flex;align-items:center;gap:6px}
+.serv-card.yellow-card .serv-link{color:var(--yellow)}
 
 /* SOBRE */
 .sobre{padding:120px 52px;background:#0d0d0d}
 .sobre-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
 .sobre-text h2{font-family:'Anton',sans-serif;font-size:clamp(2rem,4.2vw,4.2rem);text-transform:uppercase;line-height:.9;letter-spacing:-.02em;margin-bottom:22px}
-.sobre-text h2 .pink{color:var(--pink)}
+.sobre-text h2 .c-green{color:var(--green)}
 .sobre-text p{color:var(--muted);line-height:1.75;margin-bottom:14px;font-size:.92rem}
 .sobre-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
 .stat-box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px}
-.stat-box.blue-box{border-color:var(--border-blue)}
-.stat-num{font-family:'Anton',sans-serif;font-size:2.4rem;color:var(--pink);line-height:1}
-.stat-box.blue-box .stat-num{color:var(--blue)}
+.stat-box.yellow-box{border-color:var(--border-yellow)}
+.stat-num{font-family:'Anton',sans-serif;font-size:2.4rem;color:var(--green);line-height:1}
+.stat-box.yellow-box .stat-num{color:var(--yellow)}
 .stat-lbl{font-size:.72rem;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:.08em}
 .sobre-img-wrap{border-radius:20px;overflow:hidden;border:2px solid var(--border)}
 .sobre-img-wrap img{width:100%;height:520px;object-fit:cover;filter:saturate(1.2) contrast(1.04)}
@@ -121,16 +132,16 @@ a{color:inherit;text-decoration:none}
 .equipo{padding:120px 52px;background:var(--black)}
 .equipo-grid{max-width:1200px;margin:60px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .vet-card{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:transform .35s,border-color .35s}
-.vet-card:hover{transform:translateY(-6px);border-color:rgba(255,45,120,.45)}
+.vet-card:hover{transform:translateY(-6px);border-color:var(--border-strong)}
 .vet-img{height:280px;object-fit:cover;width:100%;filter:saturate(1.1) contrast(1.04);transition:transform .6s}
 .vet-card:hover .vet-img{transform:scale(1.04)}
 .vet-body{padding:24px}
-.vet-role{font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--pink);margin-bottom:6px}
+.vet-role{font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin-bottom:6px}
 .vet-name{font-family:'Anton',sans-serif;font-size:1.5rem;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:8px}
 .vet-desc{font-size:.83rem;color:var(--muted);line-height:1.65}
 
 /* MARQUEE 2 */
-.marquee-wrap2{overflow:hidden;background:var(--blue2);padding:13px 0}
+.marquee-wrap2{overflow:hidden;background:var(--yellow2);padding:13px 0}
 .marquee-track2{display:flex;white-space:nowrap;animation:marquee2 32s linear infinite}
 .marquee-item2{display:inline-flex;align-items:center;gap:14px;padding:0 22px;font-family:'Anton',sans-serif;font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase;color:var(--black)}
 @keyframes marquee2{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -139,15 +150,15 @@ a{color:inherit;text-decoration:none}
 .urgencias{padding:120px 52px;background:#0d0d0d}
 .urgencias-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:80px;align-items:center}
 .urgencias-text h2{font-family:'Anton',sans-serif;font-size:clamp(2rem,4.2vw,4rem);text-transform:uppercase;line-height:.9;letter-spacing:-.02em;margin-bottom:20px}
-.urgencias-text h2 .pink{color:var(--pink)}
+.urgencias-text h2 .c-green{color:var(--green)}
 .urgencias-text p{color:var(--muted);line-height:1.75;margin-bottom:28px;font-size:.92rem}
-.urgencias-tel{font-family:'Anton',sans-serif;font-size:clamp(2rem,4vw,3.5rem);color:var(--pink);letter-spacing:-.02em;margin-bottom:22px;display:block}
+.urgencias-tel{font-family:'Anton',sans-serif;font-size:clamp(2rem,4vw,3.5rem);color:var(--green);letter-spacing:-.02em;margin-bottom:22px;display:block}
 .urgencias-checks{display:flex;flex-direction:column;gap:12px;margin-top:8px}
 .u-check{display:flex;align-items:flex-start;gap:12px;font-size:.86rem;color:rgba(255,255,255,.75);line-height:1.5}
-.u-check-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);flex-shrink:0;margin-top:.5em}
-.urgencias-box{background:var(--card);border:1px solid var(--border-blue);border-radius:20px;padding:40px;text-align:center}
+.u-check-dot{width:6px;height:6px;border-radius:50%;background:var(--yellow);flex-shrink:0;margin-top:.5em}
+.urgencias-box{background:var(--card);border:1px solid var(--border-yellow);border-radius:20px;padding:40px;text-align:center}
 .urg-icon{font-size:3.5rem;margin-bottom:16px;display:block}
-.urgencias-box h3{font-family:'Anton',sans-serif;font-size:2rem;text-transform:uppercase;margin-bottom:10px;color:var(--blue)}
+.urgencias-box h3{font-family:'Anton',sans-serif;font-size:2rem;text-transform:uppercase;margin-bottom:10px;color:var(--yellow)}
 .urgencias-box p{color:var(--muted);font-size:.88rem;line-height:1.7;margin-bottom:28px}
 .urgencias-box .btn-primary{width:100%;justify-content:center;font-size:.85rem}
 
@@ -159,8 +170,8 @@ a{color:inherit;text-decoration:none}
 .faq-item:last-child{border-bottom:1px solid rgba(255,255,255,.06)}
 .faq-q{width:100%;background:none;border:none;padding:24px 0;display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;text-align:left;font-family:'Inter',sans-serif}
 .faq-q-text{font-size:.95rem;font-weight:600;color:var(--white);line-height:1.45}
-.faq-icon{width:28px;height:28px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem;color:var(--pink);transition:transform .3s,background .3s}
-.faq-item.open .faq-icon{transform:rotate(45deg);background:var(--pink);color:#fff;border-color:var(--pink)}
+.faq-icon{width:28px;height:28px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem;color:var(--green);transition:transform .3s,background .3s}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:var(--green);color:var(--on-brand);border-color:var(--green)}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
 .faq-item.open .faq-a{max-height:300px}
 .faq-a p{font-size:.87rem;color:var(--muted);line-height:1.75;padding:0 0 22px}
@@ -170,8 +181,8 @@ a{color:inherit;text-decoration:none}
 .cta-sec::before{content:'CUIDAMOS';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:'Anton',sans-serif;font-size:clamp(6rem,18vw,18rem);color:var(--white);opacity:.025;white-space:nowrap;pointer-events:none;letter-spacing:-.04em}
 .cta-sec .wrap{position:relative;z-index:2;max-width:700px;margin:0 auto}
 .cta-sec h2{font-family:'Anton',sans-serif;font-size:clamp(2.2rem,5.5vw,5.5rem);text-transform:uppercase;line-height:.9;letter-spacing:-.02em;margin-bottom:16px}
-.cta-sec h2 .pink{color:var(--pink)}
-.cta-sec h2 .blue{color:var(--blue)}
+.cta-sec h2 .c-green{color:var(--green)}
+.cta-sec h2 .c-yellow{color:var(--yellow)}
 .cta-sec p{color:var(--muted);margin-bottom:36px;font-size:1rem;line-height:1.7}
 .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 
@@ -180,34 +191,34 @@ footer{background:#000;border-top:1px solid var(--border);padding:60px 52px 36px
 .footer-in{max-width:1200px;margin:0 auto}
 .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
 .footer-brand .logo{font-family:'Anton',sans-serif;font-size:1.5rem;color:var(--white);margin-bottom:14px}
-.footer-brand .logo span{color:var(--pink)}
+.footer-brand .logo span{color:var(--green)}
 .footer-brand p{font-size:.82rem;color:var(--muted);line-height:1.7;max-width:260px}
 .footer-col h4{font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--white);margin-bottom:16px}
 .footer-col a, .footer-col p{font-size:.82rem;color:var(--muted);display:block;margin-bottom:8px;transition:color .2s}
-.footer-col a:hover{color:var(--pink)}
+.footer-col a:hover{color:var(--green)}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.05);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
 .footer-copy{font-size:.72rem;color:rgba(255,255,255,.3)}
-.footer-copy a{color:var(--pink)}
+.footer-copy a{color:var(--green)}
 .footer-badge{font-family:'Anton',sans-serif;font-size:.7rem;letter-spacing:.12em;color:rgba(255,255,255,.2);text-transform:uppercase}
 
 /* CHATBOT */
-.cb-fab{position:fixed;bottom:28px;right:28px;z-index:500;width:60px;height:60px;background:var(--pink);border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(255,45,120,.4);font-size:1.5rem;transition:all .25s;color:#fff}
-.cb-fab:hover{transform:scale(1.1);background:var(--pink2)}
-.cb-fab .notif{position:absolute;top:-2px;right:-2px;width:14px;height:14px;background:var(--blue);border-radius:50%;border:2px solid var(--black);animation:blink 2s infinite}
+.cb-fab{position:fixed;bottom:28px;right:28px;z-index:500;width:60px;height:60px;background:var(--green);border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px var(--green-glow);font-size:1.5rem;transition:all .25s;color:var(--on-brand)}
+.cb-fab:hover{transform:scale(1.1);background:var(--green2)}
+.cb-fab .notif{position:absolute;top:-2px;right:-2px;width:14px;height:14px;background:var(--yellow);border-radius:50%;border:2px solid var(--black);animation:blink 2s infinite}
 .cb-mod{position:fixed;bottom:100px;right:28px;z-index:499;width:360px;max-width:calc(100vw - 32px);background:#141414;border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.6);transform:scale(.85) translateY(20px);opacity:0;pointer-events:none;transition:all .3s;display:flex;flex-direction:column;max-height:600px}
 .cb-mod.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all}
-.cb-head{background:linear-gradient(135deg,var(--pink) 0%,#cc1f5e 100%);padding:16px 18px;display:flex;align-items:center;gap:12px}
+.cb-head{background:linear-gradient(135deg,var(--green-deep) 0%,var(--green-deeper) 100%);padding:16px 18px;display:flex;align-items:center;gap:12px}
 .cb-head-ava{width:38px;height:38px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
 .cb-head-info{flex:1}
 .cb-head-name{font-family:'Anton',sans-serif;font-size:1rem;letter-spacing:.02em;color:#fff}
 .cb-head-sub{font-size:.7rem;color:rgba(255,255,255,.75);margin-top:1px}
-.cb-head-dot{width:8px;height:8px;border-radius:50%;background:#4ade80;flex-shrink:0}
+.cb-head-dot{width:8px;height:8px;border-radius:50%;background:var(--yellow);flex-shrink:0}
 .cb-close{background:none;border:none;cursor:pointer;color:rgba(255,255,255,.7);font-size:1.3rem;line-height:1;transition:color .2s}
 .cb-close:hover{color:#fff}
 .cb-tabs{display:flex;border-bottom:1px solid rgba(255,255,255,.06);background:#111}
 .cb-tab{flex:1;padding:10px 6px;background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);transition:all .2s;border-bottom:2px solid transparent}
-.cb-tab.active-pink{color:var(--pink);border-bottom-color:var(--pink)}
-.cb-tab.active-blue{color:var(--blue);border-bottom-color:var(--blue)}
+.cb-tab.active-green{color:var(--green);border-bottom-color:var(--green)}
+.cb-tab.active-yellow{color:var(--yellow);border-bottom-color:var(--yellow)}
 .cb-body{flex:1;overflow-y:auto;padding:14px 14px 8px;display:flex;flex-direction:column;gap:10px;min-height:120px;max-height:180px}
 .cb-body::-webkit-scrollbar,.cb-panel::-webkit-scrollbar{width:4px}
 .cb-body::-webkit-scrollbar-track,.cb-panel::-webkit-scrollbar-track{background:transparent}
@@ -217,15 +228,15 @@ footer{background:#000;border-top:1px solid var(--border);padding:60px 52px 36px
 .msg.usr{justify-content:flex-end}
 .bub{max-width:82%;padding:10px 14px;border-radius:14px;font-size:.83rem;line-height:1.55;white-space:pre-line}
 .msg.bot .bub{background:#1c1c1c;color:var(--white);border-radius:14px 14px 14px 4px}
-.msg.usr .bub{background:var(--pink);color:#fff;border-radius:14px 14px 4px 14px}
+.msg.usr .bub{background:var(--green);color:var(--on-brand);border-radius:14px 14px 4px 14px}
 
 /* Panel citas */
 .cb-panel{display:none;padding:12px 14px;gap:8px;flex-direction:column;overflow-y:auto;max-height:300px}
 .cb-panel.show{display:flex}
 .cita-btn{background:#1a1a1a;border:1px solid var(--border);border-radius:12px;padding:12px 16px;cursor:pointer;font-family:'Inter',sans-serif;font-size:.82rem;color:var(--white);text-align:left;display:flex;align-items:center;gap:10px;transition:all .2s}
-.cita-btn:hover{border-color:var(--pink);background:#1f1a1a;color:var(--pink)}
-.cita-btn.blue-btn{border-color:var(--border-blue)}
-.cita-btn.blue-btn:hover{border-color:var(--blue);background:#1a1c1f;color:var(--blue)}
+.cita-btn:hover{border-color:var(--green);background:#16211a;color:var(--green)}
+.cita-btn.yellow-btn{border-color:var(--border-yellow)}
+.cita-btn.yellow-btn:hover{border-color:var(--yellow);background:#211d14;color:var(--yellow)}
 .cita-btn .cb-icon{font-size:1.1rem;flex-shrink:0}
 .cita-btn .cb-label{font-weight:600;display:block;font-size:.82rem;margin-bottom:2px}
 .cita-btn .cb-sub{font-size:.72rem;color:var(--muted)}
@@ -235,10 +246,10 @@ footer{background:#000;border-top:1px solid var(--border);padding:60px 52px 36px
 .cb-text-panel.show{display:block}
 .cb-text-row{display:flex;gap:8px;align-items:center}
 .cb-input{flex:1;background:#1a1a1a;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:10px 14px;font-family:'Inter',sans-serif;font-size:.84rem;color:var(--white);outline:none;transition:border-color .2s}
-.cb-input:focus{border-color:var(--pink)}
+.cb-input:focus{border-color:var(--green)}
 .cb-input::placeholder{color:var(--muted)}
-.cb-send{width:38px;height:38px;border-radius:50%;background:var(--pink);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;color:#fff;flex-shrink:0}
-.cb-send:hover{background:var(--pink2);transform:scale(1.08)}
+.cb-send{width:38px;height:38px;border-radius:50%;background:var(--green);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;color:var(--on-brand);flex-shrink:0}
+.cb-send:hover{background:var(--green2);transform:scale(1.08)}
 .cb-foot2{background:#0e0e0e;border-top:1px solid rgba(255,255,255,.04);text-align:center;padding:8px;font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.2)}
 
 /* RESPONSIVE */
@@ -305,8 +316,8 @@ footer{background:#000;border-top:1px solid var(--border);padding:60px 52px 36px
  </div>
  <h1>
  Cuidamos<br>
- a tu <span class="pink">mascota</span><br>
- <span class="blue">24 horas</span>
+ a tu <span class="c-green">mascota</span><br>
+ <span class="c-yellow">24 horas</span>
  </h1>
  <p class="hero-sub">
  Clínica veterinaria en el centro de Madrid desde 2003. Consulta, cirugía, vacunación, peluquería y urgencias. El cuidado que tu mascota merece.
@@ -351,7 +362,7 @@ footer{background:#000;border-top:1px solid var(--border);padding:60px 52px 36px
  <div class="section-header">
  <div>
  <div class="section-tag">01 — Nuestros servicios</div>
- <h2 class="section-title">Todo lo que tu <span class="blue">mascota</span><br>necesita</h2>
+ <h2 class="section-title">Todo lo que tu <span class="c-yellow">mascota</span><br>necesita</h2>
  </div>
  <p class="section-subtitle">Atención veterinaria integral en el centro de Madrid, de la revisión rutinaria a la cirugía más delicada.</p>
  </div>
@@ -370,14 +381,14 @@ footer{background:#000;border-top:1px solid var(--border);padding:60px 52px 36px
  <p>Calendario personalizado según edad y estilo de vida. Vacunas obligatorias y recomendadas siempre al día.</p>
  <span class="serv-link">Plan a medida →</span>
  </div>
- <div class="serv-card blue-card">
+ <div class="serv-card yellow-card">
  <div class="serv-num">03</div>
  <span class="serv-icon"></span>
  <h3>Cirugía veterinaria</h3>
  <p>Quirófano propio con monitorización anestésica para esterilizaciones, tejidos blandos y traumatología.</p>
  <span class="serv-link">Quirófano propio →</span>
  </div>
- <div class="serv-card blue-card">
+ <div class="serv-card yellow-card">
  <div class="serv-num">04</div>
  <span class="serv-icon"></span>
  <h3>Urgencias 24h</h3>
@@ -406,7 +417,7 @@ footer{background:#000;border-top:1px solid var(--border);padding:60px 52px 36px
  <div class="sobre-in">
  <div class="sobre-text">
  <div class="section-tag">02 — Quiénes somos</div>
- <h2>20 años cuidando<br>Madrid <span class="pink">con amor</span></h2>
+ <h2>20 años cuidando<br>Madrid <span class="c-green">con amor</span></h2>
  <p>Desde 2003, la Clínica Veterinaria San Marcos es un referente en el centro de Madrid. Combinamos medicina veterinaria de calidad con un trato cercano, porque sabemos que tu mascota es de la familia.</p>
  <p>Equipo colegiado en formación continua, instalaciones completas y presupuesto siempre por delante. Sin sorpresas, sin letra pequeña.</p>
  <div class="sobre-stats">
@@ -414,11 +425,11 @@ footer{background:#000;border-top:1px solid var(--border);padding:60px 52px 36px
  <div class="stat-num">+3.500</div>
  <div class="stat-lbl">mascotas atendidas</div>
  </div>
- <div class="stat-box blue-box">
+ <div class="stat-box yellow-box">
  <div class="stat-num">20+</div>
  <div class="stat-lbl">años de experiencia</div>
  </div>
- <div class="stat-box blue-box">
+ <div class="stat-box yellow-box">
  <div class="stat-num">24h</div>
  <div class="stat-lbl">urgencias siempre</div>
  </div>
@@ -439,7 +450,7 @@ footer{background:#000;border-top:1px solid var(--border);padding:60px 52px 36px
  <div class="section-header" style="max-width:1200px;margin:0 auto 0">
  <div>
  <div class="section-tag">03 — El equipo</div>
- <h2 class="section-title">Las manos que <span class="pink">cuidan</span><br>de tu mascota</h2>
+ <h2 class="section-title">Las manos que <span class="c-green">cuidan</span><br>de tu mascota</h2>
  </div>
  <p class="section-subtitle">Profesionales colegiados que aman a los animales tanto como tú.</p>
  </div>
@@ -498,7 +509,7 @@ footer{background:#000;border-top:1px solid var(--border);padding:60px 52px 36px
  <div class="urgencias-in">
  <div class="urgencias-text">
  <div class="section-tag">04 — Urgencias</div>
- <h2>¿Una urgencia?<br>Estamos <span class="pink">siempre</span></h2>
+ <h2>¿Una urgencia?<br>Estamos <span class="c-green">siempre</span></h2>
  <p>Accidentes, intoxicaciones o malestar repentino: no esperes. Llámanos y te atendemos de inmediato, cualquier día, a cualquier hora.</p>
  <a href="tel:+34643199580" class="urgencias-tel">643 19 95 80</a>
  <div class="urgencias-checks">
@@ -514,7 +525,7 @@ footer{background:#000;border-top:1px solid var(--border);padding:60px 52px 36px
  <h3>Urgencias ahora</h3>
  <p>Si tu mascota necesita atención inmediata, llámanos o escríbenos por WhatsApp. Estamos aquí.</p>
  <a href="tel:+34643199580" class="btn-primary" style="justify-content:center;width:100%;margin-bottom:12px"> Llamar urgencias</a>
- <a href="https://wa.me/34643199580?text=URGENCIA+veterinaria%2C+necesito+ayuda+ahora" target="_blank" class="btn-outline" style="justify-content:center;width:100%;border-color:rgba(125,211,252,.3);color:var(--blue)"> WhatsApp urgencias</a>
+ <a href="https://wa.me/34643199580?text=URGENCIA+veterinaria%2C+necesito+ayuda+ahora" target="_blank" class="btn-outline" style="justify-content:center;width:100%;border-color:var(--border-yellow-strong);color:var(--yellow)"> WhatsApp urgencias</a>
  </div>
  </div>
 </section>
@@ -523,7 +534,7 @@ footer{background:#000;border-top:1px solid var(--border);padding:60px 52px 36px
 <section class="faq" id="faq">
  <div class="faq-in">
  <div class="section-tag" style="text-align:center">05 — Preguntas frecuentes</div>
- <h2 class="section-title" style="text-align:center;margin:10px 0 0">Resolvemos tus <span class="pink">dudas</span></h2>
+ <h2 class="section-title" style="text-align:center;margin:10px 0 0">Resolvemos tus <span class="c-green">dudas</span></h2>
  <div class="faq-list" id="faq-list">
  <div class="faq-item">
  <button class="faq-q" onclick="toggleFaq(this)">
@@ -589,11 +600,11 @@ footer{background:#000;border-top:1px solid var(--border);padding:60px 52px 36px
 <section class="cta-sec">
  <div class="wrap">
  <div class="section-tag" style="margin-bottom:14px">El cuidado que tu mascota merece</div>
- <h2>Pide cita <span class="pink">hoy</span><br>estamos <span class="blue">aquí</span></h2>
+ <h2>Pide cita <span class="c-green">hoy</span><br>estamos <span class="c-yellow">aquí</span></h2>
  <p>Llámanos, escríbenos por WhatsApp o habla con NORA, nuestra asistente IA. Te ayudamos a reservar en menos de un minuto.</p>
  <div class="cta-btns">
  <a href="tel:+34643199580" class="btn-primary"> 643 19 95 80</a>
- <a href="https://wa.me/34643199580?text=Hola%2C+quiero+pedir+cita+en+la+Cl%C3%ADnica+San+Marcos" target="_blank" class="btn-outline" style="border-color:rgba(125,211,252,.3);color:var(--blue)"> Escribir por WhatsApp</a>
+ <a href="https://wa.me/34643199580?text=Hola%2C+quiero+pedir+cita+en+la+Cl%C3%ADnica+San+Marcos" target="_blank" class="btn-outline" style="border-color:var(--border-yellow-strong);color:var(--yellow)"> Escribir por WhatsApp</a>
  </div>
  </div>
 </section>
@@ -618,7 +629,7 @@ footer{background:#000;border-top:1px solid var(--border);padding:60px 52px 36px
  <h4>Horario</h4>
  <p>Lun–Vie: 9:00–20:00</p>
  <p>Sábado: 9:00–14:00</p>
- <p style="color:var(--pink)">Urgencias: 24h</p>
+ <p style="color:var(--green)">Urgencias: 24h</p>
  </div>
  <div class="footer-col">
  <h4>Contacto</h4>
@@ -637,7 +648,7 @@ footer{background:#000;border-top:1px solid var(--border);padding:60px 52px 36px
 
 <!-- CHATBOT FAB -->
 <button class="cb-fab" id="cb-fab" onclick="openChat()" aria-label="Hablar con NORA">
-<svg viewBox="0 0 100 100" width="26" height="26" xmlns="http://www.w3.org/2000/svg" fill="#fff" style="flex-shrink:0">
+<svg viewBox="0 0 100 100" width="26" height="26" xmlns="http://www.w3.org/2000/svg" fill="currentColor" style="flex-shrink:0">
   <ellipse cx="28" cy="72" rx="16" ry="20" transform="rotate(-15,28,72)"/>
   <ellipse cx="72" cy="72" rx="16" ry="20" transform="rotate(15,72,72)"/>
   <circle cx="10" cy="42" r="9"/>
@@ -662,7 +673,7 @@ footer{background:#000;border-top:1px solid var(--border);padding:60px 52px 36px
  <button class="cb-close" onclick="closeChat()" aria-label="Cerrar"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="1" y1="1" x2="13" y2="13"/><line x1="13" y1="1" x2="1" y2="13"/></svg></button>
  </div>
  <div class="cb-tabs">
- <button class="cb-tab active-pink" id="tab-cita" onclick="showTab('cita')"> Cita</button>
+ <button class="cb-tab active-green" id="tab-cita" onclick="showTab('cita')"> Cita</button>
  <button class="cb-tab" id="tab-servicios" onclick="showTab('servicios')"> Servicios</button>
  <button class="cb-tab" id="tab-texto" onclick="showTab('texto')"> Chat</button>
  </div>
@@ -678,11 +689,11 @@ footer{background:#000;border-top:1px solid var(--border);padding:60px 52px 36px
  <span class="cb-icon"></span>
  <div><span class="cb-label">Vacunación / desparasitación</span><span class="cb-sub">Plan personalizado por mascota</span></div>
  </button>
- <button class="cita-btn blue-btn" onclick="cbCita('peluqueria')">
+ <button class="cita-btn yellow-btn" onclick="cbCita('peluqueria')">
  <span class="cb-icon"></span>
  <div><span class="cb-label">Peluquería</span><span class="cb-sub">Baño, corte e higiene</span></div>
  </button>
- <button class="cita-btn blue-btn" onclick="cbCita('exotico')">
+ <button class="cita-btn yellow-btn" onclick="cbCita('exotico')">
  <span class="cb-icon"></span>
  <div><span class="cb-label">Animales exóticos</span><span class="cb-sub">Conejos, aves, reptiles...</span></div>
  </button>
@@ -694,7 +705,7 @@ footer{background:#000;border-top:1px solid var(--border);padding:60px 52px 36px
  <span class="cb-icon"></span>
  <div><span class="cb-label">Cirugía veterinaria</span><span class="cb-sub">Quirófano propio · Presupuesto previo</span></div>
  </button>
- <button class="cita-btn blue-btn" onclick="cbInfo('urgencias')">
+ <button class="cita-btn yellow-btn" onclick="cbInfo('urgencias')">
  <span class="cb-icon"></span>
  <div><span class="cb-label">Urgencias 24h</span><span class="cb-sub">643 19 95 80 · Siempre disponibles</span></div>
  </button>
@@ -702,7 +713,7 @@ footer{background:#000;border-top:1px solid var(--border);padding:60px 52px 36px
  <span class="cb-icon"></span>
  <div><span class="cb-label">Hospitalización</span><span class="cb-sub">Monitorización continua</span></div>
  </button>
- <button class="cita-btn blue-btn" onclick="cbInfo('precios')">
+ <button class="cita-btn yellow-btn" onclick="cbInfo('precios')">
  <span class="cb-icon"></span>
  <div><span class="cb-label">Precios y horarios</span><span class="cb-sub">Sin sorpresas · Presupuesto previo</span></div>
  </button>
@@ -773,11 +784,11 @@ function showTab(tab) {
  tabs.forEach(function(t) {
  document.getElementById('panel-' + t).classList.remove('show');
  var btn = document.getElementById('tab-' + t);
- btn.classList.remove('active-pink','active-blue');
+ btn.classList.remove('active-green','active-yellow');
  });
  document.getElementById('panel-' + tab).classList.add('show');
  var activeBtn = document.getElementById('tab-' + tab);
- activeBtn.classList.add(tab === 'servicios' ? 'active-blue' : 'active-pink');
+ activeBtn.classList.add(tab === 'servicios' ? 'active-yellow' : 'active-green');
  if (tab === 'texto') setTimeout(function(){ document.getElementById('cb-input').focus(); }, 100);
 }
 
