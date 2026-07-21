@@ -760,8 +760,9 @@ var greeted = false;
 var estado = 'libre';
 var datosCita = { tipo: '', nombre: '', telefono: '' };
 
-var SUPA_URL = 'https://mlaqtniujnvfxcvcourm.supabase.co';
-var SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1sYXF0bml1am52ZnhjdmNvdXJtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4MzUyMzIsImV4cCI6MjA5MzQxMTIzMn0.Neh7VUS8ADsxf0DPab0JoJyGXOAXnLIaXzXbKzj2BGs';
+// Edge Function pública (verify_jwt:false). Guarda el lead en leads_web y avisa
+// por Telegram server-side: aquí no viaja ninguna clave ni token.
+var NOTIFY_URL = 'https://mlaqtniujnvfxcvcourm.supabase.co/functions/v1/vet-notify';
 
 function openChat() {
  document.getElementById('cb-mod').classList.add('open');
@@ -855,17 +856,14 @@ function sendMsg() {
  datosCita.telefono = txt;
  estado = 'libre';
 
- var waTxt = 'CITA CLÍNICA SAN MARCOS\nServicio: ' + (citaLabels[datosCita.tipo] || 'Consulta') + '\nNombre: ' + datosCita.nombre + '\nTeléfono: ' + datosCita.telefono;
- window.open('https://wa.me/34643199580?text=' + encodeURIComponent(waTxt), '_blank');
-
- fetch(SUPA_URL + '/rest/v1/leads_web', {
+ fetch(NOTIFY_URL, {
  method: 'POST',
- headers: { 'Content-Type': 'application/json', 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + SUPA_KEY, 'Prefer': 'return=minimal' },
- body: JSON.stringify({ nombre: datosCita.nombre, telefono: datosCita.telefono, sector: 'veterinaria', interes: datosCita.tipo || 'cita', mensaje: citaLabels[datosCita.tipo] || '', origen: 'veterinarios-demo' })
+ headers: { 'Content-Type': 'application/json' },
+ body: JSON.stringify({ nombre: datosCita.nombre, telefono: datosCita.telefono, servicio: datosCita.tipo || 'cita', mensaje: citaLabels[datosCita.tipo] || '' })
  }).catch(function(){});
 
  setTimeout(function(){
- botSay('¡Cita solicitada, ' + datosCita.nombre + '! \n\nTe hemos enviado un WhatsApp con la confirmación. Nos ponemos en contacto contigo en breve para confirmar el horario.\n\n Calle Mayor 45 · 643 19 95 80');
+ botSay('¡Cita solicitada, ' + datosCita.nombre + '! \n\nHemos registrado tu solicitud. Nos ponemos en contacto contigo en breve para confirmar el horario.\n\n Calle Mayor 45 · 643 19 95 80');
  datosCita = { tipo: '', nombre: '', telefono: '' };
  }, 400);
  return;
