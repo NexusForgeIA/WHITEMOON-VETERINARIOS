@@ -61,6 +61,13 @@ Deno.serve(async (req: Request) => {
   const mensaje = String(data.mensaje ?? "").trim() || servicio;
   const soloPrueba = data.test === true;
 
+  // Guard de lead incompleto — estándar WhiteMoon.
+  // Un lead solo es válido con nombre Y teléfono: sin ambos no se inserta
+  // nada ni se avisa.
+  if (!nombre || !telefono) {
+    return json({ ok: false, error: "lead incompleto" }, 400);
+  }
+
   const digits = telefono.replace(/\D/g, "");
 
   // 1) Lead en leads_web (service role → no requiere clave en el cliente)
