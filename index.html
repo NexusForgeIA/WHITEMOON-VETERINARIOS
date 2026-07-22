@@ -764,6 +764,15 @@ var datosCita = { tipo: '', nombre: '', telefono: '' };
 // por Telegram server-side: aquí no viaja ninguna clave ni token.
 var NOTIFY_URL = 'https://mlaqtniujnvfxcvcourm.supabase.co/functions/v1/vet-notify';
 
+// Un lead solo es válido con nombre Y teléfono (>= 9 dígitos). Sin ambos no se
+// avisa ni se guarda nada. El flujo ya pide los dos antes de llegar al envío;
+// este guard lo garantiza aunque el flujo cambie en el futuro.
+function leadValido(d) {
+ var nombre = (d.nombre || '').trim();
+ var digits = (d.telefono || '').replace(/\D/g, '');
+ return nombre !== '' && digits.length >= 9;
+}
+
 function openChat() {
  document.getElementById('cb-mod').classList.add('open');
  document.getElementById('cb-fab').style.display = 'none';
@@ -854,6 +863,14 @@ function sendMsg() {
  return;
  }
  datosCita.telefono = txt;
+
+ // Sin nombre no hay lead: se vuelve a pedir en vez de enviar algo incompleto.
+ if (!leadValido(datosCita)) {
+ estado = 'nombre';
+ setTimeout(function(){ botSay('Antes de cerrar la cita necesito tu nombre. ¿A nombre de quién la pedimos?'); }, 400);
+ return;
+ }
+
  estado = 'libre';
 
  fetch(NOTIFY_URL, {
