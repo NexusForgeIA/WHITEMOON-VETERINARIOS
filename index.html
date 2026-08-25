@@ -3,918 +3,1084 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Clínica Veterinaria San Marcos Madrid · Urgencias 24h · Demo WhiteMoon</title>
-<meta name="description" content="Clínica veterinaria en el centro de Madrid desde 2003. Consulta, cirugía, vacunación, peluquería y urgencias 24h. El cuidado que tu mascota merece.">
+<title>Clínica Veterinaria Lundé · Madrid · Urgencias 24h</title>
+<meta name="description" content="Clínica veterinaria en el centro de Madrid. Consulta, vacunación, cirugía, peluquería, diagnóstico y urgencias 24h. Equipo colegiado y atención presencial o a domicilio.">
+<link rel="canonical" href="https://nexusforgeia.github.io/WHITEMOON-VETERINARIOS/">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="color-scheme" content="dark">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Clínica Veterinaria Lundé">
+<meta property="og:title" content="Clínica Veterinaria Lundé · Madrid · Urgencias 24h">
+<meta property="og:description" content="Medicina veterinaria en el centro de Madrid. Equipo colegiado, urgencias 24h y atención presencial o a domicilio.">
+<meta property="og:url" content="https://nexusforgeia.github.io/WHITEMOON-VETERINARIOS/">
+<meta property="og:image" content="https://nexusforgeia.github.io/WHITEMOON-VETERINARIOS/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Clínica Veterinaria Lundé · Madrid · Urgencias 24h">
+<meta name="twitter:description" content="Medicina veterinaria en el centro de Madrid. Equipo colegiado, urgencias 24h y atención presencial o a domicilio.">
+<meta name="twitter:image" content="https://nexusforgeia.github.io/WHITEMOON-VETERINARIOS/og.jpg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
 <style>
+/* ============================================================
+   CLÍNICA VETERINARIA LUNDÉ — dark premium
+   Inter (cuerpo) + Instrument Serif italic (display)
+   ============================================================ */
 *{box-sizing:border-box;margin:0;padding:0}
+
 :root{
- --black:#0a0a0a;
- /* PRIMARIO — VERDE (titulares, botones, acentos) */
- --green:#22c55e;
- --green2:#4ade80;
- --green-deep:#15803d;
- --green-deeper:#0b5227;
- --green-dim:rgba(34,197,94,.08);
- --green-ghost:rgba(34,197,94,.07);
- --green-glow:rgba(34,197,94,.35);
- /* SECUNDARIO — AMARILLO CÁLIDO (acentos, destacados, CTA) */
- --yellow:#fbbf24;
- --yellow2:#fcd34d;
- --yellow-dim:rgba(251,191,36,.08);
- --yellow-ghost:rgba(251,191,36,.07);
- /* Texto sobre superficies verde/amarillo — siempre oscuro (AA) */
- --on-brand:#06210f;
- --white:#f8f8f8;
- --muted:#888;
- --card:#111;
- --border:rgba(34,197,94,.18);
- --border-strong:rgba(34,197,94,.45);
- --border-yellow:rgba(251,191,36,.2);
- --border-yellow-strong:rgba(251,191,36,.5)
+ /* Tokens HSL del sistema */
+ --bg:hsl(0 0% 4%);
+ --surface:hsl(0 0% 8%);
+ --surface-2:hsl(0 0% 11%);
+ --text:hsl(0 0% 96%);
+ --muted:hsl(0 0% 53%);        /* medido: 5.51:1 sobre --bg — AA */
+ --muted-media:hsl(0 0% 74%);  /* texto pequeño sobre el vídeo del hero */
+ --stroke:hsl(0 0% 12%);
+ --stroke-2:hsl(0 0% 18%);
+
+ /* Acento */
+ --a1:#89AACC;                 /* medido: 8.19:1 sobre --bg */
+ --a2:#4E85BF;                 /* medido: 5.12:1 sobre --bg */
+ --grad:linear-gradient(90deg,#89AACC,#4E85BF);
+
+ /* Espacio */
+ --s2:8px; --s3:12px; --s4:16px; --s5:20px; --s6:24px;
+ --s8:32px; --s10:40px; --s12:48px; --s16:64px; --s20:80px; --s28:112px;
+
+ --r-md:16px; --r-lg:24px; --r-full:999px;
+
+ --z-base:0; --z-raised:2; --z-nav:100; --z-fab:400;
+ --z-modal:500; --z-load:900;
+
+ --ease:cubic-bezier(.22,1,.36,1);
+ --t1:.2s; --t2:.4s; --t3:.7s;
+
+ --pad:clamp(20px,5vw,64px);
 }
-html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;line-height:1.5}
+
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip}
+body{
+ background:var(--bg);color:var(--text);
+ font-family:'Inter',system-ui,sans-serif;font-weight:400;line-height:1.6;
+ overflow-x:clip;-webkit-font-smoothing:antialiased;
+ font-synthesis-weight:none;
+}
 a{color:inherit;text-decoration:none}
-::selection{background:var(--green);color:var(--on-brand)}
+img,video{display:block;max-width:100%}
+button,input{font:inherit;color:inherit}
+::selection{background:var(--a2);color:#fff}
+:focus-visible{outline:2px solid var(--a1);outline-offset:3px;border-radius:6px}
 
-/* DEMO STRIP */
-.demo-strip{background:var(--green);text-align:center;padding:9px 20px;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--on-brand);position:sticky;top:0;z-index:300}
-.demo-strip a{color:var(--on-brand);text-decoration:underline}
+h1,h2,h3{font-weight:400;line-height:1.05;letter-spacing:-.02em}
 
-/* PRELOADER */
-.preloader{position:fixed;inset:0;background:var(--black);z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity .6s ease .2s}
-.preloader.hide{opacity:0;pointer-events:none}
-.pre-logo{font-family:'Anton',sans-serif;font-size:clamp(2.5rem,9vw,6rem);letter-spacing:-.02em;color:var(--green);animation:pre-pulse 1s ease-in-out infinite}
-.pre-logo span{color:var(--yellow)}
-@keyframes pre-pulse{0%,100%{opacity:1}50%{opacity:.25}}
+/* ---------- UTILIDADES ---------- */
+.wrap{width:100%;max-width:1240px;margin:0 auto;padding:0 var(--pad)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip{position:fixed;left:16px;top:-100px;z-index:var(--z-load);background:var(--text);color:var(--bg);padding:12px 20px;border-radius:var(--r-full);font-size:.85rem;font-weight:600;transition:top var(--t1) var(--ease)}
+.skip:focus{top:16px}
+.ic{width:1em;height:1em;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.sprite{position:absolute;width:0;height:0;overflow:hidden}
 
-/* NAV */
-.nav{position:fixed;top:35px;left:0;right:0;z-index:200;display:flex;align-items:center;padding:18px 52px;transition:all .4s;border-bottom:1px solid transparent}
-.nav.scrolled{background:rgba(10,10,10,.92);backdrop-filter:blur(20px);border-bottom-color:var(--border)}
-.nav-logo{font-family:'Anton',sans-serif;font-size:1.25rem;letter-spacing:-.01em;color:var(--white);display:flex;align-items:center;gap:10px;text-decoration:none}
-.nav-logo .paw{color:var(--green);font-size:1.1rem}
-.nav-logo span{color:var(--green)}
-.nav-links{display:flex;align-items:center;gap:48px;margin-left:auto;margin-right:40px}
-.nav-links a{font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;transition:opacity .2s}
-.nav-links a:hover{opacity:.65}
-.nav-cta{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;background:var(--green);color:var(--on-brand);border-radius:40px;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:none;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif}
-.nav-cta:hover{background:var(--green2);transform:translateY(-1px)}
+.eyebrow{font-size:.7rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.section{padding:var(--s28) 0}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:var(--s8);flex-wrap:wrap;margin-bottom:var(--s16)}
+.section-title{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:clamp(2.2rem,5vw,4rem);max-width:16ch;text-wrap:balance}
+.section-note{font-size:.95rem;font-weight:300;color:var(--muted);max-width:42ch;line-height:1.7}
 
-/* HERO */
-.hero{position:relative;height:100dvh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;padding:110px 52px 72px}
-.hero-bg{position:absolute;inset:0;z-index:0}
-.hero-bg video{width:100%;height:100%;object-fit:cover;filter:brightness(.38) saturate(1.3)}
-.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,10,10,.97) 0%,rgba(10,10,10,.45) 55%,rgba(10,10,10,.15) 100%)}
-.hero-in{position:relative;z-index:2;max-width:1200px;margin:0 auto;width:100%}
-.hero-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border:1px solid var(--green);border-radius:40px;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-bottom:22px;background:var(--green-dim)}
-.hero-tag .dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:blink 1.5s infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
-.hero h1{font-family:'Anton',sans-serif;font-size:clamp(2.6rem,7.5vw,8rem);line-height:.88;letter-spacing:-.03em;text-transform:uppercase;margin-bottom:22px}
-.hero h1 .c-green{color:var(--green)}
-.hero h1 .c-yellow{color:var(--yellow)}
-.hero-sub{font-size:clamp(.9rem,1.5vw,1.15rem);color:rgba(255,255,255,.58);max-width:540px;margin-bottom:36px;line-height:1.65}
-.hero-cta-row{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:48px}
-.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 30px;background:var(--green);color:var(--on-brand);border-radius:40px;font-size:.88rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border:none;cursor:pointer;transition:all .25s;font-family:'Inter',sans-serif}
-.btn-primary:hover{background:var(--green2);transform:translateY(-2px)}
-.btn-outline{display:inline-flex;align-items:center;gap:8px;padding:14px 30px;background:transparent;color:var(--white);border-radius:40px;font-size:.88rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border:1px solid rgba(255,255,255,.18);cursor:pointer;transition:all .25s;font-family:'Inter',sans-serif}
-.btn-outline:hover{border-color:var(--yellow);color:var(--yellow)}
-.hero-stats{display:flex;gap:48px;flex-wrap:wrap}
-.h-stat strong{font-family:'Anton',sans-serif;font-size:2rem;color:var(--green);display:block;line-height:1}
-.h-stat span{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+/* ---------- BOTONES ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 26px;border-radius:var(--r-full);font-size:.88rem;font-weight:500;cursor:pointer;border:1px solid transparent;transition:transform var(--t1) var(--ease),background var(--t1) var(--ease),border-color var(--t1) var(--ease),color var(--t1) var(--ease)}
+.btn .ic{width:1.05em;height:1.05em}
+.btn-solid{background:var(--text);color:var(--bg);font-weight:600}
+.btn-solid:hover{transform:translateY(-2px);background:#fff}
+.btn-ghost{background:transparent;color:var(--text);border-color:var(--stroke-2)}
+.btn-ghost:hover{transform:translateY(-2px);border-color:var(--a1);color:var(--a1)}
+.btn-sm{padding:10px 20px;font-size:.8rem}
 
-/* MARQUEE 1 */
-.marquee-wrap{overflow:hidden;background:var(--green);padding:13px 0}
-.marquee-track{display:flex;white-space:nowrap;animation:marquee 28s linear infinite}
-.marquee-item{display:inline-flex;align-items:center;gap:16px;padding:0 24px;font-family:'Anton',sans-serif;font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase;color:var(--on-brand)}
-.marquee-item .sep{opacity:.4}
+/* ---------- PANTALLA DE CARGA ---------- */
+.loader{position:fixed;inset:0;z-index:var(--z-load);background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--s6);transition:opacity .8s var(--ease),visibility .8s}
+.loader.done{opacity:0;visibility:hidden}
+.loader-word{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:clamp(2.4rem,8vw,5rem);line-height:1;transition:opacity .3s var(--ease),filter .3s var(--ease)}
+.loader-word.swap{opacity:0;filter:blur(8px)}
+.loader-count{font-size:.8rem;font-weight:500;letter-spacing:.3em;color:var(--muted);font-variant-numeric:tabular-nums}
+.loader-bar{width:min(240px,60vw);height:2px;background:var(--stroke);border-radius:2px;overflow:hidden}
+.loader-bar i{display:block;height:100%;width:0;background:var(--grad);border-radius:2px}
+
+/* ---------- NAVBAR PILL ---------- */
+.nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:var(--z-nav);width:calc(100% - 2*var(--pad));max-width:1080px;
+ display:flex;align-items:center;gap:var(--s4);padding:9px 9px 9px 18px;
+ background:hsl(0 0% 8% / .72);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);
+ border:1px solid var(--stroke);border-radius:var(--r-full);
+ transition:background var(--t2) var(--ease),border-color var(--t2) var(--ease)}
+.nav.scrolled{background:hsl(0 0% 6% / .88);border-color:var(--stroke-2)}
+.nav-logo{display:flex;align-items:center;gap:11px;font-size:.95rem;font-weight:500;letter-spacing:-.01em}
+/* Anillo con el gradiente acento */
+.logo-ring{width:30px;height:30px;border-radius:50%;background:var(--grad);display:grid;place-items:center;flex-shrink:0}
+.logo-ring i{width:24px;height:24px;border-radius:50%;background:var(--bg);display:grid;place-items:center;font-style:normal;font-size:.72rem;font-weight:600;letter-spacing:.02em}
+.nav-links{display:flex;align-items:center;gap:var(--s6);margin-left:auto}
+.nav-links a{font-size:.82rem;color:var(--muted);transition:color var(--t1) var(--ease)}
+.nav-links a:hover{color:var(--text)}
+.nav>.btn{margin-left:var(--s2)}
+.nav-links:not(:last-child)~.btn{margin-left:var(--s2)}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;padding:calc(var(--s28) + 40px) 0 var(--s16)}
+.hero-media{position:absolute;inset:0;z-index:var(--z-base);background:var(--bg)}
+.hero-media img,.hero-media video{width:100%;height:100%;object-fit:cover}
+.hero-media video{position:absolute;inset:0;opacity:0;transition:opacity 1s var(--ease)}
+.hero-media video.ready{opacity:1}
+/* Velo oscuro: garantiza el contraste del texto sobre cualquier fotograma */
+.hero-media::after{content:'';position:absolute;inset:0;background:
+ linear-gradient(180deg,hsl(0 0% 4% / .74) 0%,hsl(0 0% 4% / .62) 40%,hsl(0 0% 4% / .94) 100%),
+ linear-gradient(90deg,hsl(0 0% 4% / .86) 0%,hsl(0 0% 4% / .44) 70%)}
+.hero-in{position:relative;z-index:var(--z-raised);width:100%}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:9px;margin-bottom:var(--s6);color:var(--muted-media)}
+.hero-eyebrow .pulse{width:7px;height:7px;border-radius:50%;background:var(--a1);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}
+.hero h1{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:clamp(2.8rem,8.5vw,6.5rem);line-height:.98;margin-bottom:var(--s5);text-wrap:balance}
+.hero h1 .word{display:inline-block}
+.hero-rot{font-size:clamp(1.05rem,2.4vw,1.6rem);font-weight:300;color:var(--text);margin-bottom:var(--s5)}
+.hero-rot .rot{color:var(--a1);display:inline-block;min-width:5.5ch;transition:opacity var(--t1) var(--ease),filter var(--t1) var(--ease)}
+.hero-rot .rot.swap{opacity:0;filter:blur(6px)}
+.hero-desc{font-size:1rem;font-weight:300;color:var(--muted-media);max-width:52ch;line-height:1.75;margin-bottom:var(--s8)}
+.hero-cta{display:flex;gap:var(--s3);flex-wrap:wrap}
+.scroll-ind{position:absolute;bottom:var(--s6);right:var(--pad);z-index:var(--z-raised);display:flex;flex-direction:column;align-items:center;gap:10px;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.scroll-ind .track{width:1px;height:52px;background:var(--stroke-2);overflow:hidden;position:relative}
+.scroll-ind .track i{position:absolute;left:0;top:0;width:100%;height:40%;background:var(--grad);animation:scroll-run 2.2s var(--ease) infinite}
+@keyframes scroll-run{0%{transform:translateY(-100%)}100%{transform:translateY(250%)}}
+
+/* ---------- SERVICIOS (bento con foto) ---------- */
+.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--s4)}
+.svc{position:relative;overflow:hidden;border-radius:var(--r-lg);border:1px solid var(--stroke);background:var(--surface);min-height:240px;display:flex;flex-direction:column;justify-content:flex-end;isolation:isolate;
+ transition:transform var(--t2) var(--ease),border-color var(--t2) var(--ease)}
+.svc:hover{transform:translateY(-4px);border-color:var(--stroke-2)}
+.svc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform var(--t3) var(--ease),filter var(--t3) var(--ease);filter:grayscale(.35) brightness(.55)}
+.svc:hover img{transform:scale(1.05);filter:grayscale(0) brightness(.62)}
+.svc::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,hsl(0 0% 4% / .12) 0%,hsl(0 0% 4% / .55) 55%,hsl(0 0% 4% / .93) 100%)}
+/* Borde con gradiente en hover (gradient-shift) */
+.svc::after{content:'';position:absolute;inset:0;border-radius:var(--r-lg);padding:1px;background:var(--grad);background-size:200% 100%;
+ -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;
+ opacity:0;transition:opacity var(--t2) var(--ease);pointer-events:none}
+.svc:hover::after{opacity:1;animation:grad-shift 3s linear infinite}
+@keyframes grad-shift{from{background-position:0% 0}to{background-position:200% 0}}
+.svc-body{position:relative;padding:var(--s16) var(--s6) var(--s6);display:flex;flex-direction:column;gap:6px;background:linear-gradient(180deg,hsl(0 0% 4% / 0) 0%,hsl(0 0% 4% / .88) 40%,hsl(0 0% 4% / .96) 100%)}
+.svc-kicker{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--a1)}
+.svc h3{font-size:1.3rem;font-weight:500;letter-spacing:-.01em;line-height:1.2}
+.svc p{font-size:.85rem;font-weight:300;color:var(--muted-media);line-height:1.6;max-width:44ch}
+.svc-see{display:flex;align-items:center;gap:8px;margin-top:var(--s3);font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:1.05rem;color:var(--text);
+ opacity:0;transform:translateY(10px);transition:opacity var(--t2) var(--ease),transform var(--t2) var(--ease)}
+.svc:hover .svc-see,.svc:focus-within .svc-see{opacity:1;transform:none}
+.svc-see .ic{width:16px;height:16px;color:var(--a1)}
+.svc-price{font-size:.72rem;color:var(--muted-media);margin-top:var(--s2)}
+
+.svc.b-tall{grid-column:span 6;grid-row:span 2;min-height:520px}
+.svc.b-wide{grid-column:span 6}
+.svc.b-half{grid-column:span 3}
+
+/* ---------- GALERÍA PARALLAX ---------- */
+.galeria{overflow:hidden}
+.g-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4);align-items:start}
+.g-col{display:flex;flex-direction:column;gap:var(--s4);will-change:transform}
+.g-item{position:relative;border:0;padding:0;background:var(--surface);border-radius:var(--r-md);overflow:hidden;cursor:zoom-in;display:block;width:100%}
+.g-item img{width:100%;height:auto;transition:transform var(--t3) var(--ease),filter var(--t3) var(--ease);filter:grayscale(.3) brightness(.8)}
+.g-item:hover img{transform:scale(1.04);filter:grayscale(0) brightness(1)}
+.g-cap{position:absolute;left:0;right:0;bottom:0;padding:var(--s8) var(--s5) var(--s5);background:linear-gradient(0deg,hsl(0 0% 4% / .94) 30%,transparent);
+ font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:1rem;text-align:left;color:var(--text);
+ opacity:0;transition:opacity var(--t2) var(--ease)}
+.g-item:hover .g-cap,.g-item:focus-visible .g-cap{opacity:1}
+
+/* Lightbox */
+.lightbox{border:0;padding:0;background:transparent;max-width:min(92vw,1100px);max-height:92vh;overflow:visible;color:var(--text)}
+.lightbox::backdrop{background:hsl(0 0% 2% / .92);backdrop-filter:blur(6px)}
+.lightbox img{width:100%;height:auto;max-height:84vh;object-fit:contain;border-radius:var(--r-md)}
+.lightbox-cap{margin-top:var(--s3);text-align:center;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:1rem}
+.lightbox-close{position:absolute;top:-14px;right:-14px;width:40px;height:40px;border-radius:50%;background:var(--text);color:var(--bg);border:0;cursor:pointer;display:grid;place-items:center}
+.lightbox-close .ic{width:16px;height:16px;stroke-width:2.2}
+
+/* ---------- FRANJA DE CONFIANZA ---------- */
+.confianza{border-top:1px solid var(--stroke);border-bottom:1px solid var(--stroke)}
+.conf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--stroke)}
+.conf-item{background:var(--bg);padding:var(--s12) var(--s6);display:flex;flex-direction:column;gap:var(--s3)}
+.conf-item .ic{width:26px;height:26px;color:var(--a1)}
+.conf-item h3{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:1.5rem}
+.conf-item p{font-size:.86rem;font-weight:300;color:var(--muted);line-height:1.65;max-width:34ch}
+
+/* ---------- CONTACTO + MARQUEE ---------- */
+.marquee{overflow:hidden;padding:var(--s10) 0;border-bottom:1px solid var(--stroke)}
+.marquee-track{display:flex;width:max-content;white-space:nowrap;animation:marquee 26s linear infinite}
+.gsap-on .marquee-track{animation:none}
+.marquee-item{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:clamp(2rem,6vw,4.5rem);padding-right:.6em;color:var(--text)}
+.marquee-item .dot{color:var(--a2);padding-left:.3em}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* SERVICIOS */
-.servicios{padding:120px 52px;background:var(--black)}
-.section-header{max-width:1200px;margin:0 auto 60px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px}
-.section-tag{font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--green);margin-bottom:10px}
-.section-title{font-family:'Anton',sans-serif;font-size:clamp(2.2rem,4.5vw,4.8rem);line-height:.9;text-transform:uppercase;letter-spacing:-.02em}
-.section-title .c-yellow{color:var(--yellow)}
-.section-title .c-green{color:var(--green)}
-.section-subtitle{font-size:.88rem;color:var(--muted);line-height:1.7;max-width:360px}
-.serv-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.serv-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:30px;transition:transform .35s,border-color .35s;position:relative;overflow:hidden}
-.serv-card:hover{transform:translateY(-7px);border-color:var(--border-strong)}
-.serv-card.yellow-card{border-color:var(--border-yellow)}
-.serv-card.yellow-card:hover{border-color:var(--border-yellow-strong)}
-.serv-num{font-family:'Anton',sans-serif;font-size:3.5rem;color:var(--green-ghost);line-height:1;margin-bottom:-8px}
-.serv-card.yellow-card .serv-num{color:var(--yellow-ghost)}
-.serv-icon{font-size:2rem;margin-bottom:14px;display:block}
-.serv-card h3{font-family:'Anton',sans-serif;font-size:1.35rem;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:10px;color:var(--white)}
-.serv-card p{font-size:.84rem;color:var(--muted);line-height:1.68;margin-bottom:18px}
-.serv-link{font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green);display:inline-flex;align-items:center;gap:6px}
-.serv-card.yellow-card .serv-link{color:var(--yellow)}
+.contacto-in{display:grid;grid-template-columns:1.1fr .9fr;gap:var(--s20);align-items:start}
+.contacto h2{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:clamp(2rem,4.5vw,3.4rem);margin-bottom:var(--s5);text-wrap:balance}
+.contacto p.lead{font-size:1rem;font-weight:300;color:var(--muted);line-height:1.75;max-width:48ch;margin-bottom:var(--s8)}
+.contacto-cta{display:flex;gap:var(--s3);flex-wrap:wrap}
+.datos{display:flex;flex-direction:column;gap:var(--s5)}
+.dato{display:flex;gap:var(--s4);align-items:flex-start;padding-bottom:var(--s5);border-bottom:1px solid var(--stroke)}
+.dato .ic{width:20px;height:20px;color:var(--a1);margin-top:3px}
+.dato-k{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.dato-v{font-size:.95rem;font-weight:400}
+.dato-v small{display:block;font-size:.8rem;font-weight:300;color:var(--muted);margin-top:3px}
 
-/* SOBRE */
-.sobre{padding:120px 52px;background:#0d0d0d}
-.sobre-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.sobre-text h2{font-family:'Anton',sans-serif;font-size:clamp(2rem,4.2vw,4.2rem);text-transform:uppercase;line-height:.9;letter-spacing:-.02em;margin-bottom:22px}
-.sobre-text h2 .c-green{color:var(--green)}
-.sobre-text p{color:var(--muted);line-height:1.75;margin-bottom:14px;font-size:.92rem}
-.sobre-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
-.stat-box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px}
-.stat-box.yellow-box{border-color:var(--border-yellow)}
-.stat-num{font-family:'Anton',sans-serif;font-size:2.4rem;color:var(--green);line-height:1}
-.stat-box.yellow-box .stat-num{color:var(--yellow)}
-.stat-lbl{font-size:.72rem;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:.08em}
-.sobre-img-wrap{border-radius:20px;overflow:hidden;border:2px solid var(--border)}
-.sobre-img-wrap img{width:100%;height:520px;object-fit:cover;filter:saturate(1.2) contrast(1.04)}
+/* ---------- FOOTER GLASS ---------- */
+footer{background:hsl(0 0% 6% / .6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--stroke);padding:var(--s16) 0 var(--s8)}
+.foot-top{display:flex;justify-content:space-between;gap:var(--s10);flex-wrap:wrap;margin-bottom:var(--s12)}
+.foot-brand{max-width:34ch}
+.foot-brand .nav-logo{margin-bottom:var(--s4)}
+.foot-brand p:not(.nav-logo){font-size:.85rem;font-weight:300;color:var(--muted);line-height:1.7}
+.foot-cols{display:flex;gap:var(--s16);flex-wrap:wrap}
+.foot-col h3{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:var(--s4);font-weight:500}
+.foot-col a,.foot-col p{display:block;font-size:.86rem;font-weight:300;color:var(--text);margin-bottom:10px;transition:color var(--t1) var(--ease)}
+.foot-col a:hover{color:var(--a1)}
+.foot-bottom{border-top:1px solid var(--stroke);padding-top:var(--s6);display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;align-items:center}
+.foot-legal{font-size:.75rem;color:var(--muted)}
+.foot-social{display:flex;gap:var(--s3)}
+.foot-social a{width:36px;height:36px;border:1px solid var(--stroke);border-radius:50%;display:grid;place-items:center;color:var(--muted);transition:color var(--t1) var(--ease),border-color var(--t1) var(--ease)}
+.foot-social a:hover{color:var(--a1);border-color:var(--a1)}
+.foot-social .ic{width:16px;height:16px}
+.demo-note{margin-top:var(--s5);font-size:.72rem;color:var(--muted);line-height:1.6}
+.demo-note a{color:var(--a1)}
 
-/* EQUIPO */
-.equipo{padding:120px 52px;background:var(--black)}
-.equipo-grid{max-width:1200px;margin:60px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.vet-card{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:transform .35s,border-color .35s}
-.vet-card:hover{transform:translateY(-6px);border-color:var(--border-strong)}
-.vet-img{height:280px;object-fit:cover;width:100%;filter:saturate(1.1) contrast(1.04);transition:transform .6s}
-.vet-card:hover .vet-img{transform:scale(1.04)}
-.vet-body{padding:24px}
-.vet-role{font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin-bottom:6px}
-.vet-name{font-family:'Anton',sans-serif;font-size:1.5rem;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:8px}
-.vet-desc{font-size:.83rem;color:var(--muted);line-height:1.65}
-
-/* MARQUEE 2 */
-.marquee-wrap2{overflow:hidden;background:var(--yellow2);padding:13px 0}
-.marquee-track2{display:flex;white-space:nowrap;animation:marquee2 32s linear infinite}
-.marquee-item2{display:inline-flex;align-items:center;gap:14px;padding:0 22px;font-family:'Anton',sans-serif;font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase;color:var(--black)}
-@keyframes marquee2{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-/* URGENCIAS */
-.urgencias{padding:120px 52px;background:#0d0d0d}
-.urgencias-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:80px;align-items:center}
-.urgencias-text h2{font-family:'Anton',sans-serif;font-size:clamp(2rem,4.2vw,4rem);text-transform:uppercase;line-height:.9;letter-spacing:-.02em;margin-bottom:20px}
-.urgencias-text h2 .c-green{color:var(--green)}
-.urgencias-text p{color:var(--muted);line-height:1.75;margin-bottom:28px;font-size:.92rem}
-.urgencias-tel{font-family:'Anton',sans-serif;font-size:clamp(2rem,4vw,3.5rem);color:var(--green);letter-spacing:-.02em;margin-bottom:22px;display:block}
-.urgencias-checks{display:flex;flex-direction:column;gap:12px;margin-top:8px}
-.u-check{display:flex;align-items:flex-start;gap:12px;font-size:.86rem;color:rgba(255,255,255,.75);line-height:1.5}
-.u-check-dot{width:6px;height:6px;border-radius:50%;background:var(--yellow);flex-shrink:0;margin-top:.5em}
-.urgencias-box{background:var(--card);border:1px solid var(--border-yellow);border-radius:20px;padding:40px;text-align:center}
-.urg-icon{font-size:3.5rem;margin-bottom:16px;display:block}
-.urgencias-box h3{font-family:'Anton',sans-serif;font-size:2rem;text-transform:uppercase;margin-bottom:10px;color:var(--yellow)}
-.urgencias-box p{color:var(--muted);font-size:.88rem;line-height:1.7;margin-bottom:28px}
-.urgencias-box .btn-primary{width:100%;justify-content:center;font-size:.85rem}
-
-/* FAQ */
-.faq{padding:120px 52px;background:var(--black)}
-.faq-in{max-width:800px;margin:0 auto}
-.faq-list{margin-top:60px;display:flex;flex-direction:column;gap:0}
-.faq-item{border-top:1px solid rgba(255,255,255,.06);overflow:hidden}
-.faq-item:last-child{border-bottom:1px solid rgba(255,255,255,.06)}
-.faq-q{width:100%;background:none;border:none;padding:24px 0;display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;text-align:left;font-family:'Inter',sans-serif}
-.faq-q-text{font-size:.95rem;font-weight:600;color:var(--white);line-height:1.45}
-.faq-icon{width:28px;height:28px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem;color:var(--green);transition:transform .3s,background .3s}
-.faq-item.open .faq-icon{transform:rotate(45deg);background:var(--green);color:var(--on-brand);border-color:var(--green)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
-.faq-item.open .faq-a{max-height:300px}
-.faq-a p{font-size:.87rem;color:var(--muted);line-height:1.75;padding:0 0 22px}
-
-/* CTA */
-.cta-sec{padding:120px 52px;background:#0d0d0d;text-align:center;position:relative;overflow:hidden}
-.cta-sec::before{content:'CUIDAMOS';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:'Anton',sans-serif;font-size:clamp(6rem,18vw,18rem);color:var(--white);opacity:.025;white-space:nowrap;pointer-events:none;letter-spacing:-.04em}
-.cta-sec .wrap{position:relative;z-index:2;max-width:700px;margin:0 auto}
-.cta-sec h2{font-family:'Anton',sans-serif;font-size:clamp(2.2rem,5.5vw,5.5rem);text-transform:uppercase;line-height:.9;letter-spacing:-.02em;margin-bottom:16px}
-.cta-sec h2 .c-green{color:var(--green)}
-.cta-sec h2 .c-yellow{color:var(--yellow)}
-.cta-sec p{color:var(--muted);margin-bottom:36px;font-size:1rem;line-height:1.7}
-.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-
-/* FOOTER */
-footer{background:#000;border-top:1px solid var(--border);padding:60px 52px 36px}
-.footer-in{max-width:1200px;margin:0 auto}
-.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
-.footer-brand .logo{font-family:'Anton',sans-serif;font-size:1.5rem;color:var(--white);margin-bottom:14px}
-.footer-brand .logo span{color:var(--green)}
-.footer-brand p{font-size:.82rem;color:var(--muted);line-height:1.7;max-width:260px}
-.footer-col h4{font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--white);margin-bottom:16px}
-.footer-col a, .footer-col p{font-size:.82rem;color:var(--muted);display:block;margin-bottom:8px;transition:color .2s}
-.footer-col a:hover{color:var(--green)}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.05);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
-.footer-copy{font-size:.72rem;color:rgba(255,255,255,.3)}
-.footer-copy a{color:var(--green)}
-.footer-badge{font-family:'Anton',sans-serif;font-size:.7rem;letter-spacing:.12em;color:rgba(255,255,255,.2);text-transform:uppercase}
-
-/* CHATBOT */
-.cb-fab{position:fixed;bottom:28px;right:28px;z-index:500;width:60px;height:60px;background:var(--green);border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px var(--green-glow);font-size:1.5rem;transition:all .25s;color:var(--on-brand)}
-.cb-fab:hover{transform:scale(1.1);background:var(--green2)}
-.cb-fab .notif{position:absolute;top:-2px;right:-2px;width:14px;height:14px;background:var(--yellow);border-radius:50%;border:2px solid var(--black);animation:blink 2s infinite}
-.cb-mod{position:fixed;bottom:100px;right:28px;z-index:499;width:360px;max-width:calc(100vw - 32px);background:#141414;border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.6);transform:scale(.85) translateY(20px);opacity:0;pointer-events:none;transition:all .3s;display:flex;flex-direction:column;max-height:600px}
-.cb-mod.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all}
-.cb-head{background:linear-gradient(135deg,var(--green-deep) 0%,var(--green-deeper) 100%);padding:16px 18px;display:flex;align-items:center;gap:12px}
-.cb-head-ava{width:38px;height:38px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
-.cb-head-info{flex:1}
-.cb-head-name{font-family:'Anton',sans-serif;font-size:1rem;letter-spacing:.02em;color:#fff}
-.cb-head-sub{font-size:.7rem;color:rgba(255,255,255,.75);margin-top:1px}
-.cb-head-dot{width:8px;height:8px;border-radius:50%;background:var(--yellow);flex-shrink:0}
-.cb-close{background:none;border:none;cursor:pointer;color:rgba(255,255,255,.7);font-size:1.3rem;line-height:1;transition:color .2s}
-.cb-close:hover{color:#fff}
-.cb-tabs{display:flex;border-bottom:1px solid rgba(255,255,255,.06);background:#111}
-.cb-tab{flex:1;padding:10px 6px;background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);transition:all .2s;border-bottom:2px solid transparent}
-.cb-tab.active-green{color:var(--green);border-bottom-color:var(--green)}
-.cb-tab.active-yellow{color:var(--yellow);border-bottom-color:var(--yellow)}
-.cb-body{flex:1;overflow-y:auto;padding:14px 14px 8px;display:flex;flex-direction:column;gap:10px;min-height:120px;max-height:180px}
-.cb-body::-webkit-scrollbar,.cb-panel::-webkit-scrollbar{width:4px}
-.cb-body::-webkit-scrollbar-track,.cb-panel::-webkit-scrollbar-track{background:transparent}
-.cb-body::-webkit-scrollbar-thumb,.cb-panel::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
-.msg{display:flex}
-.msg.bot{justify-content:flex-start}
-.msg.usr{justify-content:flex-end}
-.bub{max-width:82%;padding:10px 14px;border-radius:14px;font-size:.83rem;line-height:1.55;white-space:pre-line}
-.msg.bot .bub{background:#1c1c1c;color:var(--white);border-radius:14px 14px 14px 4px}
-.msg.usr .bub{background:var(--green);color:var(--on-brand);border-radius:14px 14px 4px 14px}
-
-/* Panel citas */
-.cb-panel{display:none;padding:12px 14px;gap:8px;flex-direction:column;overflow-y:auto;max-height:300px}
-.cb-panel.show{display:flex}
-.cita-btn{background:#1a1a1a;border:1px solid var(--border);border-radius:12px;padding:12px 16px;cursor:pointer;font-family:'Inter',sans-serif;font-size:.82rem;color:var(--white);text-align:left;display:flex;align-items:center;gap:10px;transition:all .2s}
-.cita-btn:hover{border-color:var(--green);background:#16211a;color:var(--green)}
-.cita-btn.yellow-btn{border-color:var(--border-yellow)}
-.cita-btn.yellow-btn:hover{border-color:var(--yellow);background:#211d14;color:var(--yellow)}
-.cita-btn .cb-icon{font-size:1.1rem;flex-shrink:0}
-.cita-btn .cb-label{font-weight:600;display:block;font-size:.82rem;margin-bottom:2px}
-.cita-btn .cb-sub{font-size:.72rem;color:var(--muted)}
-
-/* Panel texto */
-.cb-text-panel{display:none;padding:10px 14px 12px}
-.cb-text-panel.show{display:block}
-.cb-text-row{display:flex;gap:8px;align-items:center}
-.cb-input{flex:1;background:#1a1a1a;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:10px 14px;font-family:'Inter',sans-serif;font-size:.84rem;color:var(--white);outline:none;transition:border-color .2s}
-.cb-input:focus{border-color:var(--green)}
+/* ---------- CHAT ---------- */
+.cb-fab{position:fixed;bottom:22px;right:22px;z-index:var(--z-fab);height:52px;padding:0 20px 0 16px;border-radius:var(--r-full);border:1px solid var(--stroke-2);background:hsl(0 0% 8% / .9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:var(--text);cursor:pointer;display:flex;align-items:center;gap:10px;font-size:.85rem;font-weight:500;transition:transform var(--t1) var(--ease),border-color var(--t1) var(--ease)}
+.cb-fab:hover{transform:translateY(-2px);border-color:var(--a1)}
+.cb-fab .ic{width:18px;height:18px;color:var(--a1)}
+.cb-fab .live{width:7px;height:7px;border-radius:50%;background:var(--a1);animation:pulse 2s ease-in-out infinite}
+.cb{position:fixed;bottom:86px;right:22px;z-index:var(--z-modal);width:370px;max-width:calc(100vw - 28px);max-height:min(620px,calc(100svh - 120px));
+ background:var(--surface);border:1px solid var(--stroke-2);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;
+ box-shadow:0 28px 70px hsl(0 0% 0% / .7);opacity:0;transform:translateY(14px) scale(.97);pointer-events:none;
+ transition:opacity var(--t2) var(--ease),transform var(--t2) var(--ease)}
+.cb.open{opacity:1;transform:none;pointer-events:auto}
+.cb-head{display:flex;align-items:center;gap:var(--s3);padding:var(--s4) var(--s5);border-bottom:1px solid var(--stroke)}
+.cb-head .logo-ring{width:34px;height:34px}
+.cb-head .logo-ring i{width:27px;height:27px}
+.cb-name{font-size:.9rem;font-weight:500}
+.cb-sub{font-size:.72rem;color:var(--muted)}
+.cb-x{margin-left:auto;background:transparent;border:0;cursor:pointer;color:var(--muted);display:grid;place-items:center;width:32px;height:32px;border-radius:50%;transition:color var(--t1) var(--ease),background var(--t1) var(--ease)}
+.cb-x:hover{color:var(--text);background:var(--surface-2)}
+.cb-x .ic{width:15px;height:15px;stroke-width:2}
+.cb-log{flex:1;min-height:130px;max-height:220px;overflow-y:auto;padding:var(--s4) var(--s5);display:flex;flex-direction:column;gap:10px}
+.msg{max-width:86%;padding:10px 14px;border-radius:14px;font-size:.85rem;line-height:1.6;white-space:pre-line}
+.msg.bot{background:var(--surface-2);border-bottom-left-radius:4px;align-self:flex-start}
+.msg.usr{background:var(--grad);color:#08131f;font-weight:500;border-bottom-right-radius:4px;align-self:flex-end}
+.cb-chips{display:flex;flex-wrap:wrap;gap:var(--s2);padding:0 var(--s5)}
+.cb-chips:not(:empty){padding-bottom:var(--s4)}
+.chip{background:transparent;border:1px solid var(--stroke-2);border-radius:var(--r-full);padding:7px 14px;font-size:.78rem;color:var(--text);cursor:pointer;transition:border-color var(--t1) var(--ease),color var(--t1) var(--ease)}
+.chip:hover{border-color:var(--a1);color:var(--a1)}
+.cb-form{display:flex;gap:var(--s2);padding:var(--s3) var(--s5) var(--s4);border-top:1px solid var(--stroke)}
+.cb-input{flex:1;min-width:0;background:var(--bg);border:1px solid var(--stroke-2);border-radius:var(--r-full);padding:11px 16px;font-size:.85rem;outline:none;transition:border-color var(--t1) var(--ease)}
 .cb-input::placeholder{color:var(--muted)}
-.cb-send{width:38px;height:38px;border-radius:50%;background:var(--green);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;color:var(--on-brand);flex-shrink:0}
-.cb-send:hover{background:var(--green2);transform:scale(1.08)}
-.cb-foot2{background:#0e0e0e;border-top:1px solid rgba(255,255,255,.04);text-align:center;padding:8px;font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.2)}
+.cb-input:focus{border-color:var(--a1)}
+.cb-send{width:40px;height:40px;flex-shrink:0;border-radius:50%;border:0;background:var(--grad);color:#08131f;cursor:pointer;display:grid;place-items:center;transition:transform var(--t1) var(--ease)}
+.cb-send:hover{transform:scale(1.06)}
+.cb-send .ic{width:16px;height:16px;stroke-width:2}
+.cb-foot{padding:0 var(--s5) var(--s4);font-size:.66rem;color:var(--muted);text-align:center}
 
-/* RESPONSIVE */
-@media(max-width:900px){
- .nav{padding:14px 24px}
- .nav-links{display:none}
- .hero{padding:100px 24px 52px}
- .hero h1{font-size:clamp(3rem,14vw,6rem)}
- .marquee-wrap,.marquee-wrap2{display:none}
- .servicios,.sobre,.equipo,.urgencias,.faq,.cta-sec{padding:80px 24px}
- .serv-grid{grid-template-columns:1fr}
- .sobre-in{grid-template-columns:1fr;gap:40px}
- .sobre-img-wrap{display:none}
- .equipo-grid{grid-template-columns:1fr}
- .urgencias-in{grid-template-columns:1fr;gap:40px}
- .footer-top{grid-template-columns:1fr 1fr;gap:32px}
- .cta-btns{flex-direction:column;align-items:center}
- .cb-mod{right:12px;left:12px;width:auto}
- .cb-fab{bottom:20px;right:20px}
+/* ---------- REVEAL (mejora un estado ya visible) ---------- */
+.js-reveal [data-rv]{opacity:0;transform:translateY(22px);transition:opacity var(--t3) var(--ease),transform var(--t3) var(--ease);transition-delay:var(--d,0ms)}
+.js-reveal [data-rv].in{opacity:1;transform:none}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:1040px){
+ .svc.b-tall{grid-column:span 12;grid-row:span 1;min-height:340px}
+ .svc.b-wide{grid-column:span 12}
+ .svc.b-half{grid-column:span 6}
+ .contacto-in{grid-template-columns:1fr;gap:var(--s12)}
+ .conf-grid{grid-template-columns:1fr}
 }
-@media(max-width:600px){
- .hero-stats{gap:28px}
- .sobre-stats{grid-template-columns:1fr 1fr}
- .footer-top{grid-template-columns:1fr}
- .footer-bottom{flex-direction:column;text-align:center}
+@media(max-width:760px){
+ .section{padding:var(--s20) 0}
+ .nav-links{display:none}
+ .nav{padding:8px 8px 8px 14px}
+ .nav>.btn{margin-left:auto}
+ .hero{padding-top:calc(var(--s20) + 56px)}
+ /* En móvil el texto ocupa todo el ancho: el velo horizontal solo taparía la
+    foto sin proteger nada. Queda un velo base suave (la foto se ve) y un
+    segundo velo anclado al bloque de texto EN PÍXELES, no en porcentaje: así
+    el contraste no depende del alto de pantalla, que varía mucho entre
+    móviles. Medido sobre la imagen real a 640 y 844 px de alto. */
+ .hero-media::after{background:linear-gradient(180deg,hsl(0 0% 4% / .45) 0%,hsl(0 0% 4% / .30) 28%,hsl(0 0% 4% / .45) 100%)}
+ .hero-in::before{content:'';position:absolute;z-index:-1;left:0;right:0;top:-90px;bottom:-400px;
+  background:linear-gradient(180deg,hsl(0 0% 4% / 0) 0,hsl(0 0% 4% / .88) 90px,hsl(0 0% 4% / .94) 100%)}
+ .scroll-ind{display:none}
+ .svc.b-half{grid-column:span 12}
+ .g-grid{grid-template-columns:1fr}
+ .g-col{will-change:auto}
+ .foot-cols{gap:var(--s10)}
+ .hero-cta .btn,.contacto-cta .btn{flex:1 1 200px}
+ .cb{right:12px;left:12px;width:auto;bottom:80px}
+ .cb-fab{right:12px;bottom:14px}
+}
+@media(max-width:400px){
+ .marquee-item{font-size:1.7rem}
+}
+
+/* ---------- MOVIMIENTO REDUCIDO ---------- */
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+ .marquee-track{animation:none;transform:none}
+ .marquee{overflow-x:auto}
+ .loader{display:none}
+ .svc:hover,.btn:hover,.cb-fab:hover{transform:none}
+ .svc:hover img,.g-item:hover img{transform:none}
+ .hero-media video{display:none}
+ .scroll-ind .track i{animation:none;height:100%}
 }
 </style>
 </head>
 <body>
 
-<!-- DEMO STRIP -->
-<div class="demo-strip">
- DEMO · Clínica Veterinaria · WhiteMoon Agencia IA · <a href="https://whitemoon.es">whitemoon.es</a>
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+ <symbol id="i-paw" viewBox="0 0 24 24">
+  <ellipse cx="6.8" cy="10.4" rx="2.1" ry="2.7" transform="rotate(-20 6.8 10.4)"/>
+  <ellipse cx="11" cy="7.4" rx="2.1" ry="2.9"/>
+  <ellipse cx="15.6" cy="8.4" rx="2.1" ry="2.8" transform="rotate(16 15.6 8.4)"/>
+  <ellipse cx="19.2" cy="12.6" rx="1.9" ry="2.4" transform="rotate(30 19.2 12.6)"/>
+  <path d="M12.2 12.6c2.4.2 4.5 2 5.1 4 .6 2-.8 3.8-2.8 3.8-1.1 0-1.9-.4-2.9-.4s-1.8.4-2.9.4c-2 0-3.4-1.8-2.8-3.8.6-2 2.7-3.8 5.1-4Z"/>
+ </symbol>
+ <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 5.8l6.2 6.2-6.2 6.2"/></symbol>
+ <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 3h-2A2 2 0 0 0 2.5 5.2c.3 3.5 1.8 6.8 4.3 9.3s5.8 4 9.3 4.3a2 2 0 0 0 2.2-2v-2a2 2 0 0 0-1.7-2c-.8-.1-1.5-.3-2.2-.6a2 2 0 0 0-2.1.5l-.9.9a15 15 0 0 1-5.5-5.5l.9-.9a2 2 0 0 0 .5-2.1c-.3-.7-.5-1.4-.6-2.2a2 2 0 0 0-2-1.7Z"/></symbol>
+ <symbol id="i-chat" viewBox="0 0 24 24"><path d="M20.8 11.6a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.8-.9l-4.6 1.5 1.5-4.2a8.4 8.4 0 0 1-.9-3.8 8.4 8.4 0 0 1 8.4-9 8.4 8.4 0 0 1 8.4 8Z"/></symbol>
+ <symbol id="i-send" viewBox="0 0 24 24"><path d="M21.5 2.5 10.8 13.2"/><path d="M21.5 2.5 14.7 21.5l-3.9-8.3-8.3-3.9Z"/></symbol>
+ <symbol id="i-x" viewBox="0 0 24 24"><path d="m5.5 5.5 13 13M18.5 5.5l-13 13"/></symbol>
+ <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6.8v5.4l3.4 2"/></symbol>
+ <symbol id="i-badge" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5.4"/><path d="m8.2 13.6-1.4 7L12 18l5.2 2.6-1.4-7"/></symbol>
+ <symbol id="i-home" viewBox="0 0 24 24"><path d="M3.5 10.2 12 3.5l8.5 6.7V20a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1Z"/><path d="M9.5 21v-6h5v6"/></symbol>
+ <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10.4c0 5.9-8 11.8-8 11.8s-8-5.9-8-11.8a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10.2" r="3"/></symbol>
+ <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3.6 7.2 7.3 5.2a2 2 0 0 0 2.2 0l7.3-5.2"/></symbol>
+ <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></symbol>
+ <symbol id="i-fb" viewBox="0 0 24 24"><path d="M14.5 8.5h2.6V5.2h-2.6c-2.2 0-3.9 1.7-3.9 3.9v1.7H8v3.3h2.6V21h3.3v-6.9h2.6l.6-3.3h-3.2V9.4c0-.5.4-.9.9-.9Z"/></symbol>
+ <symbol id="i-wa" viewBox="0 0 24 24"><path d="M20.8 11.6a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.8-.9l-4.6 1.5 1.5-4.2a8.4 8.4 0 0 1-.9-3.8 8.4 8.4 0 0 1 8.4-9 8.4 8.4 0 0 1 8.4 8Z"/><path d="M9.3 9.1c.2-.5.4-.5.7-.5h.5c.2 0 .4 0 .6.5l.7 1.6c.1.2 0 .4-.1.5l-.4.5c-.1.2-.2.3-.1.5.2.4.7 1.1 1.3 1.6.7.6 1.3.8 1.6.9.2.1.4 0 .5-.1l.5-.6c.2-.2.3-.2.5-.1l1.5.8c.2.1.4.2.4.4s0 .8-.3 1.2c-.3.4-.9.7-1.4.8-.5 0-.9.2-3-.7s-3.4-3.1-3.5-3.2c-.1-.2-.9-1.2-.9-2.3s.5-1.6.7-1.8Z"/></symbol>
+</svg>
+
+<!-- PANTALLA DE CARGA -->
+<div class="loader" id="loader" role="status" aria-label="Cargando">
+ <p class="loader-word" id="loader-word">Cuidar</p>
+ <div class="loader-bar"><i id="loader-fill"></i></div>
+ <p class="loader-count"><span id="loader-count">000</span></p>
 </div>
 
-<!-- PRELOADER -->
-<div class="preloader" id="pre">
- <div class="pre-logo"> VET<span>24</span></div>
-</div>
-
-<!-- NAV -->
-<nav class="nav" id="nav">
- <a href="#top" class="nav-logo"><span class="paw"></span> Clínica <span>San Marcos</span></a>
+<!-- NAVBAR PILL -->
+<nav class="nav" id="nav" aria-label="Navegación principal">
+ <a class="nav-logo" href="#top">
+  <span class="logo-ring" aria-hidden="true"><i>L</i></span>
+  Lundé
+ </a>
  <div class="nav-links">
- <a href="#servicios">Servicios</a>
- <a href="#equipo">Equipo</a>
- <a href="#urgencias">Urgencias 24h</a>
- <a href="#faq">FAQ</a>
+  <a href="#top">Inicio</a>
+  <a href="#servicios">Servicios</a>
+  <a href="#contacto">Contacto</a>
  </div>
- <a href="tel:+34643199580" class="nav-cta"> 643 19 95 80</a>
+ <button class="btn btn-solid btn-sm" data-open-chat>Pedir cita</button>
 </nav>
+
+<main id="main">
 
 <!-- HERO -->
 <section class="hero" id="top">
- <div class="hero-bg">
- <video autoplay muted loop playsinline preload="none" poster="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=1200&q=60&auto=format&fit=crop">
- <source src="https://assets.mixkit.co/videos/47678/47678-720.mp4" type="video/mp4">
- </video>
+ <div class="hero-media">
+  <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1600&q=62&auto=format&fit=crop"
+       alt="Un corgi y un yorkshire corriendo juntos por un camino al atardecer"
+       width="1600" height="900" fetchpriority="high" decoding="async">
+  <video id="hero-video" muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1"></video>
  </div>
- <div class="hero-in">
- <div class="hero-tag">
- <span class="dot"></span>
- Urgencias 24h — Siempre contigo
+ <div class="hero-in wrap">
+  <p class="eyebrow hero-eyebrow"><span class="pulse" aria-hidden="true"></span> Urgencias 24 h · Centro de Madrid</p>
+  <h1><span class="word">Clínica</span> <span class="word">Veterinaria</span> <span class="word">Lundé</span></h1>
+  <p class="hero-rot">Cuidamos a tu <span class="rot" id="rot">perro</span></p>
+  <p class="hero-desc">Medicina veterinaria con calma y criterio. Consulta, vacunación, cirugía, diagnóstico y peluquería, con urgencias disponibles las 24 horas.</p>
+  <div class="hero-cta">
+   <button class="btn btn-solid" data-open-chat><svg class="ic"><use href="#i-paw"></use></svg> Pedir cita</button>
+   <a class="btn btn-ghost" href="tel:+34643199580"><svg class="ic"><use href="#i-phone"></use></svg> Urgencias 24h</a>
+  </div>
  </div>
- <h1>
- Cuidamos<br>
- a tu <span class="c-green">mascota</span><br>
- <span class="c-yellow">24 horas</span>
- </h1>
- <p class="hero-sub">
- Clínica veterinaria en el centro de Madrid desde 2003. Consulta, cirugía, vacunación, peluquería y urgencias. El cuidado que tu mascota merece.
- </p>
- <div class="hero-cta-row">
- <a href="tel:+34643199580" class="btn-primary"> Llamar ahora</a>
- <a href="https://wa.me/34643199580?text=Hola%2C+quiero+pedir+cita+en+la+Cl%C3%ADnica+San+Marcos" target="_blank" class="btn-outline"> WhatsApp</a>
- </div>
- <div class="hero-stats">
- <div class="h-stat"><strong>+3.500</strong><span>mascotas atendidas</span></div>
- <div class="h-stat"><strong>20 años</strong><span>cuidando Madrid</span></div>
- <div class="h-stat"><strong>24 h</strong><span>urgencias</span></div>
- <div class="h-stat"><strong>98%</strong><span>satisfacción</span></div>
- </div>
+ <div class="scroll-ind" aria-hidden="true">
+  <span class="track"><i></i></span>
+  Scroll
  </div>
 </section>
-
-<!-- MARQUEE 1 -->
-<div class="marquee-wrap">
- <div class="marquee-track">
- <span class="marquee-item"> Perros <span class="sep">·</span></span>
- <span class="marquee-item"> Gatos <span class="sep">·</span></span>
- <span class="marquee-item"> Exóticos <span class="sep">·</span></span>
- <span class="marquee-item">Urgencias 24h <span class="sep">·</span></span>
- <span class="marquee-item">Quirófano propio <span class="sep">·</span></span>
- <span class="marquee-item">Vacunación <span class="sep">·</span></span>
- <span class="marquee-item">Peluquería <span class="sep">·</span></span>
- <span class="marquee-item">Hospitalización <span class="sep">·</span></span>
- <span class="marquee-item"> Perros <span class="sep">·</span></span>
- <span class="marquee-item"> Gatos <span class="sep">·</span></span>
- <span class="marquee-item"> Exóticos <span class="sep">·</span></span>
- <span class="marquee-item">Urgencias 24h <span class="sep">·</span></span>
- <span class="marquee-item">Quirófano propio <span class="sep">·</span></span>
- <span class="marquee-item">Vacunación <span class="sep">·</span></span>
- <span class="marquee-item">Peluquería <span class="sep">·</span></span>
- <span class="marquee-item">Hospitalización <span class="sep">·</span></span>
- </div>
-</div>
 
 <!-- SERVICIOS -->
-<section class="servicios" id="servicios">
- <div class="section-header">
- <div>
- <div class="section-tag">01 — Nuestros servicios</div>
- <h2 class="section-title">Todo lo que tu <span class="c-yellow">mascota</span><br>necesita</h2>
- </div>
- <p class="section-subtitle">Atención veterinaria integral en el centro de Madrid, de la revisión rutinaria a la cirugía más delicada.</p>
- </div>
- <div class="serv-grid">
- <div class="serv-card">
- <div class="serv-num">01</div>
- <span class="serv-icon"></span>
- <h3>Consulta y diagnóstico</h3>
- <p>Revisiones, exploración completa y pruebas diagnósticas para detectar a tiempo cualquier problema de salud.</p>
- <span class="serv-link">Desde 35€ →</span>
- </div>
- <div class="serv-card">
- <div class="serv-num">02</div>
- <span class="serv-icon"></span>
- <h3>Vacunación y desparasitación</h3>
- <p>Calendario personalizado según edad y estilo de vida. Vacunas obligatorias y recomendadas siempre al día.</p>
- <span class="serv-link">Plan a medida →</span>
- </div>
- <div class="serv-card yellow-card">
- <div class="serv-num">03</div>
- <span class="serv-icon"></span>
- <h3>Cirugía veterinaria</h3>
- <p>Quirófano propio con monitorización anestésica para esterilizaciones, tejidos blandos y traumatología.</p>
- <span class="serv-link">Quirófano propio →</span>
- </div>
- <div class="serv-card yellow-card">
- <div class="serv-num">04</div>
- <span class="serv-icon"></span>
- <h3>Urgencias 24h</h3>
- <p>Atención inmediata las 24 horas, todos los días del año. Cuando tu mascota no puede esperar, estamos ahí.</p>
- <span class="serv-link">643 19 95 80 →</span>
- </div>
- <div class="serv-card">
- <div class="serv-num">05</div>
- <span class="serv-icon"></span>
- <h3>Peluquería canina y felina</h3>
- <p>Baño, corte e higiene con productos específicos para cada raza. Tu mascota sale guapa, limpia y sin estrés.</p>
- <span class="serv-link">Con o sin cita →</span>
- </div>
- <div class="serv-card">
- <div class="serv-num">06</div>
- <span class="serv-icon"></span>
- <h3>Hospitalización</h3>
- <p>Área de ingreso con monitorización y cuidados de enfermería para postoperatorios y pacientes en observación.</p>
- <span class="serv-link">Seguimiento continuo →</span>
- </div>
+<section class="section" id="servicios" aria-labelledby="servicios-h">
+ <div class="wrap">
+  <div class="section-head" data-rv>
+   <div>
+    <p class="eyebrow">Servicios</p>
+    <h2 class="section-title" id="servicios-h">Lo que hacemos por tu mascota</h2>
+   </div>
+   <p class="section-note">Atención veterinaria integral en un único sitio. Los precios son orientativos: siempre te damos presupuesto antes de cualquier prueba o tratamiento.</p>
+  </div>
+
+  <div class="bento" data-rv-group>
+
+   <article class="svc b-tall" data-rv>
+    <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=900&q=62&auto=format&fit=crop"
+         alt="Veterinaria explorando con las manos a un gato atigrado en consulta"
+         width="900" height="1040" loading="lazy" decoding="async">
+    <div class="svc-body">
+     <p class="svc-kicker">Siempre abierto</p>
+     <h3>Urgencias 24 h</h3>
+     <p>Atención inmediata a cualquier hora, todos los días del año. Veterinario de guardia y quirófano preparado.</p>
+     <p class="svc-price">Presupuesto previo antes de intervenir</p>
+     <span class="svc-see">Ver — <em>Urgencias</em> <svg class="ic"><use href="#i-arrow"></use></svg></span>
+    </div>
+   </article>
+
+   <article class="svc b-wide" data-rv>
+    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=900&q=62&auto=format&fit=crop"
+         alt="Veterinario con bata blanca y fonendoscopio en la clínica"
+         width="900" height="500" loading="lazy" decoding="async">
+    <div class="svc-body">
+     <p class="svc-kicker">Punto de partida</p>
+     <h3>Consulta general</h3>
+     <p>Exploración completa y orientación diagnóstica para entender qué le pasa a tu mascota.</p>
+     <p class="svc-price">Orientativo: desde 35 €</p>
+     <span class="svc-see">Ver — <em>Consulta</em> <svg class="ic"><use href="#i-arrow"></use></svg></span>
+    </div>
+   </article>
+
+   <article class="svc b-half" data-rv>
+    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=700&q=62&auto=format&fit=crop"
+         alt="Veterinaria sonriendo con bata blanca junto a la entrada de la clínica"
+         width="700" height="500" loading="lazy" decoding="async">
+    <div class="svc-body">
+     <p class="svc-kicker">Prevención</p>
+     <h3>Vacunación</h3>
+     <p>Calendario adaptado a la especie, la edad y el estilo de vida.</p>
+     <p class="svc-price">Orientativo: desde 20 €</p>
+     <span class="svc-see">Ver — <em>Vacunas</em> <svg class="ic"><use href="#i-arrow"></use></svg></span>
+    </div>
+   </article>
+
+   <article class="svc b-half" data-rv>
+    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=700&q=62&auto=format&fit=crop"
+         alt="Retrato de una profesional del equipo veterinario sobre fondo oscuro"
+         width="700" height="500" loading="lazy" decoding="async">
+    <div class="svc-body">
+     <p class="svc-kicker">Quirófano propio</p>
+     <h3>Cirugía</h3>
+     <p>Tejidos blandos, esterilizaciones y traumatología con monitorización anestésica.</p>
+     <p class="svc-price">Presupuesto detallado antes de operar</p>
+     <span class="svc-see">Ver — <em>Cirugía</em> <svg class="ic"><use href="#i-arrow"></use></svg></span>
+    </div>
+   </article>
+
+   <article class="svc b-wide" data-rv>
+    <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=900&q=62&auto=format&fit=crop"
+         alt="Golden retriever recién aseado sosteniendo una flor en la boca"
+         width="900" height="500" loading="lazy" decoding="async">
+    <div class="svc-body">
+     <p class="svc-kicker">Sin estrés</p>
+     <h3>Peluquería canina</h3>
+     <p>Baño, corte e higiene con producto específico para cada tipo de pelo.</p>
+     <p class="svc-price">Orientativo: desde 25 €</p>
+     <span class="svc-see">Ver — <em>Peluquería</em> <svg class="ic"><use href="#i-arrow"></use></svg></span>
+    </div>
+   </article>
+
+   <article class="svc b-wide" data-rv>
+    <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=900&q=62&auto=format&fit=crop"
+         alt="Gato blanco y negro asomado con gesto tranquilo"
+         width="900" height="500" loading="lazy" decoding="async">
+    <div class="svc-body">
+     <p class="svc-kicker">Respuestas claras</p>
+     <h3>Diagnóstico y análisis</h3>
+     <p>Analítica, imagen y pruebas complementarias para confirmar antes de tratar.</p>
+     <p class="svc-price">Presupuesto previo de cada prueba</p>
+     <span class="svc-see">Ver — <em>Diagnóstico</em> <svg class="ic"><use href="#i-arrow"></use></svg></span>
+    </div>
+   </article>
+
+  </div>
  </div>
 </section>
 
-<!-- SOBRE -->
-<section class="sobre" id="nosotros">
- <div class="sobre-in">
- <div class="sobre-text">
- <div class="section-tag">02 — Quiénes somos</div>
- <h2>20 años cuidando<br>Madrid <span class="c-green">con amor</span></h2>
- <p>Desde 2003, la Clínica Veterinaria San Marcos es un referente en el centro de Madrid. Combinamos medicina veterinaria de calidad con un trato cercano, porque sabemos que tu mascota es de la familia.</p>
- <p>Equipo colegiado en formación continua, instalaciones completas y presupuesto siempre por delante. Sin sorpresas, sin letra pequeña.</p>
- <div class="sobre-stats">
- <div class="stat-box">
- <div class="stat-num">+3.500</div>
- <div class="stat-lbl">mascotas atendidas</div>
- </div>
- <div class="stat-box yellow-box">
- <div class="stat-num">20+</div>
- <div class="stat-lbl">años de experiencia</div>
- </div>
- <div class="stat-box yellow-box">
- <div class="stat-num">24h</div>
- <div class="stat-lbl">urgencias siempre</div>
- </div>
- <div class="stat-box">
- <div class="stat-num">98%</div>
- <div class="stat-lbl">clientes satisfechos</div>
- </div>
- </div>
- </div>
- <div class="sobre-img-wrap">
- <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=800&q=70&auto=format&fit=crop" alt="Veterinaria atendiendo a un perro" loading="lazy" width="600" height="520">
- </div>
+<!-- GALERÍA PARALLAX -->
+<section class="section galeria" id="galeria" aria-labelledby="galeria-h">
+ <div class="wrap">
+  <div class="section-head" data-rv>
+   <div>
+    <p class="eyebrow">Galería</p>
+    <h2 class="section-title" id="galeria-h">Quienes pasan por aquí</h2>
+   </div>
+   <p class="section-note">Pacientes de la clínica. Pulsa cualquier imagen para verla más grande.</p>
+  </div>
+
+  <div class="g-grid" id="g-grid">
+   <div class="g-col" data-par="up">
+    <button class="g-item" data-full="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=1400&h=1750&q=70&auto=format&fit=crop" data-cap="Bulldog francés">
+     <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=700&h=875&q=62&auto=format&fit=crop" alt="Bulldog francés con sudadera amarilla sobre fondo azul" width="700" height="875" loading="lazy" decoding="async">
+     <span class="g-cap">Bulldog francés</span>
+    </button>
+    <button class="g-item" data-full="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=1400&h=1050&q=70&auto=format&fit=crop" data-cap="Labrador en revisión">
+     <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=700&h=525&q=62&auto=format&fit=crop" alt="Primer plano de un labrador chocolate relamiéndose" width="700" height="525" loading="lazy" decoding="async">
+     <span class="g-cap">Labrador en revisión</span>
+    </button>
+    <button class="g-item" data-full="https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?w=1400&h=1400&q=70&auto=format&fit=crop" data-cap="Gato de pelo largo">
+     <img src="https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?w=700&h=700&q=62&auto=format&fit=crop" alt="Gato de pelo largo con una mariposa posada en la cabeza" width="700" height="700" loading="lazy" decoding="async">
+     <span class="g-cap">Gato de pelo largo</span>
+    </button>
+   </div>
+   <div class="g-col" data-par="down">
+    <button class="g-item" data-full="https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=1400&h=1400&q=70&auto=format&fit=crop" data-cap="Gato y perro, misma sala de espera">
+     <img src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=700&h=700&q=62&auto=format&fit=crop" alt="Un gato y un perro tumbados juntos sobre la hierba" width="700" height="700" loading="lazy" decoding="async">
+     <span class="g-cap">Gato y perro, misma sala de espera</span>
+    </button>
+    <button class="g-item" data-full="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=1400&h=1750&q=70&auto=format&fit=crop" data-cap="Beagle, revisión anual">
+     <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=700&h=875&q=62&auto=format&fit=crop" alt="Beagle joven mirando a cámara con la lengua fuera" width="700" height="875" loading="lazy" decoding="async">
+     <span class="g-cap">Beagle, revisión anual</span>
+    </button>
+    <button class="g-item" data-full="https://images.unsplash.com/photo-1477884213360-7e9d7dcc1e48?w=1400&h=1050&q=70&auto=format&fit=crop" data-cap="Jack Russell, alta tras cirugía">
+     <img src="https://images.unsplash.com/photo-1477884213360-7e9d7dcc1e48?w=700&h=525&q=62&auto=format&fit=crop" alt="Jack Russell blanco y negro paseando por la calle" width="700" height="525" loading="lazy" decoding="async">
+     <span class="g-cap">Jack Russell, alta tras cirugía</span>
+    </button>
+   </div>
+  </div>
  </div>
 </section>
 
-<!-- EQUIPO -->
-<section class="equipo" id="equipo">
- <div class="section-header" style="max-width:1200px;margin:0 auto 0">
- <div>
- <div class="section-tag">03 — El equipo</div>
- <h2 class="section-title">Las manos que <span class="c-green">cuidan</span><br>de tu mascota</h2>
- </div>
- <p class="section-subtitle">Profesionales colegiados que aman a los animales tanto como tú.</p>
- </div>
- <div class="equipo-grid">
- <div class="vet-card">
- <img class="vet-img" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=70&auto=format&fit=crop" alt="Dra. Elena Castro" loading="lazy" width="400" height="280">
- <div class="vet-body">
- <div class="vet-role">Directora médica · Medicina interna</div>
- <div class="vet-name">Dra. Elena Castro</div>
- <p class="vet-desc">Fundadora de la clínica en 2003. Especialista en medicina interna y diagnóstico de pequeños animales.</p>
- </div>
- </div>
- <div class="vet-card">
- <img class="vet-img" src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=70&auto=format&fit=crop" alt="Dr. Pablo Herrera" loading="lazy" width="400" height="280">
- <div class="vet-body">
- <div class="vet-role">Cirugía y traumatología</div>
- <div class="vet-name">Dr. Pablo Herrera</div>
- <p class="vet-desc">Responsable del quirófano. Cirugía de tejidos blandos, traumatología y procedimientos de urgencia.</p>
- </div>
- </div>
- <div class="vet-card">
- <img class="vet-img" src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=600&q=70&auto=format&fit=crop" alt="Dra. Laura Ramírez" loading="lazy" width="400" height="280">
- <div class="vet-body">
- <div class="vet-role">Felinos y animales exóticos</div>
- <div class="vet-name">Dra. Laura Ramírez</div>
- <p class="vet-desc">Atención especializada en gatos, conejos, hurones, aves y reptiles con un enfoque libre de estrés.</p>
- </div>
- </div>
+<!-- FRANJA DE CONFIANZA -->
+<section class="confianza" aria-labelledby="confianza-h">
+ <h2 class="sr-only" id="confianza-h">Cómo trabajamos</h2>
+ <div class="wrap">
+  <div class="conf-grid" data-rv-group>
+   <div class="conf-item" data-rv>
+    <svg class="ic" aria-hidden="true"><use href="#i-clock"></use></svg>
+    <h3>Urgencias 24 h</h3>
+    <p>Servicio de guardia disponible a cualquier hora, todos los días del año.</p>
+   </div>
+   <div class="conf-item" data-rv>
+    <svg class="ic" aria-hidden="true"><use href="#i-badge"></use></svg>
+    <h3>Equipo colegiado</h3>
+    <p>Veterinarios colegiados en formación continua, con presupuesto siempre por delante.</p>
+   </div>
+   <div class="conf-item" data-rv>
+    <svg class="ic" aria-hidden="true"><use href="#i-home"></use></svg>
+    <h3>Presencial y a domicilio</h3>
+    <p>Consulta en clínica o visita en casa cuando desplazarse es lo peor para el animal.</p>
+   </div>
+  </div>
  </div>
 </section>
 
-<!-- MARQUEE 2 -->
-<div class="marquee-wrap2">
- <div class="marquee-track2">
- <span class="marquee-item2"> Perros ·</span>
- <span class="marquee-item2"> Gatos ·</span>
- <span class="marquee-item2"> Conejos ·</span>
- <span class="marquee-item2"> Aves ·</span>
- <span class="marquee-item2"> Reptiles ·</span>
- <span class="marquee-item2">Urgencias 24h ·</span>
- <span class="marquee-item2">Centro de Madrid ·</span>
- <span class="marquee-item2">Desde 2003 ·</span>
- <span class="marquee-item2"> Perros ·</span>
- <span class="marquee-item2"> Gatos ·</span>
- <span class="marquee-item2"> Conejos ·</span>
- <span class="marquee-item2"> Aves ·</span>
- <span class="marquee-item2"> Reptiles ·</span>
- <span class="marquee-item2">Urgencias 24h ·</span>
- <span class="marquee-item2">Centro de Madrid ·</span>
- <span class="marquee-item2">Desde 2003 ·</span>
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+ <div class="marquee-track" id="marquee-track">
+  <span class="marquee-item">Tu mascota en buenas manos <span class="dot">•</span></span>
+  <span class="marquee-item">Tu mascota en buenas manos <span class="dot">•</span></span>
+  <span class="marquee-item">Tu mascota en buenas manos <span class="dot">•</span></span>
+  <span class="marquee-item">Tu mascota en buenas manos <span class="dot">•</span></span>
+  <span class="marquee-item">Tu mascota en buenas manos <span class="dot">•</span></span>
+  <span class="marquee-item">Tu mascota en buenas manos <span class="dot">•</span></span>
  </div>
 </div>
 
-<!-- URGENCIAS -->
-<section class="urgencias" id="urgencias">
- <div class="urgencias-in">
- <div class="urgencias-text">
- <div class="section-tag">04 — Urgencias</div>
- <h2>¿Una urgencia?<br>Estamos <span class="c-green">siempre</span></h2>
- <p>Accidentes, intoxicaciones o malestar repentino: no esperes. Llámanos y te atendemos de inmediato, cualquier día, a cualquier hora.</p>
- <a href="tel:+34643199580" class="urgencias-tel">643 19 95 80</a>
- <div class="urgencias-checks">
- <div class="u-check"><span class="u-check-dot"></span>Atención inmediata las 24 horas, 365 días al año</div>
- <div class="u-check"><span class="u-check-dot"></span>Médico veterinario de guardia permanente</div>
- <div class="u-check"><span class="u-check-dot"></span>Quirófano disponible para emergencias</div>
- <div class="u-check"><span class="u-check-dot"></span>Hospitalización de urgencia con monitorización</div>
- <div class="u-check"><span class="u-check-dot"></span>Calle Mayor 45, centro de Madrid (Metro Sol / Ópera)</div>
- </div>
- </div>
- <div class="urgencias-box">
- <span class="urg-icon"></span>
- <h3>Urgencias ahora</h3>
- <p>Si tu mascota necesita atención inmediata, llámanos o escríbenos por WhatsApp. Estamos aquí.</p>
- <a href="tel:+34643199580" class="btn-primary" style="justify-content:center;width:100%;margin-bottom:12px"> Llamar urgencias</a>
- <a href="https://wa.me/34643199580?text=URGENCIA+veterinaria%2C+necesito+ayuda+ahora" target="_blank" class="btn-outline" style="justify-content:center;width:100%;border-color:var(--border-yellow-strong);color:var(--yellow)"> WhatsApp urgencias</a>
- </div>
- </div>
-</section>
-
-<!-- FAQ -->
-<section class="faq" id="faq">
- <div class="faq-in">
- <div class="section-tag" style="text-align:center">05 — Preguntas frecuentes</div>
- <h2 class="section-title" style="text-align:center;margin:10px 0 0">Resolvemos tus <span class="c-green">dudas</span></h2>
- <div class="faq-list" id="faq-list">
- <div class="faq-item">
- <button class="faq-q" onclick="toggleFaq(this)">
- <span class="faq-q-text">¿Cuánto cuesta una consulta veterinaria?</span>
- <span class="faq-icon">+</span>
- </button>
- <div class="faq-a"><p>La consulta general cuesta 35€ e incluye exploración completa y orientación diagnóstica. Las urgencias y pruebas se presupuestan siempre antes de realizarlas. Sin sorpresas.</p></div>
- </div>
- <div class="faq-item">
- <button class="faq-q" onclick="toggleFaq(this)">
- <span class="faq-q-text">¿Hacéis urgencias fuera de horario?</span>
- <span class="faq-icon">+</span>
- </button>
- <div class="faq-a"><p>Sí. Disponemos de servicio de urgencias veterinarias 24 horas, todos los días del año, incluidos festivos. Fuera del horario de clínica llama al 643 19 95 80 y te atendemos de inmediato.</p></div>
- </div>
- <div class="faq-item">
- <button class="faq-q" onclick="toggleFaq(this)">
- <span class="faq-q-text">¿Qué vacunas necesita mi perro o gato?</span>
- <span class="faq-icon">+</span>
- </button>
- <div class="faq-a"><p>Los perros necesitan polivalente y rabia (obligatoria en Madrid); los gatos, trivalente y leucemia. Diseñamos un calendario personalizado según la edad y estilo de vida de tu mascota.</p></div>
- </div>
- <div class="faq-item">
- <button class="faq-q" onclick="toggleFaq(this)">
- <span class="faq-q-text">¿Tenéis quirófano y hospitalización propios?</span>
- <span class="faq-icon">+</span>
- </button>
- <div class="faq-a"><p>Sí. Disponemos de quirófano propio totalmente equipado con monitorización anestésica, y área de hospitalización con cuidados de enfermería para postoperatorios y observación continua.</p></div>
- </div>
- <div class="faq-item">
- <button class="faq-q" onclick="toggleFaq(this)">
- <span class="faq-q-text">¿Dónde estáis? ¿Tenéis aparcamiento?</span>
- <span class="faq-icon">+</span>
- </button>
- <div class="faq-a"><p>Estamos en Calle Mayor 45 (28013 Madrid), junto a Sol y Ópera. Metro L1, L2, L3 (Sol). Aparcamiento público en Calle Arenal a 2 minutos.</p></div>
- </div>
- <div class="faq-item">
- <button class="faq-q" onclick="toggleFaq(this)">
- <span class="faq-q-text">¿Atendéis animales exóticos?</span>
- <span class="faq-icon">+</span>
- </button>
- <div class="faq-a"><p>Sí, atendemos conejos, hurones, roedores, aves y reptiles. Cuéntanos qué mascota tienes al pedir cita y te asignamos al veterinario especialista.</p></div>
- </div>
- <div class="faq-item">
- <button class="faq-q" onclick="toggleFaq(this)">
- <span class="faq-q-text">¿Cuándo debo llevar a mi cachorro por primera vez?</span>
- <span class="faq-icon">+</span>
- </button>
- <div class="faq-a"><p>Lo ideal es la primera revisión entre las 6 y 8 semanas de vida para iniciar el calendario de vacunación, desparasitación y resolver tus primeras dudas de cuidados.</p></div>
- </div>
- <div class="faq-item">
- <button class="faq-q" onclick="toggleFaq(this)">
- <span class="faq-q-text">¿Cuál es el horario de la clínica?</span>
- <span class="faq-icon">+</span>
- </button>
- <div class="faq-a"><p>Lunes a viernes de 9:00 a 20:00h. Sábados de 9:00 a 14:00h. Urgencias disponibles las 24 horas todos los días del año llamando al 643 19 95 80.</p></div>
- </div>
- </div>
- </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-sec">
+<!-- CONTACTO -->
+<section class="section contacto" id="contacto" aria-labelledby="contacto-h">
  <div class="wrap">
- <div class="section-tag" style="margin-bottom:14px">El cuidado que tu mascota merece</div>
- <h2>Pide cita <span class="c-green">hoy</span><br>estamos <span class="c-yellow">aquí</span></h2>
- <p>Llámanos, escríbenos por WhatsApp o habla con NORA, nuestra asistente IA. Te ayudamos a reservar en menos de un minuto.</p>
- <div class="cta-btns">
- <a href="tel:+34643199580" class="btn-primary"> 643 19 95 80</a>
- <a href="https://wa.me/34643199580?text=Hola%2C+quiero+pedir+cita+en+la+Cl%C3%ADnica+San+Marcos" target="_blank" class="btn-outline" style="border-color:var(--border-yellow-strong);color:var(--yellow)"> Escribir por WhatsApp</a>
- </div>
+  <div class="contacto-in">
+   <div data-rv>
+    <p class="eyebrow">Contacto</p>
+    <h2 id="contacto-h">¿Hablamos de tu mascota?</h2>
+    <p class="lead">Cuéntanos qué necesita y te proponemos hora. Si es una urgencia, llama directamente: siempre hay alguien de guardia.</p>
+    <div class="contacto-cta">
+     <button class="btn btn-solid" data-open-chat><svg class="ic"><use href="#i-chat"></use></svg> Pedir cita por chat</button>
+     <a class="btn btn-ghost" href="tel:+34643199580"><svg class="ic"><use href="#i-phone"></use></svg> Llamar ahora</a>
+    </div>
+   </div>
+   <div class="datos" data-rv-group>
+    <div class="dato" data-rv>
+     <svg class="ic" aria-hidden="true"><use href="#i-phone"></use></svg>
+     <div><p class="dato-k">Teléfono y urgencias</p><p class="dato-v"><a href="tel:+34643199580">643 19 95 80</a><small>Disponible 24 h, todos los días</small></p></div>
+    </div>
+    <div class="dato" data-rv>
+     <svg class="ic" aria-hidden="true"><use href="#i-pin"></use></svg>
+     <div><p class="dato-k">Dónde estamos</p><p class="dato-v">Calle Mayor 45, 28013 Madrid<small>Metro Sol y Ópera · Parking en Calle Arenal</small></p></div>
+    </div>
+    <div class="dato" data-rv>
+     <svg class="ic" aria-hidden="true"><use href="#i-clock"></use></svg>
+     <div><p class="dato-k">Horario de clínica</p><p class="dato-v">Lun–Vie 9:00–20:00 · Sáb 9:00–14:00<small>Fuera de horario, servicio de urgencias</small></p></div>
+    </div>
+    <div class="dato" data-rv>
+     <svg class="ic" aria-hidden="true"><use href="#i-mail"></use></svg>
+     <div><p class="dato-k">Email</p><p class="dato-v"><a href="mailto:citas@clinicalunde.es">citas@clinicalunde.es</a></p></div>
+    </div>
+   </div>
+  </div>
  </div>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer>
- <div class="footer-in">
- <div class="footer-top">
- <div class="footer-brand">
- <div class="logo"> Clínica <span>San Marcos</span></div>
- <p>El cuidado que tu mascota merece. Medicina veterinaria integral y urgencias 24h en el centro de Madrid desde 2003.</p>
- </div>
- <div class="footer-col">
- <h4>Servicios</h4>
- <a href="#servicios">Consulta y diagnóstico</a>
- <a href="#servicios">Vacunación</a>
- <a href="#servicios">Cirugía veterinaria</a>
- <a href="#urgencias">Urgencias 24h</a>
- <a href="#servicios">Peluquería</a>
- </div>
- <div class="footer-col">
- <h4>Horario</h4>
- <p>Lun–Vie: 9:00–20:00</p>
- <p>Sábado: 9:00–14:00</p>
- <p style="color:var(--green)">Urgencias: 24h</p>
- </div>
- <div class="footer-col">
- <h4>Contacto</h4>
- <a href="tel:+34643199580">643 19 95 80</a>
- <a href="https://wa.me/34643199580" target="_blank">WhatsApp: 643 19 95 80</a>
- <p>citas@clinicasanmarcos.es</p>
- <p>Calle Mayor 45, 28013 Madrid</p>
- </div>
- </div>
- <div class="footer-bottom">
- <p class="footer-copy">© 2026 Clínica Veterinaria San Marcos · Madrid · Powered by <a href="https://whitemoon.es">WhiteMoon Agencia IA</a></p>
- <div class="footer-badge">DEMO · WHITEMOON · whitemoon.es</div>
- </div>
+ <div class="wrap">
+  <div class="foot-top">
+   <div class="foot-brand">
+    <p class="nav-logo"><span class="logo-ring" aria-hidden="true"><i>L</i></span> Lundé</p>
+    <p>Clínica veterinaria en el centro de Madrid. Medicina, cirugía, diagnóstico y urgencias 24 h para perros, gatos y animales exóticos.</p>
+   </div>
+   <div class="foot-cols">
+    <div class="foot-col">
+     <h3>Clínica</h3>
+     <a href="#servicios">Servicios</a>
+     <a href="#galeria">Galería</a>
+     <a href="#contacto">Contacto</a>
+    </div>
+    <div class="foot-col">
+     <h3>Contacto</h3>
+     <a href="tel:+34643199580">643 19 95 80</a>
+     <a href="mailto:citas@clinicalunde.es">citas@clinicalunde.es</a>
+     <p>Calle Mayor 45, Madrid</p>
+    </div>
+    <div class="foot-col">
+     <h3>Legal</h3>
+     <a href="#contacto">Aviso legal</a>
+     <a href="#contacto">Privacidad</a>
+     <a href="#contacto">Cookies</a>
+    </div>
+   </div>
+  </div>
+  <div class="foot-bottom">
+   <p class="foot-legal">© 2026 Clínica Veterinaria Lundé · Madrid</p>
+   <div class="foot-social">
+    <a href="#contacto" aria-label="Instagram"><svg class="ic"><use href="#i-ig"></use></svg></a>
+    <a href="#contacto" aria-label="Facebook"><svg class="ic"><use href="#i-fb"></use></svg></a>
+    <a href="https://wa.me/34643199580" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="ic"><use href="#i-wa"></use></svg></a>
+   </div>
+  </div>
+  <p class="demo-note">Web de demostración creada por <a href="https://whitemoon.es" target="_blank" rel="noopener">WhiteMoon Agencia IA</a>. La clínica, los datos de contacto y las imágenes son ilustrativos; los precios mostrados son orientativos y no constituyen una oferta.</p>
  </div>
 </footer>
 
-<!-- CHATBOT FAB -->
-<button class="cb-fab" id="cb-fab" onclick="openChat()" aria-label="Hablar con NORA">
-<svg viewBox="0 0 100 100" width="26" height="26" xmlns="http://www.w3.org/2000/svg" fill="currentColor" style="flex-shrink:0">
-  <ellipse cx="28" cy="72" rx="16" ry="20" transform="rotate(-15,28,72)"/>
-  <ellipse cx="72" cy="72" rx="16" ry="20" transform="rotate(15,72,72)"/>
-  <circle cx="10" cy="42" r="9"/>
-  <circle cx="28" cy="34" r="9"/>
-  <circle cx="46" cy="38" r="9"/>
-  <circle cx="54" cy="38" r="9"/>
-  <circle cx="72" cy="34" r="9"/>
-  <circle cx="90" cy="42" r="9"/>
-</svg>
- <span class="notif"></span>
+<!-- CHAT -->
+<button class="cb-fab" id="cb-fab" data-open-chat aria-label="Abrir el asistente para pedir cita">
+ <svg class="ic"><use href="#i-chat"></use></svg> Pedir cita
+ <span class="live" aria-hidden="true"></span>
 </button>
 
-<!-- CHATBOT MODAL -->
-<div class="cb-mod" id="cb-mod">
+<div class="cb" id="cb" role="dialog" aria-modal="false" aria-labelledby="cb-title" aria-hidden="true">
  <div class="cb-head">
- <div class="cb-head-ava"></div>
- <div class="cb-head-info">
- <div class="cb-head-name">NORA — Asistente IA</div>
- <div class="cb-head-sub">Clínica Veterinaria San Marcos</div>
+  <span class="logo-ring" aria-hidden="true"><i>L</i></span>
+  <div>
+   <p class="cb-name" id="cb-title">Asistente Lundé</p>
+   <p class="cb-sub">Pedir cita · respuesta inmediata</p>
+  </div>
+  <button class="cb-x" id="cb-x" aria-label="Cerrar el asistente"><svg class="ic"><use href="#i-x"></use></svg></button>
  </div>
- <span class="cb-head-dot"></span>
- <button class="cb-close" onclick="closeChat()" aria-label="Cerrar"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="1" y1="1" x2="13" y2="13"/><line x1="13" y1="1" x2="1" y2="13"/></svg></button>
- </div>
- <div class="cb-tabs">
- <button class="cb-tab active-green" id="tab-cita" onclick="showTab('cita')"> Cita</button>
- <button class="cb-tab" id="tab-servicios" onclick="showTab('servicios')"> Servicios</button>
- <button class="cb-tab" id="tab-texto" onclick="showTab('texto')"> Chat</button>
- </div>
- <div class="cb-body" id="cb-body"></div>
-
- <!-- Panel cita -->
- <div class="cb-panel show" id="panel-cita">
- <button class="cita-btn" onclick="cbCita('consulta')">
- <span class="cb-icon"></span>
- <div><span class="cb-label">Consulta general</span><span class="cb-sub">Desde 35€ · Exploración completa</span></div>
- </button>
- <button class="cita-btn" onclick="cbCita('vacuna')">
- <span class="cb-icon"></span>
- <div><span class="cb-label">Vacunación / desparasitación</span><span class="cb-sub">Plan personalizado por mascota</span></div>
- </button>
- <button class="cita-btn yellow-btn" onclick="cbCita('peluqueria')">
- <span class="cb-icon"></span>
- <div><span class="cb-label">Peluquería</span><span class="cb-sub">Baño, corte e higiene</span></div>
- </button>
- <button class="cita-btn yellow-btn" onclick="cbCita('exotico')">
- <span class="cb-icon"></span>
- <div><span class="cb-label">Animales exóticos</span><span class="cb-sub">Conejos, aves, reptiles...</span></div>
- </button>
- </div>
-
- <!-- Panel servicios -->
- <div class="cb-panel" id="panel-servicios">
- <button class="cita-btn" onclick="cbInfo('cirugia')">
- <span class="cb-icon"></span>
- <div><span class="cb-label">Cirugía veterinaria</span><span class="cb-sub">Quirófano propio · Presupuesto previo</span></div>
- </button>
- <button class="cita-btn yellow-btn" onclick="cbInfo('urgencias')">
- <span class="cb-icon"></span>
- <div><span class="cb-label">Urgencias 24h</span><span class="cb-sub">643 19 95 80 · Siempre disponibles</span></div>
- </button>
- <button class="cita-btn" onclick="cbInfo('hospitalizacion')">
- <span class="cb-icon"></span>
- <div><span class="cb-label">Hospitalización</span><span class="cb-sub">Monitorización continua</span></div>
- </button>
- <button class="cita-btn yellow-btn" onclick="cbInfo('precios')">
- <span class="cb-icon"></span>
- <div><span class="cb-label">Precios y horarios</span><span class="cb-sub">Sin sorpresas · Presupuesto previo</span></div>
- </button>
- </div>
-
- <!-- Panel texto -->
- <div class="cb-text-panel" id="panel-texto">
- <div class="cb-text-row">
- <input class="cb-input" id="cb-input" type="text" placeholder="Escribe tu pregunta..." autocomplete="off"
- onkeydown="if(event.key==='Enter')sendMsg()">
- <button class="cb-send" onclick="sendMsg()">
- <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
- <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
- </svg>
- </button>
- </div>
- </div>
- <div class="cb-foot2">CLÍNICA SAN MARCOS MADRID · DEMO WHITEMOON IA</div>
+ <div class="cb-log" id="cb-log" role="log" aria-live="polite" aria-label="Conversación"></div>
+ <div class="cb-chips" id="cb-chips"></div>
+ <form class="cb-form" id="cb-form">
+  <label class="sr-only" for="cb-input">Escribe tu respuesta</label>
+  <input class="cb-input" id="cb-input" type="text" autocomplete="off" placeholder="Escribe aquí...">
+  <button class="cb-send" type="submit" aria-label="Enviar"><svg class="ic"><use href="#i-send"></use></svg></button>
+ </form>
+ <p class="cb-foot">Demo WhiteMoon · solicitud de cita, no una reserva confirmada</p>
 </div>
+
+<!-- LIGHTBOX -->
+<dialog class="lightbox" id="lightbox" aria-label="Imagen ampliada">
+ <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar imagen"><svg class="ic"><use href="#i-x"></use></svg></button>
+ <img id="lightbox-img" src="" alt="">
+ <p class="lightbox-cap" id="lightbox-cap"></p>
+</dialog>
+
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"VeterinaryCare",
+ "name":"Clínica Veterinaria Lundé",
+ "description":"Clínica veterinaria en el centro de Madrid. Consulta, vacunación, cirugía, diagnóstico, peluquería y urgencias 24 h.",
+ "url":"https://nexusforgeia.github.io/WHITEMOON-VETERINARIOS/",
+ "image":"https://nexusforgeia.github.io/WHITEMOON-VETERINARIOS/og.jpg",
+ "telephone":"+34643199580",
+ "email":"citas@clinicalunde.es",
+ "priceRange":"€€",
+ "address":{"@type":"PostalAddress","streetAddress":"Calle Mayor 45","postalCode":"28013","addressLocality":"Madrid","addressRegion":"Madrid","addressCountry":"ES"},
+ "areaServed":{"@type":"City","name":"Madrid"},
+ "openingHoursSpecification":[
+  {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"20:00"},
+  {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"14:00"}
+ ],
+ "availableService":[
+  {"@type":"MedicalProcedure","name":"Consulta general veterinaria"},
+  {"@type":"MedicalProcedure","name":"Vacunación"},
+  {"@type":"MedicalProcedure","name":"Cirugía veterinaria"},
+  {"@type":"MedicalProcedure","name":"Urgencias veterinarias 24 horas"},
+  {"@type":"MedicalProcedure","name":"Peluquería canina"},
+  {"@type":"MedicalProcedure","name":"Diagnóstico y análisis"}
+ ]
+}
+</script>
 
 <script>
 'use strict';
+(function(){
 
-// PRELOADER
-window.addEventListener('load', function() {
- setTimeout(function(){ document.getElementById('pre').classList.add('hide'); }, 900);
-});
+var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+var $  = function(s,r){ return (r||document).querySelector(s); };
+var $$ = function(s,r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); };
 
-// NAV SCROLL
-window.addEventListener('scroll', function() {
- document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
-});
+/* ============================================================
+   1. PANTALLA DE CARGA — contador 000→100 (~2700 ms)
+   ============================================================ */
+var loader = $('#loader');
+function runLoader(done){
+ if (reduced) { loader.remove(); done(); return; }
+ var words = ['Cuidar','Sanar','Acompañar'];
+ var wEl = $('#loader-word'), cEl = $('#loader-count'), fEl = $('#loader-fill');
+ var DUR = 2700, t0 = performance.now(), wi = 0, finished = false;
 
-// FAQ ACCORDION
-function toggleFaq(btn) {
- var item = btn.closest('.faq-item');
- var isOpen = item.classList.contains('open');
- document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); });
- if (!isOpen) item.classList.add('open');
+ function end(){
+  if (finished) return; finished = true;
+  loader.classList.add('done');
+  setTimeout(function(){ if (loader.parentNode) loader.remove(); }, 850);
+  done();
+ }
+ function tick(now){
+  var p = Math.min((now - t0) / DUR, 1);
+  var eased = 1 - Math.pow(1 - p, 2.2);
+  cEl.textContent = String(Math.round(eased * 100)).padStart(3, '0');
+  fEl.style.width = (eased * 100) + '%';
+  var target = p < .34 ? 0 : p < .67 ? 1 : 2;
+  if (target !== wi) {
+   wi = target;
+   wEl.classList.add('swap');
+   setTimeout(function(){ wEl.textContent = words[wi]; wEl.classList.remove('swap'); }, 240);
+  }
+  if (p < 1) requestAnimationFrame(tick); else end();
+ }
+ requestAnimationFrame(tick);
+ setTimeout(end, DUR + 1800); // red de seguridad: nunca se queda tapada
 }
 
-// CHAT
-var greeted = false;
-var estado = 'libre';
-var datosCita = { tipo: '', nombre: '', telefono: '' };
+/* ============================================================
+   2. NAV
+   ============================================================ */
+(function(){
+ var nav = $('#nav'), ticking = false;
+ function upd(){ nav.classList.toggle('scrolled', scrollY > 40); ticking = false; }
+ addEventListener('scroll', function(){ if(!ticking){ ticking = true; requestAnimationFrame(upd); } }, {passive:true});
+ upd();
+})();
 
-// Edge Function pública (verify_jwt:false). Guarda el lead en leads_web y avisa
-// por Telegram server-side: aquí no viaja ninguna clave ni token.
+/* ============================================================
+   3. HERO — vídeo solo en desktop, palabra rotatoria
+   ============================================================ */
+function initHeroVideo(){
+ var v = $('#hero-video');
+ if (!v) return;
+ // Móvil o movimiento reducido: no se descarga ni un byte de vídeo.
+ if (reduced || !matchMedia('(min-width: 761px)').matches) { v.remove(); return; }
+ v.addEventListener('canplay', function(){ v.classList.add('ready'); }, {once:true});
+ v.addEventListener('error', function(){ if (v.parentNode) v.remove(); }, {once:true});
+ var s = document.createElement('source');
+ s.src = 'assets/hero.mp4'; s.type = 'video/mp4';
+ v.appendChild(s);
+ v.load();
+ var p = v.play();
+ if (p && p.catch) p.catch(function(){ /* el poster se queda visible */ });
+}
+
+function initRot(){
+ var rot = $('#rot');
+ if (!rot || reduced) return;
+ var w = ['perro','gato','mascota'], i = 0;
+ setInterval(function(){
+  rot.classList.add('swap');
+  setTimeout(function(){
+   i = (i + 1) % w.length;
+   rot.textContent = w[i];
+   rot.classList.remove('swap');
+  }, 200);
+ }, 2400);
+}
+
+/* ============================================================
+   4. REVEAL — respaldo sin GSAP (IntersectionObserver)
+   ============================================================ */
+function initReveal(){
+ if (reduced || !('IntersectionObserver' in window)) return;
+ document.documentElement.classList.add('js-reveal');
+ $$('[data-rv-group]').forEach(function(g){
+  $$('[data-rv]', g).forEach(function(el, i){ el.style.setProperty('--d', Math.min(i,5) * 80 + 'ms'); });
+ });
+ var io = new IntersectionObserver(function(es){
+  es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+ }, {rootMargin:'0px 0px -6% 0px', threshold:.05});
+ $$('[data-rv]').forEach(function(el){ io.observe(el); });
+}
+
+/* ============================================================
+   5. GSAP — solo se descarga si hay movimiento permitido
+   ============================================================ */
+function loadScript(src){
+ return new Promise(function(res, rej){
+  var s = document.createElement('script');
+  s.src = src; s.async = true; s.onload = res; s.onerror = rej;
+  document.head.appendChild(s);
+ });
+}
+
+// gsap.from() parte de opacidad 0. En una pestaña en segundo plano el rAF se
+// pausa y la animación se congela a medias, dejando el hero en blanco. Por eso
+// la intro solo arranca con el documento visible; si no, el contenido se queda
+// en su estado natural (visible) y la intro se lanza al volver a la pestaña.
+function whenVisible(fn){
+ if (document.visibilityState === 'visible') { fn(); return; }
+ var h = function(){
+  if (document.visibilityState === 'visible'){
+   document.removeEventListener('visibilitychange', h);
+   fn();
+  }
+ };
+ document.addEventListener('visibilitychange', h);
+}
+
+function heroIntro(){
+ var tl = gsap.timeline({defaults:{ease:'power3.out'}});
+ tl.from('.hero h1 .word', {y:'0.45em', opacity:0, filter:'blur(12px)', duration:1, stagger:.09})
+   .from('.hero-eyebrow', {y:14, opacity:0, duration:.7}, 0)
+   .from('.hero-rot',  {y:16, opacity:0, duration:.7}, .25)
+   .from('.hero-desc', {y:16, opacity:0, duration:.7}, .35)
+   .from('.hero-cta .btn', {y:16, opacity:0, duration:.6, stagger:.08}, .45)
+   .from('.scroll-ind', {opacity:0, duration:.6}, .8)
+   .from('.nav', {y:-20, opacity:0, duration:.7}, .1);
+}
+
+function initGsapMotion(){
+ if (reduced || !window.gsap) return;
+ whenVisible(heroIntro);
+
+ // Marquee con GSAP (la animación CSS queda anulada por .gsap-on)
+ var track = $('#marquee-track');
+ if (track) {
+  document.documentElement.classList.add('gsap-on');
+  gsap.to(track, {xPercent:-50, duration:26, ease:'none', repeat:-1});
+ }
+
+ if (!window.ScrollTrigger) return;
+ gsap.registerPlugin(ScrollTrigger);
+
+ // Parallax de la galería: amplitud pequeña y solo en pantallas anchas,
+ // para que nunca genere hueco ni desborde.
+ if (matchMedia('(min-width: 761px)').matches) {
+  $$('.g-col').forEach(function(col){
+   var dir = col.dataset.par === 'down' ? 1 : -1;
+   gsap.fromTo(col, {y: -34 * dir}, {
+    y: 34 * dir, ease:'none',
+    scrollTrigger:{trigger:'#g-grid', start:'top bottom', end:'bottom top', scrub:.6}
+   });
+  });
+ }
+}
+
+/* ============================================================
+   6. LIGHTBOX
+   ============================================================ */
+(function(){
+ var dlg = $('#lightbox'), img = $('#lightbox-img'), cap = $('#lightbox-cap');
+ if (!dlg || !dlg.showModal) return;
+ $$('.g-item').forEach(function(b){
+  b.addEventListener('click', function(){
+   img.src = b.dataset.full;
+   img.alt = $('img', b).alt;
+   cap.textContent = b.dataset.cap || '';
+   dlg.showModal();
+  });
+ });
+ $('#lightbox-close').addEventListener('click', function(){ dlg.close(); });
+ dlg.addEventListener('click', function(e){ if (e.target === dlg) dlg.close(); });
+ dlg.addEventListener('close', function(){ img.removeAttribute('src'); });
+})();
+
+/* ============================================================
+   7. ASISTENTE — captación de lead
+   Reutiliza el circuito ya existente del repo (Edge Function
+   vet-notify): inserta en leads_web con service role y avisa por
+   Telegram server-side. Aquí no viaja ninguna clave.
+   ============================================================ */
 var NOTIFY_URL = 'https://mlaqtniujnvfxcvcourm.supabase.co/functions/v1/vet-notify';
 
-// Un lead solo es válido con nombre Y teléfono (>= 9 dígitos). Sin ambos no se
-// avisa ni se guarda nada. El flujo ya pide los dos antes de llegar al envío;
-// este guard lo garantiza aunque el flujo cambie en el futuro.
-function leadValido(d) {
+// Un lead solo es válido con nombre Y teléfono (>= 9 dígitos).
+// La Edge Function aplica el mismo guard y responde 400 sin ambos.
+function leadValido(d){
  var nombre = (d.nombre || '').trim();
  var digits = (d.telefono || '').replace(/\D/g, '');
  return nombre !== '' && digits.length >= 9;
 }
 
-function openChat() {
- document.getElementById('cb-mod').classList.add('open');
- document.getElementById('cb-fab').style.display = 'none';
- if (!greeted) {
- greeted = true;
- setTimeout(function() {
- botSay('¡Hola! Soy NORA, la asistente de la Clínica Veterinaria San Marcos.\n\nPuedo ayudarte a pedir cita, darte info sobre nuestros servicios o resolver tus dudas. ¿En qué te ayudo?');
- }, 350);
+// text/plain evita el preflight CORS y permite reutilizar el mismo cuerpo en
+// sendBeacon; la Edge Function lo lee con req.json() igualmente.
+function enviarLead(d){
+ var body = JSON.stringify({
+  nombre: d.nombre, telefono: d.telefono,
+  servicio: d.servicio || 'cita', mensaje: d.mensaje || ''
+ });
+ try {
+  if (navigator.sendBeacon &&
+      navigator.sendBeacon(NOTIFY_URL, new Blob([body], {type:'text/plain;charset=UTF-8'}))) return;
+ } catch (e) { /* seguimos con fetch */ }
+ try {
+  fetch(NOTIFY_URL, {
+   method:'POST', keepalive:true,
+   headers:{'Content-Type':'text/plain;charset=UTF-8'},
+   body: body
+  }).catch(function(){});
+ } catch (e) { /* nunca interrumpe la conversación */ }
+}
+
+var cb = $('#cb'), fab = $('#cb-fab'), log = $('#cb-log'), chips = $('#cb-chips');
+var greeted = false, estado = 'inicio';
+var lead = { servicio:'', nombre:'', telefono:'', mensaje:'' };
+
+var SERVICIOS = [
+ {k:'consul', t:'Consulta general'},
+ {k:'vacun',  t:'Vacunación'},
+ {k:'cirug',  t:'Cirugía'},
+ {k:'urgen',  t:'Urgencias 24h'},
+ {k:'peluq',  t:'Peluquería canina'},
+ {k:'diagn',  t:'Diagnóstico y análisis'}
+];
+
+function say(txt, who){
+ var m = document.createElement('div');
+ m.className = 'msg ' + who;
+ m.textContent = txt;
+ log.appendChild(m);
+ log.scrollTop = log.scrollHeight;
+}
+function bot(txt, delay){ setTimeout(function(){ say(txt, 'bot'); }, delay || 320); }
+
+function setChips(items){
+ chips.innerHTML = '';
+ items.forEach(function(it){
+  var b = document.createElement('button');
+  b.type = 'button'; b.className = 'chip'; b.textContent = it.t;
+  b.addEventListener('click', function(){ pickServicio(it); });
+  chips.appendChild(b);
+ });
+}
+
+function pickServicio(it){
+ lead.servicio = it.t;
+ lead.mensaje = it.t;
+ say(it.t, 'usr');
+ chips.innerHTML = '';
+ estado = 'nombre';
+ bot('Perfecto: ' + it.t + '.\n¿A nombre de quién ponemos la cita?');
+ setTimeout(function(){ $('#cb-input').focus(); }, 400);
+}
+
+function openChat(){
+ cb.classList.add('open');
+ cb.setAttribute('aria-hidden','false');
+ fab.style.display = 'none';
+ $('#cb-x').focus();
+ if (!greeted){
+  greeted = true;
+  estado = 'servicio';
+  bot('Hola, soy el asistente de la Clínica Veterinaria Lundé.\n\n¿Para qué necesitas la cita?', 250);
+  setTimeout(function(){ setChips(SERVICIOS); }, 600);
  }
 }
-
-function closeChat() {
- document.getElementById('cb-mod').classList.remove('open');
- document.getElementById('cb-fab').style.display = 'flex';
+function closeChat(){
+ cb.classList.remove('open');
+ cb.setAttribute('aria-hidden','true');
+ fab.style.display = '';
+ fab.focus();
 }
+$$('[data-open-chat]').forEach(function(b){ b.addEventListener('click', openChat); });
+$('#cb-x').addEventListener('click', closeChat);
+addEventListener('keydown', function(e){
+ if (e.key === 'Escape' && cb.classList.contains('open')) closeChat();
+});
 
-function showTab(tab) {
- var tabs = ['cita','servicios','texto'];
- tabs.forEach(function(t) {
- document.getElementById('panel-' + t).classList.remove('show');
- var btn = document.getElementById('tab-' + t);
- btn.classList.remove('active-green','active-yellow');
- });
- document.getElementById('panel-' + tab).classList.add('show');
- var activeBtn = document.getElementById('tab-' + tab);
- activeBtn.classList.add(tab === 'servicios' ? 'active-yellow' : 'active-green');
- if (tab === 'texto') setTimeout(function(){ document.getElementById('cb-input').focus(); }, 100);
-}
-
-function botSay(txt) {
- var body = document.getElementById('cb-body');
- var m = document.createElement('div'); m.className = 'msg bot';
- var b = document.createElement('div'); b.className = 'bub'; b.textContent = txt;
- m.appendChild(b); body.appendChild(m);
- body.scrollTop = body.scrollHeight;
-}
-
-function usrSay(txt) {
- var body = document.getElementById('cb-body');
- var m = document.createElement('div'); m.className = 'msg usr';
- var b = document.createElement('div'); b.className = 'bub'; b.textContent = txt;
- m.appendChild(b); body.appendChild(m);
- body.scrollTop = body.scrollHeight;
-}
-
-var citaLabels = {
- 'consulta': 'Consulta general (35€)',
- 'vacuna': 'Vacunación / desparasitación',
- 'peluqueria': 'Peluquería canina/felina',
- 'exotico': 'Animales exóticos'
-};
-
-function cbCita(tipo) {
- datosCita.tipo = tipo;
- estado = 'nombre';
- showTab('texto');
- botSay('Has elegido: ' + citaLabels[tipo] + '\n\n¿A nombre de quién pedimos la cita? (tu nombre)');
-}
-
-function cbInfo(tipo) {
- showTab('texto');
- var msgs = {
- 'cirugia': 'Tenemos quirófano propio totalmente equipado con monitorización anestésica.\n\nRealizamos:\n• Esterilizaciones\n• Cirugía de tejidos blandos\n• Traumatología\n• Odontología veterinaria\n\nSiempre te damos presupuesto detallado antes de operar. ¿Quieres pedir cita de valoración?',
- 'urgencias': ' URGENCIAS 24H\n\nEstamos disponibles todos los días del año, a cualquier hora.\n\nLlama ahora: 643 19 95 80\n\nO escríbenos por WhatsApp y te atendemos de inmediato.',
- 'hospitalizacion': 'Nuestra área de hospitalización dispone de:\n\n• Monitorización continua 24h\n• Cuidados de enfermería especializados\n• Área separada por especies\n• Postoperatorio con seguimiento\n\n¿Necesitas más información?',
- 'precios': 'Nuestros precios:\n\n Consulta general — desde 35€\n Vacunación — desde 20€\n Peluquería — desde 25€\n Urgencias — presupuesto previo\n Cirugía — presupuesto siempre antes\n\nHorario:\nLun-Vie 9:00-20:00 · Sáb 9:00-14:00\nUrgencias: 24h todos los días'
- };
- setTimeout(function(){ botSay(msgs[tipo]); }, 200);
-}
-
-function sendMsg() {
- var inp = document.getElementById('cb-input');
- var txt = inp.value.trim();
+$('#cb-form').addEventListener('submit', function(e){
+ e.preventDefault();
+ var inp = $('#cb-input'), txt = inp.value.trim();
  if (!txt) return;
  inp.value = '';
- usrSay(txt);
+ say(txt, 'usr');
 
- if (estado === 'nombre') {
- datosCita.nombre = txt;
- estado = 'telefono';
- setTimeout(function(){ botSay('Perfecto, ' + txt + '! \n¿Tu número de teléfono para confirmar la cita?'); }, 400);
- return;
+ if (estado === 'nombre'){
+  lead.nombre = txt;
+  estado = 'telefono';
+  bot('Gracias, ' + txt + '. ¿Un teléfono para confirmarte la hora?');
+  return;
  }
 
- if (estado === 'telefono') {
- if (!/^\+?[\d\s]{9,}$/.test(txt.replace(/\s/g,''))) {
- setTimeout(function(){ botSay('Ese número no parece correcto. Inténtalo de nuevo.'); }, 400);
- return;
- }
- datosCita.telefono = txt;
+ if (estado === 'telefono'){
+  if (txt.replace(/\D/g,'').length < 9){
+   bot('Ese número no parece completo. ¿Lo repites?');
+   return;
+  }
+  lead.telefono = txt;
 
- // Sin nombre no hay lead: se vuelve a pedir en vez de enviar algo incompleto.
- if (!leadValido(datosCita)) {
- estado = 'nombre';
- setTimeout(function(){ botSay('Antes de cerrar la cita necesito tu nombre. ¿A nombre de quién la pedimos?'); }, 400);
- return;
- }
+  // Sin nombre no se envía nada: se vuelve a pedir.
+  if (!leadValido(lead)){
+   estado = 'nombre';
+   bot('Antes de cerrarla necesito tu nombre. ¿A nombre de quién la ponemos?');
+   return;
+  }
 
- estado = 'libre';
-
- fetch(NOTIFY_URL, {
- method: 'POST',
- headers: { 'Content-Type': 'application/json' },
- body: JSON.stringify({ nombre: datosCita.nombre, telefono: datosCita.telefono, servicio: datosCita.tipo || 'cita', mensaje: citaLabels[datosCita.tipo] || '' })
- }).catch(function(){});
-
- setTimeout(function(){
- botSay('¡Cita solicitada, ' + datosCita.nombre + '! \n\nHemos registrado tu solicitud. Nos ponemos en contacto contigo en breve para confirmar el horario.\n\n Calle Mayor 45 · 643 19 95 80');
- datosCita = { tipo: '', nombre: '', telefono: '' };
- }, 400);
- return;
+  enviarLead(lead);
+  estado = 'fin';
+  bot('Listo, ' + lead.nombre + '. Hemos registrado tu solicitud de cita para ' +
+      lead.servicio + '.\n\nTe llamamos en breve al ' + lead.telefono +
+      ' para confirmar la hora.\n\nSi es urgente, llama ya al 643 19 95 80.', 420);
+  setTimeout(function(){ lead = {servicio:'',nombre:'',telefono:'',mensaje:''}; }, 600);
+  return;
  }
 
- // Respuestas informativas KB
- var t = txt.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
- if (/hola|buenas|buenos|hey/.test(t)) {
- setTimeout(function(){ botSay('¡Hola! Soy NORA. ¿En qué puedo ayudarte? Puedes pedir cita, preguntar por servicios o preguntarme lo que necesites.'); }, 400);
- } else if (/precio|cuanto|coste|tarifa/.test(t)) {
- setTimeout(function(){ botSay('Precios orientativos:\n\n Consulta — desde 35€\n Vacunación — desde 20€\n Peluquería — desde 25€\n Urgencias — presupuesto previo\n\nSiempre te informamos antes de cualquier tratamiento.'); }, 400);
- } else if (/horario|abierto|cierra|cuando/.test(t)) {
- setTimeout(function(){ botSay('Horario clínica:\n\nLun–Vie: 9:00–20:00h\nSábado: 9:00–14:00h\nUrgencias: 24h todos los días del año '); }, 400);
- } else if (/donde|direccion|como llego|ubicacion/.test(t)) {
- setTimeout(function(){ botSay('Estamos en Calle Mayor 45 (28013 Madrid).\n\nJunto a Sol y Ópera \nMetro L1, L2, L3 — Sol\nAparcamiento en Calle Arenal (2 min)'); }, 400);
- } else if (/urgencia|emergencia|accidente|envenenado|intoxicacion/.test(t)) {
- setTimeout(function(){ botSay(' URGENCIAS — llama AHORA:\n\n 643 19 95 80\n\nEstamos disponibles las 24 horas, todos los días del año. No esperes.'); }, 300);
- } else if (/vacuna|vacunacion|desparasita/.test(t)) {
- setTimeout(function(){ botSay('El calendario de vacunación depende de la especie y edad:\n\n Perros: polivalente + rabia (obligatoria Madrid)\n Gatos: trivalente + leucemia\n\nDiseñamos un plan personalizado para tu mascota. ¿Quieres pedir cita?'); }, 400);
- } else if (/cirugia|quirofa|operacion|esteriliza/.test(t)) {
- setTimeout(function(){ botSay('Tenemos quirófano propio equipado con monitorización anestésica.\n\nCirugía de tejidos blandos, esterilizaciones, traumatología y odontología. Presupuesto siempre antes de operar.'); }, 400);
- } else if (/exotico|conejo|ave|reptil|loro|hurón|hamster/.test(t)) {
- setTimeout(function(){ botSay('¡Sí! Atendemos animales exóticos \n\nConejos, hurones, roedores, aves y reptiles. Cuéntanos qué mascota tienes y te asignamos al veterinario especialista Dra. Laura Ramírez.'); }, 400);
- } else if (/cita|reserva|pedir|cuando puedo/.test(t)) {
- setTimeout(function(){ botSay('Claro! Para pedir cita pulsa la pestaña CITA arriba y elige el servicio que necesitas. ¡En menos de un minuto te confirmamos!'); }, 400);
- showTab('cita');
- } else if (/peluqueria|bano|corte|higiene|pelo/.test(t)) {
- setTimeout(function(){ botSay('Servicio de peluquería canina y felina \n\nBaño, corte e higiene con productos específicos para cada raza. Tu mascota sale guapa y sin estrés.\n\nDesde 25€ · Con o sin cita previa.'); }, 400);
- } else if (/gracias|perfecto|genial|ok|vale/.test(t)) {
- setTimeout(function(){ botSay('¡De nada! Si necesitas algo más, aquí estaré. ¡Que tu mascota esté bien!'); }, 400);
- } else {
- setTimeout(function(){ botSay('No tengo esa info exacta, pero puedo ayudarte con citas, precios, horarios, servicios o urgencias.\n\nO llámanos directamente: 643 19 95 80'); }, 400);
+ if (estado === 'servicio'){
+  // Escribió en vez de pulsar un chip: se intenta casar con un servicio.
+  var t = txt.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  var hit = SERVICIOS.filter(function(s){ return t.indexOf(s.k) >= 0; })[0];
+  if (hit) { pickServicio(hit); return; }
+  bot('Puedo ayudarte con consulta, vacunación, cirugía, urgencias, peluquería o diagnóstico. Elige una opción abajo.');
+  setTimeout(function(){ setChips(SERVICIOS); }, 500);
+  return;
  }
+
+ bot('Si quieres otra cita, pulsa "Pedir cita". Para urgencias, llama al 643 19 95 80.');
+});
+
+/* ============================================================
+   8. ARRANQUE
+   ============================================================ */
+function start(){
+ initHeroVideo();
+ initRot();
+ // En móvil no se descarga GSAP: el marquee ya lo hace el CSS y los reveals
+ // el IntersectionObserver. Son ~70 KB que no aportan nada en pantalla pequeña.
+ if (reduced || !matchMedia('(min-width: 761px)').matches) return;
+ loadScript('https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js')
+  .then(function(){ return loadScript('https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js'); })
+  .then(initGsapMotion)
+  .catch(function(){ /* sin GSAP el sitio sigue completo: reveal por IntersectionObserver */ });
 }
+
+initReveal();
+runLoader(start);
+
+})();
 </script>
 </body>
 </html>
