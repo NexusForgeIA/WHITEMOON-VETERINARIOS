@@ -1,13 +1,19 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 
 // vet-notify — captura de lead + aviso por Telegram de una nueva SOLICITUD DE
-// CITA de la demo WhiteMoon · Clínica Veterinaria Lundé (asistente de la web).
+// CITA de la demo Clínica Veterinaria WhiteMoon (asistente de la web).
 //
 // A diferencia de dental-notify / chef-notify, aquí el INSERT en leads_web se
 // hace server-side: así el cliente no necesita ninguna clave de Supabase y el
 // index.html queda sin secretos de ningún tipo.
 //
-// Recibe (POST JSON): { nombre, telefono, servicio, mensaje, test? }
+// Recibe (POST JSON): { nombre, telefono, servicio, fecha, hora, fechaISO,
+//                        mensaje, test? }
+//
+// fecha/hora son el dia y la hora elegidos en la agenda del asistente. Son
+// OPCIONALES: un lead sin ellos entra igual, solo que el aviso no lleva esas
+// lineas. No se guardan en columnas propias de leads_web para no depender de
+// una migracion: viajan dentro de `mensaje`, que la tabla ya tiene.
 //
 // Secrets usados (nunca en cliente):
 //   - TELEGRAM_BOT_TOKEN        : token del bot de Telegram (obligatorio)
@@ -58,7 +64,12 @@ Deno.serve(async (req: Request) => {
   const nombre = String(data.nombre ?? "").trim();
   const telefono = String(data.telefono ?? "").trim();
   const servicio = String(data.servicio ?? "").trim();
-  const mensaje = String(data.mensaje ?? "").trim() || servicio;
+  const fecha = String(data.fecha ?? "").trim();
+  const hora = String(data.hora ?? "").trim();
+  // La cita ya montada sirve para el aviso y para el registro.
+  const cita = [fecha, hora].filter(Boolean).join(" a las ");
+  const mensaje = String(data.mensaje ?? "").trim() ||
+    [servicio, cita].filter(Boolean).join(" · ") || servicio;
   const soloPrueba = data.test === true;
 
   // Guard de lead incompleto — estándar WhiteMoon.
@@ -108,11 +119,14 @@ Deno.serve(async (req: Request) => {
   // 2) Aviso por Telegram
   const message =
     (soloPrueba
-      ? "🧪 PRUEBA — demo WhiteMoon · Clínica Veterinaria Lundé\n\n"
-      : "🐾 NUEVA SOLICITUD DE CITA — demo WhiteMoon · Clínica Veterinaria Lundé\n\n") +
+      ? "🧪 PRUEBA — demo Clínica Veterinaria WhiteMoon\n\n"
+      : "🐾 NUEVA SOLICITUD DE CITA — demo Clínica Veterinaria WhiteMoon\n\n") +
     `👤 ${nombre || "-"}\n` +
     `📱 ${telefono || "-"}\n` +
-    `🩺 Servicio: ${servicio || "-"}\n\n` +
+    `🩺 Servicio: ${servicio || "-"}\n` +
+    (fecha ? `📅 Día: ${fecha}\n` : "") +
+    (hora ? `🕐 Hora: ${hora}\n` : "") +
+    "\n" +
     "⚠️ Lead de una WEB DE DEMOSTRACIÓN: es una SOLICITUD, no una cita confirmada.\n" +
     (digits.length >= 9 ? `📲 CONTACTAR: https://wa.me/34${digits}` : "");
 

@@ -1,0 +1,44 @@
+# Clínica Veterinaria WhiteMoon
+
+> Clínica veterinaria en el centro de Madrid (Calle Mayor 45, 28013). Consulta y medicina general, vacunación y prevención, cirugía, urgencias 24 h, diagnóstico y análisis, y peluquería y bienestar. Atención presencial en clínica y a domicilio.
+
+## Aviso
+Web de DEMOSTRACIÓN creada por WhiteMoon Agencia IA. La clínica, la dirección, el horario y las imágenes son ilustrativos. Pedir cita a través del asistente genera una SOLICITUD, no una reserva confirmada.
+
+## Datos de contacto (NAP)
+- Nombre: Clínica Veterinaria WhiteMoon
+- Dirección: Calle Mayor 45, 28013 Madrid (centro)
+- Teléfono y urgencias: +34 643 199 580
+- WhatsApp: +34 643 199 580
+- Email: comercial@whitemoon.es
+- Horario de clínica: Lunes a viernes 10:00–13:30 y 16:00–19:30 · Sábados 10:00–13:30
+- Urgencias: 24 horas, todos los días del año
+- Zona de servicio: Madrid capital y alrededores
+- Web: https://nexusforgeia.github.io/WHITEMOON-VETERINARIOS/
+
+## Servicios
+- Consulta y medicina general: exploración completa sin prisa, orientación diagnóstica y plan de seguimiento adaptado a la edad y la raza.
+- Vacunación y prevención: calendario adaptado a especie, edad y estilo de vida. Desparasitación, microchip y revisiones de recuerdo.
+- Cirugía: tejidos blandos, esterilizaciones y traumatología en quirófano propio, con monitorización anestésica continua.
+- Urgencias 24 h: veterinario de guardia a cualquier hora, con presupuesto previo antes de intervenir.
+- Diagnóstico y análisis: analítica en la propia clínica, radiología digital y ecografía.
+- Peluquería y bienestar: baño, corte e higiene con producto específico por tipo de pelo, con manejo tranquilo.
+- Se atiende a perros, gatos y animales exóticos.
+
+## Cómo trabajamos
+- Urgencias 24 h: servicio de guardia disponible a cualquier hora, todos los días del año, con quirófano preparado.
+- Equipo colegiado: veterinarios colegiados en formación continua, con presupuesto siempre por delante.
+- Atención a domicilio: visita en casa cuando desplazar al animal es contraproducente.
+
+## Cómo pedir cita
+Llamar o escribir por WhatsApp al +34 643 199 580, o usar el asistente de la web. El asistente pide el servicio, muestra una agenda mensual para elegir DÍA y una lista de HORAS (lunes a viernes, 10:00–13:30 y 16:00–19:30, en tramos de 30 minutos), y luego recoge nombre y teléfono. Es una SOLICITUD de cita sujeta a confirmación de la clínica, no una reserva confirmada.
+
+## Preguntas frecuentes
+- ¿Cómo pido cita? Por teléfono, por WhatsApp o con el asistente de la web, eligiendo día y hora en la agenda.
+- ¿Hacéis urgencias 24 h? Sí, todos los días del año. Teléfono: +34 643 199 580.
+- ¿Qué horario tiene la consulta? Lunes a viernes de 10:00 a 13:30 y de 16:00 a 19:30; sábados de 10:00 a 13:30. Las urgencias son 24 h.
+- ¿Qué vacunas necesita mi mascota? El calendario se adapta a la especie, la edad y el estilo de vida del animal.
+- ¿Tenéis quirófano propio? Sí, con monitorización anestésica continua.
+- ¿Atendéis a domicilio? Sí, cuando desplazar al animal es contraproducente.
+- ¿En qué zonas atendéis? Centro de Madrid (Calle Mayor 45, 28013) y toda la capital.
+- ¿Atendéis animales exóticos? Sí, además de perros y gatos.

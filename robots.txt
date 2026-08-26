@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
+# legacy/ guarda las versiones anteriores de la demo: no son la web publicada.
+Disallow: /legacy/
 
 # IA / GEO
 User-agent: GPTBot
