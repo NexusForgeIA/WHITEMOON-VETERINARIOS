@@ -1,6 +1,6 @@
 # Clínica Veterinaria Lundé
 
-> Clínica veterinaria en el centro de Madrid (Calle Mayor 45, 28013). Consulta, vacunación, cirugía, diagnóstico, peluquería canina y urgencias veterinarias 24 horas. Atención presencial en clínica y a domicilio.
+> Clínica veterinaria en el centro de Madrid (Calle Mayor 45, 28013). Medicina interna, vacunación, cirugía, diagnóstico por imagen y urgencias veterinarias 24 horas. Atención presencial en clínica y a domicilio.
 
 ## Aviso
 Web de DEMOSTRACIÓN creada por WhiteMoon Agencia IA. La clínica, los datos de contacto y las imágenes son ilustrativos. Los precios indicados son ORIENTATIVOS y no constituyen una oferta.
@@ -21,7 +21,7 @@ Web de DEMOSTRACIÓN creada por WhiteMoon Agencia IA. La clínica, los datos de 
 - Vacunación: calendario adaptado a especie, edad y estilo de vida (orientativo: desde 20 €)
 - Cirugía: tejidos blandos, esterilizaciones y traumatología con monitorización anestésica (presupuesto detallado antes de operar)
 - Urgencias 24 h: veterinario de guardia y quirófano preparado (presupuesto previo antes de intervenir)
-- Peluquería canina: baño, corte e higiene con producto específico por tipo de pelo (orientativo: desde 25 €)
+- Visita a domicilio: consulta en casa cuando desplazar al animal es contraproducente (orientativo: desde 60 €)
 - Diagnóstico y análisis: analítica, imagen y pruebas complementarias (presupuesto previo de cada prueba)
 - Se atiende a perros, gatos y animales exóticos
 
