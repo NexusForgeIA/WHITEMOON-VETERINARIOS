@@ -24,9 +24,24 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Fuentes self-hosted: antes esto era una cadena de tres saltos
+     (HTML -> fonts.googleapis.com -> fonts.gstatic.com) que bloqueaba el
+     render ~2,1 s. Ahora son dos woff2 del mismo origen, precargados porque
+     el CSS que los declara los descubriría demasiado tarde. El crossorigin
+     es obligatorio aunque sean del mismo origen: las fuentes se piden
+     siempre en modo CORS y sin él se descargarían dos veces. -->
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/fraunces-600-latin.woff2" crossorigin>
+
+<!-- El hero es el LCP: se precarga el recorte que toque segun el ancho. -->
+<link rel="preload" as="image" type="image/webp" media="(max-width: 1040px)"
+      href="assets/img/hero-m-760.webp"
+      imagesrcset="assets/img/hero-m-480.webp 480w, assets/img/hero-m-760.webp 760w"
+      imagesizes="min(100vw - 40px, 560px)">
+<link rel="preload" as="image" type="image/webp" media="(min-width: 1041px)"
+      href="assets/img/hero-d-1120.webp"
+      imagesrcset="assets/img/hero-d-560.webp 560w, assets/img/hero-d-1120.webp 1120w"
+      imagesizes="min(44vw, 500px)">
 
 <link rel="stylesheet" href="assets/styles.css">
 </head>
@@ -37,10 +52,14 @@
 <!-- ============================ CABECERA ============================ -->
 <header class="hdr" id="hdr">
  <div class="wrap hdr-in">
-  <a class="brand" href="#inicio" aria-label="Clínica Veterinaria WhiteMoon, inicio">
+  <!-- El logo va con alt vacio a proposito: el nombre esta escrito al lado, y
+       si tambien lo dijera la imagen el nombre accesible del enlace ("Logo de
+       WhiteMoon WhiteMoon Clinica Veterinaria") dejaria de coincidir con el
+       texto visible. Sin aria-label, el nombre sale del propio contenido. -->
+  <a class="brand" href="#inicio">
    <picture>
     <source srcset="assets/logo.webp" type="image/webp">
-    <img src="assets/logo.png" width="140" height="140" alt="Logo de WhiteMoon">
+    <img src="assets/logo.png" width="180" height="82" alt="">
    </picture>
    <span class="brand-txt">
     <strong>WhiteMoon</strong>
@@ -55,7 +74,9 @@
   </nav>
 
   <div class="hdr-cta">
-   <a class="tel-link" href="tel:+34643199580">
+   <!-- En movil el numero se oculta y solo queda el icono, que es
+        aria-hidden: sin esta etiqueta el enlace se queda sin nombre. -->
+   <a class="tel-link" href="tel:+34643199580" aria-label="Llamar al 643 199 580">
     <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.2 3h3l1.5 4-2 1.4a12 12 0 0 0 6.9 6.9l1.4-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.2 5.2 2 2 0 0 1 6.2 3Z"/></svg>
     <span>643 199 580</span>
    </a>
@@ -100,9 +121,17 @@
    </div>
 
    <div class="hero-media" data-rv>
+    <!-- Art direction real: en movil el hueco es apaisado (5:4) y en
+         escritorio vertical (4:5). Servir el recorte de cada uno evita bajar
+         pixeles que luego object-fit tira. Nunca lazy: es el LCP. -->
     <picture>
-     <source srcset="assets/img/hero.webp" type="image/webp">
-     <img src="assets/img/hero.jpg" width="1000" height="1250"
+     <source media="(max-width: 1040px)" type="image/webp"
+             srcset="assets/img/hero-m-480.webp 480w, assets/img/hero-m-760.webp 760w"
+             sizes="min(100vw - 40px, 560px)">
+     <source type="image/webp"
+             srcset="assets/img/hero-d-560.webp 560w, assets/img/hero-d-1120.webp 1120w"
+             sizes="min(44vw, 500px)">
+     <img src="assets/img/hero.jpg" width="760" height="950"
           alt="Veterinaria sujetando con cuidado a un gato atigrado durante una revisión"
           fetchpriority="high" decoding="async">
     </picture>
@@ -173,8 +202,10 @@
     <li class="card" data-rv>
      <div class="card-media">
       <picture>
-       <source srcset="assets/img/svc-consulta.webp" type="image/webp">
-       <img src="assets/img/svc-consulta.jpg" width="800" height="600" loading="lazy" decoding="async"
+       <source type="image/webp"
+               srcset="assets/img/svc-consulta-400.webp 400w, assets/img/svc-consulta-720.webp 720w"
+               sizes="(max-width: 720px) calc(100vw - 40px), (max-width: 1040px) calc((100vw - 64px) / 2), 355px">
+       <img src="assets/img/svc-consulta.jpg" width="720" height="540" loading="lazy" decoding="async"
             alt="Veterinario explorando a un perro salchicha sobre la mesa de consulta">
       </picture>
      </div>
@@ -187,8 +218,10 @@
     <li class="card" data-rv>
      <div class="card-media">
       <picture>
-       <source srcset="assets/img/svc-vacunacion.webp" type="image/webp">
-       <img src="assets/img/svc-vacunacion.jpg" width="800" height="600" loading="lazy" decoding="async"
+       <source type="image/webp"
+               srcset="assets/img/svc-vacunacion-400.webp 400w, assets/img/svc-vacunacion-720.webp 720w"
+               sizes="(max-width: 720px) calc(100vw - 40px), (max-width: 1040px) calc((100vw - 64px) / 2), 355px">
+       <img src="assets/img/svc-vacunacion.jpg" width="720" height="540" loading="lazy" decoding="async"
             alt="Manos con guantes administrando una vacuna a un perro pequeño">
       </picture>
      </div>
@@ -201,8 +234,10 @@
     <li class="card" data-rv>
      <div class="card-media">
       <picture>
-       <source srcset="assets/img/svc-cirugia.webp" type="image/webp">
-       <img src="assets/img/svc-cirugia.jpg" width="800" height="600" loading="lazy" decoding="async"
+       <source type="image/webp"
+               srcset="assets/img/svc-cirugia-400.webp 400w, assets/img/svc-cirugia-720.webp 720w"
+               sizes="(max-width: 720px) calc(100vw - 40px), (max-width: 1040px) calc((100vw - 64px) / 2), 355px">
+       <img src="assets/img/svc-cirugia.jpg" width="720" height="540" loading="lazy" decoding="async"
             alt="Quirófano veterinario preparado, con mesa quirúrgica y lámpara cenital">
       </picture>
      </div>
@@ -215,8 +250,10 @@
     <li class="card" data-rv>
      <div class="card-media">
       <picture>
-       <source srcset="assets/img/svc-urgencias.webp" type="image/webp">
-       <img src="assets/img/svc-urgencias.jpg" width="800" height="600" loading="lazy" decoding="async"
+       <source type="image/webp"
+               srcset="assets/img/svc-urgencias-400.webp 400w, assets/img/svc-urgencias-720.webp 720w"
+               sizes="(max-width: 720px) calc(100vw - 40px), (max-width: 1040px) calc((100vw - 64px) / 2), 355px">
+       <img src="assets/img/svc-urgencias.jpg" width="720" height="540" loading="lazy" decoding="async"
             alt="Veterinaria sujetando a un perro mientras lo atiende junto al equipo de exploración">
       </picture>
      </div>
@@ -229,8 +266,10 @@
     <li class="card" data-rv>
      <div class="card-media">
       <picture>
-       <source srcset="assets/img/svc-diagnostico.webp" type="image/webp">
-       <img src="assets/img/svc-diagnostico.jpg" width="800" height="600" loading="lazy" decoding="async"
+       <source type="image/webp"
+               srcset="assets/img/svc-diagnostico-400.webp 400w, assets/img/svc-diagnostico-720.webp 720w"
+               sizes="(max-width: 720px) calc(100vw - 40px), (max-width: 1040px) calc((100vw - 64px) / 2), 355px">
+       <img src="assets/img/svc-diagnostico.jpg" width="720" height="540" loading="lazy" decoding="async"
             alt="Laboratorio de análisis con microscopio y equipos de diagnóstico">
       </picture>
      </div>
@@ -243,8 +282,10 @@
     <li class="card" data-rv>
      <div class="card-media">
       <picture>
-       <source srcset="assets/img/svc-bienestar.webp" type="image/webp">
-       <img src="assets/img/svc-bienestar.jpg" width="800" height="600" loading="lazy" decoding="async"
+       <source type="image/webp"
+               srcset="assets/img/svc-bienestar-400.webp 400w, assets/img/svc-bienestar-720.webp 720w"
+               sizes="(max-width: 720px) calc(100vw - 40px), (max-width: 1040px) calc((100vw - 64px) / 2), 355px">
+       <img src="assets/img/svc-bienestar.jpg" width="720" height="540" loading="lazy" decoding="async"
             alt="Sesión de peluquería a un gato con maquinilla, sujetándolo con suavidad">
       </picture>
      </div>
@@ -287,7 +328,7 @@
    <div class="foot-brand">
     <picture>
      <source srcset="assets/logo.webp" type="image/webp">
-     <img src="assets/logo.png" width="140" height="140" alt="Logo de WhiteMoon">
+     <img src="assets/logo.png" width="180" height="82" alt="WhiteMoon">
     </picture>
     <p>
      Clínica Veterinaria WhiteMoon. Medicina, cirugía y urgencias 24 h

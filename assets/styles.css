@@ -11,6 +11,35 @@
    encima con el mismo ratio.
    ============================================================ */
 
+/* ---------------------------- FUENTES ----------------------------
+   Self-hosted, subset latin (todo el texto de la pagina cabe ahi; los
+   emoji del asistente los pone siempre la fuente del sistema).
+   Inter es variable: un solo fichero cubre 400, 500 y 600. De Fraunces
+   se fija el peso 600, lo unico que usamos, y baja de 67 KB a 18 KB.
+   Las dos van precargadas desde el <head>. */
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url('fonts/inter-var-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+    U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+    U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('fonts/fraunces-600-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+    U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+    U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 :root {
   --white: #ffffff;
   --bone: #f5f9f9;
@@ -67,7 +96,6 @@ body {
 
 h1, h2, h3 {
   font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
-  font-optical-sizing: auto;
   font-weight: 600;
   line-height: 1.12;
   letter-spacing: -.015em;
@@ -157,7 +185,7 @@ a:hover { color: var(--teal-deep); }
 .hdr-in { display: flex; align-items: center; gap: 24px; min-height: 76px; }
 
 .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; color: inherit; }
-.brand img { width: 38px; height: 38px; border-radius: 9px; }
+.brand img { height: 30px; width: auto; }
 .brand-txt { display: flex; flex-direction: column; line-height: 1.15; }
 .brand-txt strong {
   font-family: 'Fraunces', Georgia, serif; font-weight: 600;
@@ -367,7 +395,7 @@ a:hover { color: var(--teal-deep); }
   grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr));
   gap: clamp(28px, 4vw, 48px);
 }
-.foot-brand img { width: 44px; height: 44px; border-radius: 11px; margin-bottom: 14px; }
+.foot-brand img { height: 38px; width: auto; margin-bottom: 14px; }
 .foot-brand p { font-size: .92rem; color: var(--muted); max-width: 34ch; }
 
 .foot-col h2 {
@@ -433,16 +461,23 @@ a:hover { color: var(--teal-deep); }
   border-radius: 20px;
   box-shadow: var(--sh-3), 0 4px 12px rgba(31, 42, 46, .06);
   opacity: 0; transform: translateY(14px) scale(.97); pointer-events: none;
-  transition: opacity .3s var(--ease), transform .3s var(--ease);
+  visibility: hidden;
+  transition: opacity .3s var(--ease), transform .3s var(--ease),
+              visibility 0s linear .3s;
 }
-.cb.open { opacity: 1; transform: none; pointer-events: auto; }
+.cb.open {
+  opacity: 1; transform: none; pointer-events: auto;
+  visibility: visible;
+  transition: opacity .3s var(--ease), transform .3s var(--ease),
+              visibility 0s;
+}
 
 .cb-head {
   display: flex; align-items: center; gap: 12px;
   padding: 15px 18px; border-bottom: 1px solid var(--line);
   background: var(--white);
 }
-.cb-head img { width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0; }
+.cb-head img { height: 28px; width: auto; flex-shrink: 0; }
 .cb-name { font-size: .95rem; font-weight: 600; color: var(--ink); }
 .cb-sub { font-size: .76rem; color: var(--muted); }
 .cb-x {
@@ -606,7 +641,7 @@ a:hover { color: var(--teal-deep); }
   html { scroll-padding-top: 84px; }
 
   .hdr-in { min-height: 66px; gap: 12px; }
-  .brand img { width: 34px; height: 34px; }
+  .brand img { height: 26px; }
   .brand-txt strong { font-size: 1rem; }
   .brand-txt em { font-size: .66rem; }
   .hdr-cta { margin-left: auto; gap: 10px; }
