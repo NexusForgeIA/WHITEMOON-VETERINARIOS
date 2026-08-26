@@ -168,7 +168,7 @@
       '<div class="cb-head">' +
         '<picture>' +
           '<source srcset="assets/logo.webp" type="image/webp">' +
-          '<img src="assets/logo.png" width="140" height="140" alt="">' +
+          '<img src="assets/logo.png" width="180" height="82" alt="">' +
         '</picture>' +
         '<div>' +
           '<p class="cb-name" id="cb-title">Asistente WhiteMoon</p>' +
@@ -190,6 +190,8 @@
   var $ = function (s) { return host.querySelector(s); };
   var cb = $('#cb'), fab = $('#cb-fab'), log = $('#cb-log'), panel = $('#cb-panel');
   var input = $('#cb-input'), send = $('#cb-send');
+
+  cb.inert = true;
 
   /* ---------- Estado ---------- */
 
@@ -440,6 +442,7 @@
 
   function openChat() {
     cb.classList.add('open');
+    cb.inert = false;
     cb.setAttribute('aria-hidden', 'false');
     fab.style.display = 'none';
     $('#cb-x').focus();
@@ -452,6 +455,7 @@
 
   function closeChat() {
     cb.classList.remove('open');
+    cb.inert = true;
     cb.setAttribute('aria-hidden', 'true');
     fab.style.display = '';
     fab.focus();
