@@ -33,12 +33,15 @@
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-var-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/fraunces-600-latin.woff2" crossorigin>
 
-<!-- El hero es el LCP: se precarga el recorte que toque segun el ancho. -->
-<link rel="preload" as="image" type="image/webp" media="(max-width: 1040px)"
+<!-- El hero es el LCP: se precarga el recorte que toque segun el ancho.
+     El fetchpriority va tambien aqui, no solo en el <img>: en una imagen
+     precargada la pista la lee el link, y sin ella la peticion salia con
+     prioridad Low aunque llegase pronto. -->
+<link rel="preload" as="image" type="image/webp" fetchpriority="high" media="(max-width: 1040px)"
       href="assets/img/hero-m-760.webp"
       imagesrcset="assets/img/hero-m-480.webp 480w, assets/img/hero-m-760.webp 760w"
       imagesizes="min(100vw - 40px, 560px)">
-<link rel="preload" as="image" type="image/webp" media="(min-width: 1041px)"
+<link rel="preload" as="image" type="image/webp" fetchpriority="high" media="(min-width: 1041px)"
       href="assets/img/hero-d-1120.webp"
       imagesrcset="assets/img/hero-d-560.webp 560w, assets/img/hero-d-1120.webp 1120w"
       imagesizes="min(44vw, 500px)">
