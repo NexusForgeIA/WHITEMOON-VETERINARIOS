@@ -1,7 +1,7 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 
 // vet-notify — captura de lead + aviso por Telegram de una nueva SOLICITUD DE
-// CITA de la demo WhiteMoon · Clínica Veterinaria San Marcos (chatbot "NORA").
+// CITA de la demo WhiteMoon · Clínica Veterinaria Lundé (asistente de la web).
 //
 // A diferencia de dental-notify / chef-notify, aquí el INSERT en leads_web se
 // hace server-side: así el cliente no necesita ninguna clave de Supabase y el
@@ -108,8 +108,8 @@ Deno.serve(async (req: Request) => {
   // 2) Aviso por Telegram
   const message =
     (soloPrueba
-      ? "🧪 PRUEBA — demo WhiteMoon · Clínica Veterinaria San Marcos\n\n"
-      : "🐾 NUEVA SOLICITUD DE CITA — demo WhiteMoon · Clínica Veterinaria San Marcos\n\n") +
+      ? "🧪 PRUEBA — demo WhiteMoon · Clínica Veterinaria Lundé\n\n"
+      : "🐾 NUEVA SOLICITUD DE CITA — demo WhiteMoon · Clínica Veterinaria Lundé\n\n") +
     `👤 ${nombre || "-"}\n` +
     `📱 ${telefono || "-"}\n` +
     `🩺 Servicio: ${servicio || "-"}\n\n` +

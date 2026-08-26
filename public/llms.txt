@@ -1,0 +1,43 @@
+# Clínica Veterinaria Lundé
+
+> Clínica veterinaria en el centro de Madrid (Calle Mayor 45, 28013). Medicina interna, vacunación, cirugía, diagnóstico por imagen y urgencias veterinarias 24 horas. Atención presencial en clínica y a domicilio.
+
+## Aviso
+Web de DEMOSTRACIÓN creada por WhiteMoon Agencia IA. La clínica, los datos de contacto y las imágenes son ilustrativos. Los precios indicados son ORIENTATIVOS y no constituyen una oferta.
+
+## Datos de contacto (NAP)
+- Nombre: Clínica Veterinaria Lundé
+- Dirección: Calle Mayor 45, 28013 Madrid (centro, junto a Sol y Ópera)
+- Teléfono y urgencias: +34 643 19 95 80
+- WhatsApp: +34 643 19 95 80
+- Email: citas@clinicalunde.es
+- Horario de clínica: Lunes a Viernes 9:00–20:00 · Sábados 9:00–14:00
+- Urgencias: 24 horas, todos los días del año
+- Zona de servicio: Madrid capital y alrededores
+- Web: https://nexusforgeia.github.io/WHITEMOON-VETERINARIOS/
+
+## Servicios
+- Consulta general: exploración completa y orientación diagnóstica (orientativo: desde 35 €)
+- Vacunación: calendario adaptado a especie, edad y estilo de vida (orientativo: desde 20 €)
+- Cirugía: tejidos blandos, esterilizaciones y traumatología con monitorización anestésica (presupuesto detallado antes de operar)
+- Urgencias 24 h: veterinario de guardia y quirófano preparado (presupuesto previo antes de intervenir)
+- Visita a domicilio: consulta en casa cuando desplazar al animal es contraproducente (orientativo: desde 60 €)
+- Diagnóstico y análisis: analítica, imagen y pruebas complementarias (presupuesto previo de cada prueba)
+- Se atiende a perros, gatos y animales exóticos
+
+## Cómo trabajamos
+- Urgencias 24 h: servicio de guardia disponible a cualquier hora, todos los días del año.
+- Equipo colegiado: veterinarios colegiados en formación continua, con presupuesto siempre por delante.
+- Presencial y a domicilio: consulta en clínica o visita en casa cuando desplazarse es lo peor para el animal.
+
+## Cómo pedir cita
+Llamar o escribir por WhatsApp al +34 643 19 95 80, o usar el asistente de la web, que recoge nombre, teléfono y servicio y traslada la solicitud a la clínica. Es una SOLICITUD de cita, no una reserva confirmada.
+
+## Preguntas frecuentes
+- ¿Cuánto cuesta la consulta? De forma orientativa, desde 35 €. Siempre se da presupuesto antes de cualquier prueba o tratamiento.
+- ¿Hacéis urgencias 24 h? Sí, todos los días del año. Teléfono: +34 643 19 95 80.
+- ¿Qué vacunas necesita mi mascota? El calendario se adapta a la especie, la edad y el estilo de vida del animal.
+- ¿Tenéis quirófano propio? Sí, con monitorización anestésica.
+- ¿Atendéis a domicilio? Sí, cuando desplazar al animal es contraproducente.
+- ¿En qué zonas atendéis? Centro de Madrid (Calle Mayor 45, 28013) y toda la capital.
+- ¿Atendéis animales exóticos? Sí, además de perros y gatos.
